@@ -1,4 +1,4 @@
-#include "../Headers/Enemy.h"
+#include "../Headers/Enemy.hpp"
 
 void Enemy::update()
 {

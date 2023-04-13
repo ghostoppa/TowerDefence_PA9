@@ -1,5 +1,6 @@
 #pragma once
-#include "Entity.h"
+#include "../Headers/Entity.hpp"
+
 class Enemy : public Entity
 {
 public:

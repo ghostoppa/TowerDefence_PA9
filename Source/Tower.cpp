@@ -1,4 +1,4 @@
-#include "../Headers/Tower.h"
+#include "../Headers/Tower.hpp"
 
 void Tower::update()
 {

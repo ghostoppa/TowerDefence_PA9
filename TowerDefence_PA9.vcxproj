@@ -139,9 +139,9 @@
     <ClCompile Include="Source\Tower.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Headers\Enemy.h" />
-    <ClInclude Include="Headers\Entity.h" />
-    <ClInclude Include="Headers\Tower.h" />
+    <ClInclude Include="Headers\Enemy.hpp" />
+    <ClInclude Include="Headers\Entity.hpp" />
+    <ClInclude Include="Headers\Tower.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
