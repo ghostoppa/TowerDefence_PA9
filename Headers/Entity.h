@@ -1,14 +1,19 @@
 #pragma once
 #include <SFML/Main.hpp>
+#include <SFML/Graphics.hpp>
 
-class Entity
+class Entity : public sf::Shape;
 {
 public:
 	virtual void update();
 
 	virtual void render();
+
+	virtual Vector
 private:
-	int x, y;
+	sf::Vector2f positon;
+	
+	
 
 };
 
