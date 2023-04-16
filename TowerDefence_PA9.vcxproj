@@ -135,12 +135,15 @@
   <ItemGroup>
     <ClCompile Include="Source\Enemy.cpp" />
     <ClCompile Include="Source\Entity.cpp" />
+    <ClCompile Include="Source\LinearPath.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Tower.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\Damage.hpp" />
     <ClInclude Include="Headers\Enemy.hpp" />
     <ClInclude Include="Headers\Entity.hpp" />
+    <ClInclude Include="Headers\LinearPath.h" />
     <ClInclude Include="Headers\Tower.hpp" />
   </ItemGroup>
   <ItemGroup>

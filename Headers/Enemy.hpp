@@ -1,15 +1,17 @@
 #pragma once
-#include "../Headers/Entity.hpp"
+#include "Entity.hpp"
 
 class Enemy : public Entity
 {
 public:
+    Enemy(int health, int speed) : mHealth(health), mSpeed(speed)
+    {
+    };
     void update() override;
-    void render() override
-    sf::
-private:
-    int health;
+    void render() override;
     
-    int speed
+private:
+    int mHealth;
+    int mSpeed;
 };
 

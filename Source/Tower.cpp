@@ -3,6 +3,7 @@
 
 void Tower::update()
 {
+
 }
 
 void Tower::render()
