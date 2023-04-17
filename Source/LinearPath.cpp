@@ -25,7 +25,7 @@ sf::Vector2f LinearPath::getPointAlongPath(float speed, float t)
 	float distance = fmod(speed * t, total_distance);
 	
 	//if point collection has more than one element
-	if (pointCollection.size() > 0 && distance < total_distance)
+	if (pointCollection.size() > 0 && speed * t < total_distance)
 	{
 		//determine which points we are interpolating between
 		//take this by repeatedly adding the distances between each point
