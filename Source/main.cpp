@@ -11,7 +11,8 @@ int main()
     //(This can be deleted when we don't need it anymore)
     //Basically I'm setting the time to 0, and then creating a test path
     float time = 0;
-
+    bool path_complete = false;
+    sf::Vector2f target;
     LinearPath testPath;
     //(The path is just a square)
     testPath.addPoint(sf::Vector2f(320, 240));
@@ -31,7 +32,21 @@ int main()
         }
         /*---------------- Test Movement code------------------*/
         //                vv This gives a location based on the path, time, and speed
-        shape.setPosition(testPath.getPointAlongPath(0.5, time));
+        if (!path_complete)
+        {
+            target = testPath.getPointAlongPath(0.5, time);
+            //check if the path is complete
+            if (target != sf::Vector2f(-1, -1))
+            {
+                shape.setPosition(target);
+            }
+            else
+            {
+                path_complete = true;
+                std::cout << "Completed path" << std::endl;
+            }
+        }
+        
         /*-------------------------------------------------*/
 
         window.clear();
