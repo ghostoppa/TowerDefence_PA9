@@ -17,7 +17,10 @@ public:
 private:
 	int point_count;
 	float total_distance;
-
+	//Store the distances between each point in a vector so we don't have to compute the distance
+	//Every time we need it (sqrt is heavy)
+	std::vector<float> pathDistances;
+	//collection of points in path
 	std::vector<sf::Vector2f> pointCollection;
 
 	//Return a point between two points at point t

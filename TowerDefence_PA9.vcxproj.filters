@@ -92,4 +92,17 @@
       <Filter>DLLs</Filter>
     </CopyFileToFolders>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\img\testmap.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="assets\data\testmap\hitboxes.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="assets\data\testmap\path.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

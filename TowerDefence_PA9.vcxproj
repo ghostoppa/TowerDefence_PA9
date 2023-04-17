@@ -183,6 +183,13 @@
       <FileType>Document</FileType>
     </CopyFileToFolders>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\img\testmap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="assets\data\testmap\hitboxes.txt" />
+    <Text Include="assets\data\testmap\path.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
