@@ -9,8 +9,4 @@ void Entity::render()
 {
 }
 
-sf::Vector2f Entity::getPosition()
-{
-	return this->position;
-}
 

@@ -12,7 +12,7 @@ int main()
     //(This can be deleted when we don't need it anymore)
     //Basically I'm setting the time to 0, and then creating a test path
 
-    srand(time(0));
+    srand((unsigned int)time(0));
     bool path_complete = false;
     sf::Vector2f target;
     LinearPath testPath;

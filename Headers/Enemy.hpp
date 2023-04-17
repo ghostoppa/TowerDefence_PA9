@@ -2,12 +2,12 @@
 #include "Entity.hpp"
 #include "LinearPath.h"
 
-class Enemy : public Entity
+class Enemy : public Entity, public sf::CircleShape
 {
 public:
     Enemy(int health, float speed, LinearPath path) : mHealth(health), mSpeed(speed), mPath(path)
     {
-        this->setSize(sf::Vector2f(10, 10));
+        this->setRadius(10.0f);
         this->setFillColor(sf::Color::Red);
         mTime = 0;
         completed_path = false;
@@ -15,7 +15,9 @@ public:
     void update() override;
 
     //Maybe we won't need this?
-    void render() override;
+    //void render() override;
+
+    bool finished_path() { return completed_path; };
     
 private:
     LinearPath mPath;
