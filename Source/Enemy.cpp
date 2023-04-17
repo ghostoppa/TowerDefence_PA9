@@ -14,7 +14,7 @@ void Enemy::update()
 		{
 			completed_path = true;
 		}
-		mTime += 0.1;
+		mTime += 1;
 	}
 	else
 	{
