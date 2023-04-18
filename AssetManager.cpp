@@ -54,7 +54,7 @@ void AssetManager::loadSound(string name, string fileName)
 	}
 }
 
-sf::Sound& AssetManager::GetSound(string name)
+sf::Sound& AssetManager::getSound(string name)
 {
 	return this->sounds.at(name);
 }
