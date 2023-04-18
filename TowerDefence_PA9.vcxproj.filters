@@ -59,14 +59,6 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="assets\data\testmap\hitboxes.txt">
-      <Filter>Resource Files\data</Filter>
-    </Text>
-    <Text Include="assets\data\testmap\path.txt">
-      <Filter>Resource Files\data</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Damage.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -137,5 +129,13 @@
     <Image Include="assets\img\testmap.png">
       <Filter>Resource Files\images</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="assets\data\testmap\path.txt">
+      <Filter>Resource Files\data</Filter>
+    </Text>
+    <Text Include="assets\data\testmap\hitboxes.txt">
+      <Filter>Resource Files\data</Filter>
+    </Text>
   </ItemGroup>
 </Project>
