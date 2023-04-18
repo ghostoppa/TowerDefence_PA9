@@ -1,4 +1,4 @@
-#include "../Headers/Entity.hpp"
+#include "Entity.hpp"
 #include <SFML/Graphics.hpp>
 void Entity::update()
 {

@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
-#include "../Headers/LinearPath.h"
-#include "../Headers/Enemy.hpp"
-#include "../Headers/Map.h"
+#include "LinearPath.h"
+#include "Enemy.hpp"
+#include "Map.h"
 #include <iostream>
 #include <time.h>
 int main()
