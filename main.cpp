@@ -15,10 +15,23 @@ int main()
     window.setFramerateLimit(60);
     
     AssetManager assets;
-    assets.loadTexture("testmap", "assets/img/testmap.png");
-
-    Map* testMap = new Map(assets.getTexture("testmap"), "assets/data/testmap/path.txt", "assets/data/testmap/hitboxes.txt");
-    
+    Map* testMap = nullptr;
+    try
+    {
+        assets.loadTexture("testmap", "assets/img/testmap.png");
+    }
+    catch (FileLoadError& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    try 
+    {
+        testMap= new Map(assets.getTexture("testmap"), "assets/data/testmap/path.txt", "assets/data/testmap/hitboxes.txt");
+    }
+    catch(FileLoadError &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 
     std::vector<Enemy> enemies;
     std::vector<Enemy>::iterator enemies_it;
