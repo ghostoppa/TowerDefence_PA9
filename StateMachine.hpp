@@ -9,7 +9,7 @@ class StateMachine
 {
 public:
 	StateMachine() {}
-	~StateMachine();
+	~StateMachine() {};
 
 	void AddState(StateRef newState, bool isReplacing = true);
 	void RemoveState();
@@ -25,4 +25,4 @@ private:
 	bool isRemoving;
 	bool isAdding;
 	bool isReplacing;
-
+};
