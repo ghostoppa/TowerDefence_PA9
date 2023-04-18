@@ -33,14 +33,10 @@
     <ClCompile Include="Source\LinearPath.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StateMachine.cpp">
-=======
-    <ClCompile Include="Source\Map.cpp">
->>>>>>> 72e8ee0f41e483969d944e73cf05414075516bbe
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -60,7 +56,6 @@
     <ClInclude Include="Headers\LinearPath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="Menu.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -71,9 +66,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StateMachine.hpp">
-=======
-    <ClInclude Include="Headers\Map.h">
->>>>>>> 72e8ee0f41e483969d944e73cf05414075516bbe
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -111,18 +103,5 @@
     <CopyFileToFolders Include="sfml-window-d-2.dll">
       <Filter>DLLs</Filter>
     </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="assets\img\testmap.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="assets\data\testmap\hitboxes.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="assets\data\testmap\path.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
   </ItemGroup>
 </Project>
