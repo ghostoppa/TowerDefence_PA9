@@ -28,7 +28,6 @@ int main()
         std::cout << e.what() << std::endl;
     }
     std::vector<Enemy> enemies;
-    std::vector<Enemy>::iterator enemies_it;
     //Enemy test code
     //Create a bunch of random enemies
     for (int i = 0; i < 500; ++i)
@@ -48,7 +47,6 @@ int main()
 
         window.clear();
         window.draw(*testMap);
-        enemies_it = enemies.begin();
         //Enemy creation loop
         for (int i = 0; i < enemies.size(); ++i)
         {
