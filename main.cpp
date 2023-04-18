@@ -14,6 +14,8 @@ int main()
     //Set framerate to MAX 60fps
     window.setFramerateLimit(60);
     
+    system("echo %cd%");
+
     AssetManager assets;
     Map* testMap = nullptr;
     try
@@ -26,7 +28,6 @@ int main()
         std::cout << e.what() << std::endl;
     }
     std::vector<Enemy> enemies;
-    std::vector<Enemy>::iterator enemies_it;
     //Enemy test code
     //Create a bunch of random enemies
     for (int i = 0; i < 500; ++i)
@@ -46,18 +47,18 @@ int main()
 
         window.clear();
         window.draw(*testMap);
-        enemies_it = enemies.begin();
         //Enemy creation loop
-        for (; enemies_it < enemies.end(); enemies_it++)
+        for (int i = 0; i < enemies.size(); ++i)
         {
-            if (enemies_it->finished_path())
+
+            if (enemies.at(i).finished_path())
             {
-                enemies.erase(enemies_it);   
+                    enemies.erase(enemies.begin() + i);
             }
             else
             {
-                enemies_it->update();
-                window.draw(*enemies_it);
+                enemies.at(i).update();
+                window.draw(enemies.at(i));
             }
 
         }
