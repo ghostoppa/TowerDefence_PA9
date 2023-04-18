@@ -133,18 +133,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Source\Enemy.cpp" />
     <ClCompile Include="Source\Entity.cpp" />
     <ClCompile Include="Source\LinearPath.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Tower.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Definitions.hpp" />
     <ClInclude Include="Headers\Damage.hpp" />
     <ClInclude Include="Headers\Enemy.hpp" />
     <ClInclude Include="Headers\Entity.hpp" />
     <ClInclude Include="Headers\LinearPath.h" />
     <ClInclude Include="Headers\Tower.hpp" />
+    <ClInclude Include="Menu.hpp" />
+    <ClInclude Include="State.hpp" />
+    <ClInclude Include="StateMachine.hpp" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="openal32.dll">
