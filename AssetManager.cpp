@@ -1,6 +1,6 @@
 #include "AssetManager.hpp"
 
-void AssetManager::LoadTexture(string name, string fileName)
+void AssetManager::loadTexture(string name, string fileName)
 {
 	sf::Texture localTexan;
 
@@ -14,12 +14,12 @@ void AssetManager::LoadTexture(string name, string fileName)
 	}
 }
 
-sf::Texture& AssetManager::GetTexture(string name)
+sf::Texture& AssetManager::getTexture(string name)
 {
 	return this->textures.at(name);
 }
 
-void AssetManager::LoadFont(string name, string fileName)
+void AssetManager::loadFont(string name, string fileName)
 {
 	sf::Font localFlordian;
 
@@ -33,12 +33,12 @@ void AssetManager::LoadFont(string name, string fileName)
 	}
 }
 
-sf::Font& AssetManager::GetFont(string name)
+sf::Font& AssetManager::getFont(string name)
 {
 	return this->fonts.at(name);
 }
 
-void AssetManager::LoadSound(string name, string fileName)
+void AssetManager::loadSound(string name, string fileName)
 {
 	sf::SoundBuffer buffer;
 

@@ -9,7 +9,7 @@ public:
 
 private:
 	int selectedItemIndex;
-	sf::Font MenuFont
-	void draw(RenderWindow& Window)
+	sf::Font MenuFont;
+	void draw(RenderWindow& Window);
 };
 

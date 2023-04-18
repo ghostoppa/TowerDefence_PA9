@@ -1,6 +1,6 @@
 #pragma once
 #include "Entity.hpp"
-#include "LinearPath.h"
+#include "LinearPath.hpp"
 
 class Enemy : public Entity, public sf::CircleShape
 {

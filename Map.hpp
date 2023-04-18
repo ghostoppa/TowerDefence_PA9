@@ -1,14 +1,13 @@
 #pragma once
 #include <SFML/Main.hpp>
 #include <SFML/Graphics.hpp>
-#include "LinearPath.h"
+#include "LinearPath.hpp"
 class Map : public sf::Sprite
 {
 public:
-	Map(std::string texturePath, std::string pathPath, std::string hitboxPath)
+	Map(sf::Texture& texture, std::string pathPath, std::string hitboxPath)
 	{
-		tex = new sf::Texture;
-		tex->loadFromFile(texturePath);
+		tex = &texture;
 		setTexture(*tex);
 
 		LoadPathFromFile(pathPath);

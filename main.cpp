@@ -1,32 +1,28 @@
 #include <SFML/Graphics.hpp>
-#include "../Headers/LinearPath.h"
-#include "../Headers/Enemy.hpp"
-#include "../Headers/Map.h"
+
 #include <iostream>
 #include <time.h>
+
+#include "LinearPath.hpp"
+#include "Enemy.hpp"
+#include "Map.hpp"
+#include "AssetManager.hpp"
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(640 , 480), "Game");
     //Set framerate to MAX 60fps
     window.setFramerateLimit(60);
-    Map* testMap = new Map("assets/img/testmap.png", "assets/data/testmap/path.txt", "assets/data/testmap/hitboxes.txt");
-    /*------ TEST CODE FOR MULTIPLE ENEMY MOVEMENT --------*/
-    //(This can be deleted when we don't need it anymore)
-    //Basically I'm setting the time to 0, and then creating a test path
+    
+    AssetManager assets;
+    assets.loadTexture("testmap", "assets/img/testmap.png");
 
-    //srand((unsigned int)time(0));
-    //bool path_complete = false;
-    //sf::Vector2f target;
-    //LinearPath testPath;
-    ////(The path is just a square)
-    //testPath.addPoint(sf::Vector2f(10, 10));
-    //testPath.addPoint(sf::Vector2f(600, 10));
-    //testPath.addPoint(sf::Vector2f(600, 440));
-    //testPath.addPoint(sf::Vector2f(10, 440));
-    //testPath.addPoint(sf::Vector2f(10, 10));
+    Map* testMap = new Map(assets.getTexture("testmap"), "assets/data/testmap/path.txt", "assets/data/testmap/hitboxes.txt");
+    
 
     std::vector<Enemy> enemies;
     std::vector<Enemy>::iterator enemies_it;
+    //Enemy test code
     //Create a bunch of random enemies
     for (int i = 0; i < 500; ++i)
     {
