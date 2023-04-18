@@ -1,4 +1,4 @@
-#include "LinearPath.h"
+#include "LinearPath.hpp"
 #include <math.h>
 #include <iostream>
 

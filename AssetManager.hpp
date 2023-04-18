@@ -10,14 +10,14 @@ public:
 	AssetManager() {}
 	~AssetManager() {}
 
-	void LoadTexture(string name, string fileName);
-	sf::Texture& GetTexture(string name);
+	void loadTexture(string name, string fileName);
+	sf::Texture& getTexture(string name);
 
-	void LoadFont(string name, string fileName);
-	sf::Font& GetFont(string name);
+	void loadFont(string name, string fileName);
+	sf::Font& getFont(string name);
 
-	void LoadSound(string name, string fileName);
-	sf::Sound& GetSounce(string name);
+	void loadSound(string name, string fileName);
+	sf::Sound& getSound(string name);
 	
 private:
 	std::map<string, sf::Texture> textures;

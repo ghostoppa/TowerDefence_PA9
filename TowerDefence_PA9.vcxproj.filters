@@ -97,6 +97,12 @@
     <ClInclude Include="AssetManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LinearPath.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="StateMachine.cpp">
