@@ -14,8 +14,6 @@ int main()
     //Set framerate to MAX 60fps
     window.setFramerateLimit(60);
     
-    system("echo %cd%");
-
     AssetManager assets;
     Map* testMap = nullptr;
     try
@@ -50,17 +48,16 @@ int main()
         window.draw(*testMap);
         enemies_it = enemies.begin();
         //Enemy creation loop
-        for (int i = 0; i < enemies.size(); ++i)
+        for (; enemies_it < enemies.end(); enemies_it++)
         {
-
-            if (enemies.at(i).finished_path())
+            if (enemies_it->finished_path())
             {
-                    enemies.erase(enemies.begin() + i);
+                enemies.erase(enemies_it);   
             }
             else
             {
-                enemies.at(i).update();
-                window.draw(enemies.at(i));
+                enemies_it->update();
+                window.draw(*enemies_it);
             }
 
         }

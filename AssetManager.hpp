@@ -4,6 +4,7 @@
 #include <SFML/Audio.hpp>
 #include "FileLoadErrorException.hpp"
 using std::string;
+//* This is designed to be a container for all assets
 class AssetManager
 {
 public:
