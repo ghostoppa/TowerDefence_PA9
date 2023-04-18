@@ -4,6 +4,7 @@
 #include <SFML/Audio.hpp>
 #include "FileLoadErrorException.hpp"
 using std::string;
+//* This is designed to be a container for all assets
 class AssetManager
 {
 public:
@@ -17,7 +18,7 @@ public:
 	sf::Font& GetFont(string name);
 
 	void LoadSound(string name, string fileName);
-	sf::Sound& GetSounce(string name);
+	sf::Sound& GetSound(string name);
 	
 private:
 	std::map<string, sf::Texture> textures;

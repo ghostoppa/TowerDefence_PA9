@@ -53,3 +53,8 @@ void AssetManager::LoadSound(string name, string fileName)
 		throw FileLoadError();
 	}
 }
+
+sf::Sound& AssetManager::GetSound(string name)
+{
+	return this->sounds.at(name);
+}
