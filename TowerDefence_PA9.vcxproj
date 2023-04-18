@@ -138,6 +138,7 @@
     <ClCompile Include="Source\Entity.cpp" />
     <ClCompile Include="Source\LinearPath.cpp" />
     <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\Map.cpp" />
     <ClCompile Include="Source\Tower.cpp" />
     <ClCompile Include="StateMachine.cpp" />
   </ItemGroup>
@@ -147,6 +148,7 @@
     <ClInclude Include="Headers\Enemy.hpp" />
     <ClInclude Include="Headers\Entity.hpp" />
     <ClInclude Include="Headers\LinearPath.h" />
+    <ClInclude Include="Headers\Map.h" />
     <ClInclude Include="Headers\Tower.hpp" />
     <ClInclude Include="Menu.hpp" />
     <ClInclude Include="State.hpp" />
@@ -186,6 +188,13 @@
     <CopyFileToFolders Include="sfml-window-d-2.dll">
       <FileType>Document</FileType>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\img\testmap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="assets\data\testmap\hitboxes.txt" />
+    <Text Include="assets\data\testmap\path.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

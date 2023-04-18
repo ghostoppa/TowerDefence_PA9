@@ -2,18 +2,20 @@
 #include <SFML/Main.hpp>
 #include <SFML/Graphics.hpp>
 
-//Inherit from sf::RectangleShape rather than sf::Shape and instead render a texture inside containing the desired shape?
-//Instead however the bounding box will always be a rectangle, but that shouldn't be much of an issue
-class Entity : public sf::RectangleShape
+//Removed shape inheritance so instead different entities can contain different shapes
+class Entity
 {
 public:
 	virtual void update();
 
+	//Remove? window.draw(object) works well enough
+	//A possible use could be drawing additional elements in an object, like a circle
+	//around a tower to show its range
 	virtual void render();
 
-	virtual sf::Vector2f getPosition();
+	//Also removed get/setposition because all the shape classes already have this
 private:
-	sf::Vector2f position;
+
 };
 
 

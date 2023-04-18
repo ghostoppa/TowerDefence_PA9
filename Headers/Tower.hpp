@@ -3,7 +3,7 @@
 #include "Damage.hpp"
 
 
-class Tower : public Entity
+class Tower : public Entity, public sf::RectangleShape
 {
 public:
     Tower(int damage) : mDamage(damage)
@@ -11,6 +11,7 @@ public:
     };
 
     void update() override;
+
 
     void render() override;
 
