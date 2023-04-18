@@ -48,7 +48,7 @@ int main()
         window.draw(*testMap);
         enemies_it = enemies.begin();
         //Enemy creation loop
-        for (; enemies_it < enemies.end(); enemies_it++)
+        for (enemies_it = enemies.begin(); enemies_it < enemies.end(); enemies_it++)
         {
             if (enemies_it->finished_path())
             {
