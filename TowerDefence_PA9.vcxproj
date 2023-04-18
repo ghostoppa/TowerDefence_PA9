@@ -175,6 +175,7 @@
     <Text Include="assets\data\testmap\path.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssetManager.hpp" />
     <ClInclude Include="Damage.hpp" />
     <ClInclude Include="Definitions.hpp" />
     <ClInclude Include="Enemy.hpp" />
