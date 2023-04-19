@@ -26,7 +26,7 @@ void Game::runLvl1(sf::RenderWindow& window)
     try
     {
         assets.loadTexture("map1", "assets/img/map1.png");
-        testMap = new Map(assets.getTexture("map1"), "assets/data/testmap/path.txt", "assets/data/testmap/hitboxes.txt");
+        testMap = new Map(assets.getTexture("map1"), "assets/data/map1/path.txt", "assets/data/map1/hitboxes.txt");
     }
     catch (FileLoadError& e)
     {
