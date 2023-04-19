@@ -188,6 +188,9 @@
     <ClInclude Include="LinearPath.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="Menu.hpp" />
+    <ClInclude Include="playerStats.hpp" />
+    <ClInclude Include="Profile.hpp" />
+    <ClInclude Include="Round.h" />
     <ClInclude Include="State.hpp" />
     <ClInclude Include="StateMachine.hpp" />
     <ClInclude Include="Tower.hpp" />
@@ -202,12 +205,16 @@
     <ClCompile Include="LinearPath.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="playerStats.cpp" />
+    <ClCompile Include="Profile.cpp" />
+    <ClCompile Include="Round.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Tower.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="assets\data\map1\hitboxes.txt" />
     <Text Include="assets\data\map1\path.txt" />
+    <Text Include="profile1.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

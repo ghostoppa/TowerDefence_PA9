@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include "Round.h"
 
 void Game::startGame(int level, sf::RenderWindow& window)
 {
@@ -17,7 +18,8 @@ bool Game::isGameOver()
 
 void Game::runLvl1(sf::RenderWindow& window)
 {
-    int round = 0;
+    int round = 1;
+    int time = 0;
 
     AssetManager assets;
     std::vector<Enemy> enemyVector;
@@ -43,10 +45,12 @@ void Game::runLvl1(sf::RenderWindow& window)
    
     while (!isGameOver())
     {
-        this->genEnemyForces(enemyVector, testMap, round);
-
-        while (window.isOpen())
+        //this->genEnemyForces(enemyVector, testMap, round);
+        Round cur_round(round * round, 20, 5, 20);
+        
+        while (window.isOpen() && !cur_round.isDone(enemyVector) && !isGameOver())
         {
+            /*-----UPDATE SECTION: TRY NOT TO PUT DRAWING CODE HERE------*/
             sf::Event event;
             while (window.pollEvent(event))
             {
@@ -54,7 +58,21 @@ void Game::runLvl1(sf::RenderWindow& window)
                     window.close();
             }
 
+            cur_round.fetchEnemy(time, enemyVector, *testMap->getPath());
 
+            for (int i = 0; i < enemyVector.size(); ++i)
+            {
+                if (enemyVector.at(i).finished_path())
+                {
+                    this->playerLives--;
+                    enemyVector.erase(enemyVector.begin() + i);
+                }
+                else
+                {
+                    enemyVector.at(i).update();
+                }
+            }
+            /*-----DRAW SECTION: TRY NOT TO PUT UPDATE CODE HERE-----*/
             window.clear();
             window.draw(*testMap);
             
@@ -66,27 +84,31 @@ void Game::runLvl1(sf::RenderWindow& window)
                 debugLivesText->setString("Lives: " + std::to_string(playerLives));
                 window.draw(*debugLivesText);
             }
-            for (int i = 0; i < enemyVector.size(); ++i)
+
+            //Comment out to see map hitboxes
+            //testMap->renderHitBoxes(window);
+            
+            //(Separating the enemy draw loop and enemy update loop prevents flickering)
+            for (Enemy e : enemyVector)
             {
-
-                if (enemyVector.at(i).finished_path())
-                {
-                    enemyVector.erase(enemyVector.begin() + i);
-                    this->playerLives--;
-                }
-                else
-                {
-                    enemyVector.at(i).update();
-                    window.draw(enemyVector.at(i));
-                }
+                window.draw(e);
             }
-            window.display();
-            if (enemyVector.size() == 0) break;
-        }
 
-        round++;
+            window.display();
+            /*--------------------------------------------------------*/
+        }
+        if (window.isOpen())
+        {
+            std::cout << "Round " << round << " complete" << std::endl;
+            round++;
+        }
+        else
+        {
+            //Closing the window triggers game over to exit loop
+            break;
+        }
     }
-    std::cout << round << std::endl;
+    if(window.isOpen()) window.close();
 }
 
 void Game::genEnemyForces(std::vector<Enemy>& enemyVector, Map*& map, int& round)
@@ -95,6 +117,6 @@ void Game::genEnemyForces(std::vector<Enemy>& enemyVector, Map*& map, int& round
 
     for (int i = 0; i < 25; ++i)
     {
-        enemyVector.push_back(Enemy(1 + rand() % 50, 5.5 + (float)(rand()) / (float)(rand()), map->getPath()));
+        enemyVector.push_back(Enemy(1 + rand() % 50, 5.5f + (float)(rand()) / (float)(rand()), *map->getPath()));
     }
 }
