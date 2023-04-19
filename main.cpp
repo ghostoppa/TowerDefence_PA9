@@ -20,7 +20,7 @@ int main()
     Map* testMap = nullptr;
     try
     {
-        assets.loadTexture("testmap", "assets/img/testmap.png");
+        assets.loadTexture("testmap", "assets/img/map1.png");
         testMap = new Map(assets.getTexture("testmap"), "assets/data/testmap/path.txt", "assets/data/testmap/hitboxes.txt");
     }
     catch (FileLoadError& e)
