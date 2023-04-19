@@ -22,7 +22,8 @@ void Game::runLvl1(sf::RenderWindow& window)
     AssetManager assets;
     std::vector<Enemy> enemyVector;
     sf::Text* debugLivesText = nullptr;
-
+   
+    
     Map* testMap = nullptr;
     try
     {
@@ -37,7 +38,9 @@ void Game::runLvl1(sf::RenderWindow& window)
     {
         std::cout << e.what() << std::endl;
     }
-
+    sf::Vector2f size(60, 60), position(50, 50);
+    Interactable testInteratable ( size, position);
+   
     while (!isGameOver())
     {
         this->genEnemyForces(enemyVector, testMap, round);
@@ -54,6 +57,10 @@ void Game::runLvl1(sf::RenderWindow& window)
 
             window.clear();
             window.draw(*testMap);
+            
+            window.draw(testInteratable);
+            testInteratable.update();
+
             if (debugLivesText)
             {
                 debugLivesText->setString("Lives: " + std::to_string(playerLives));
