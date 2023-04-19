@@ -7,14 +7,19 @@
 #include "Enemy.hpp"
 #include "Map.hpp"
 #include "AssetManager.hpp"
+#include "Definitions.hpp"
+#include "Game.hpp"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(640 , 480), "Game");
+    sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH , SCREEN_HEIGHT), "Game");
     //Set framerate to MAX 60fps
     window.setFramerateLimit(60);
     
     system("echo %cd%");
+
+    //Game newGame;
+    //newGame.startGame(LEVEL1, window);
 
     AssetManager assets;
     Map* testMap = nullptr;
