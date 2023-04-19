@@ -23,7 +23,7 @@ int main()
     /////and tower placement, along with many other things lol
     Game newGame;
     newGame.startGame(LEVEL1, window);
-
+    /*
     AssetManager assets;
     Map* testMap = nullptr;
     try
@@ -42,7 +42,7 @@ int main()
     {
         enemies.push_back(Enemy(1 + rand() % 50, 0.5 + (float)(rand()) / (float)(rand()), testMap->getPath()));
     }
-    /*-------------------------------------------*/
+    
 
     while (window.isOpen())
     {
@@ -72,6 +72,6 @@ int main()
         }
         window.display();
     }
-
+    */
     return 0;
 }

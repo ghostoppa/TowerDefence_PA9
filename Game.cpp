@@ -12,11 +12,7 @@ void Game::startGame(int level, sf::RenderWindow& window)
 
 bool Game::isGameOver()
 {
-    if (playerLives < 1)
-    {
-        return true;
-    }
-    else return false;
+    return playerLives < 1;
 }
 
 void Game::runLvl1(sf::RenderWindow& window)
@@ -29,8 +25,8 @@ void Game::runLvl1(sf::RenderWindow& window)
     Map* testMap = nullptr;
     try
     {
-        assets.loadTexture("testmap", "assets/img/testmap.png");
-        testMap = new Map(assets.getTexture("testmap"), "assets/data/testmap/path.txt", "assets/data/testmap/hitboxes.txt");
+        assets.loadTexture("map1", "assets/img/map1.png");
+        testMap = new Map(assets.getTexture("map1"), "assets/data/testmap/path.txt", "assets/data/testmap/hitboxes.txt");
     }
     catch (FileLoadError& e)
     {
@@ -43,6 +39,14 @@ void Game::runLvl1(sf::RenderWindow& window)
 
         while (window.isOpen())
         {
+            sf::Event event;
+            while (window.pollEvent(event))
+            {
+                if (event.type == sf::Event::Closed)
+                    window.close();
+            }
+
+
             window.clear();
             window.draw(*testMap);
 
