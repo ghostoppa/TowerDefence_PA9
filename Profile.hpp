@@ -15,8 +15,8 @@ public:
 	{
 		mStats.~playerStats();
 	}
-
-	Profile loadProfile();
+	//changed to void so it will compile
+	void loadProfile();
 	void storeProfile();
 	playerStats getStats();
 	void setStats(playerStats& newStats);

@@ -6,21 +6,22 @@ playerStats& playerStats::operator= (playerStats& rhs)
 	highestRound = rhs.highestRound;
 	enemiesKilled = rhs.enemiesKilled;
 	livesLost = rhs.livesLost;
+	return rhs;
 }
 
-auto playerStats::getName()
+std::string playerStats::getName()
 {
 	return name;
 }
-auto playerStats::getHRound()
+unsigned int playerStats::getHRound()
 {
 	return highestRound;
 }
-auto playerStats::getEKilled()
+unsigned int playerStats::getEKilled()
 {
 	return enemiesKilled;
 }
-auto playerStats::getLLost()
+unsigned int playerStats::getLLost()
 {
 	return livesLost;
 }

@@ -14,7 +14,7 @@ public:
 	};
 	~playerStats() {};
 
-	unsigned int getName();
+	std::string getName();
 	unsigned int getHRound();
 	unsigned int getEKilled();
 	unsigned int getLLost();

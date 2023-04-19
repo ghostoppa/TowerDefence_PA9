@@ -1,6 +1,5 @@
 #include "Profile.hpp"
-
-Profile Profile::loadProfile()
+ void Profile::loadProfile()
 {
 	std::ifstream infile;
 	infile.open("profile1.txt");
