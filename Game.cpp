@@ -80,7 +80,8 @@ void Game::runLvl1(sf::RenderWindow& window)
 
             //Comment out to see map hitboxes
             //testMap->renderHitBoxes(window);
-
+            
+            //(Separating the enemy draw loop and enemy update loop prevents flickering)
             for (Enemy e : enemyVector)
             {
                 window.draw(e);
