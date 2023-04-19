@@ -21,12 +21,17 @@ void Game::runLvl1(sf::RenderWindow& window)
 
     AssetManager assets;
     std::vector<Enemy> enemyVector;
+    sf::Text* debugLivesText = nullptr;
 
     Map* testMap = nullptr;
     try
     {
         assets.loadTexture("map1", "assets/img/map1.png");
         testMap = new Map(assets.getTexture("map1"), "assets/data/map1/path.txt", "assets/data/map1/hitboxes.txt");
+        assets.loadFont("roboto", "assets/fonts/Roboto-Regular.ttf");
+        debugLivesText = new sf::Text("Lives: ", assets.getFont("roboto"), 24);
+        debugLivesText->setPosition(0, 0);
+        debugLivesText->setFillColor(sf::Color::Blue);
     }
     catch (FileLoadError& e)
     {
@@ -49,7 +54,11 @@ void Game::runLvl1(sf::RenderWindow& window)
 
             window.clear();
             window.draw(*testMap);
-
+            if (debugLivesText)
+            {
+                debugLivesText->setString("Lives: " + std::to_string(playerLives));
+                window.draw(*debugLivesText);
+            }
             for (int i = 0; i < enemyVector.size(); ++i)
             {
 
