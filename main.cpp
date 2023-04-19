@@ -18,8 +18,11 @@ int main()
     
     system("echo %cd%");
 
-    //Game newGame;
-    //newGame.startGame(LEVEL1, window);
+    /////Implementation of game class, comment out to run Dante's test run
+    /////Game class unfinished, need to implement accurate damage, enemy progression
+    /////and tower placement, along with many other things lol
+    Game newGame;
+    newGame.startGame(LEVEL1, window);
 
     AssetManager assets;
     Map* testMap = nullptr;
