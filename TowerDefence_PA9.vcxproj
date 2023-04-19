@@ -173,20 +173,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\img\testmap.png">
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="assets\data\testmap\hitboxes.txt">
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
-    </Text>
-    <Text Include="assets\data\testmap\path.txt">
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
-    </Text>
+    <Image Include="assets\img\map1.png" />
+    <Image Include="assets\img\map1_template.png" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
@@ -195,6 +183,7 @@
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="Entity.hpp" />
     <ClInclude Include="FileLoadErrorException.hpp" />
+    <ClInclude Include="Game.hpp" />
     <ClInclude Include="LinearPath.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="Menu.hpp" />
@@ -207,11 +196,16 @@
     <ClCompile Include="Damage.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="LinearPath.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Tower.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="assets\data\map1\hitboxes.txt" />
+    <Text Include="assets\data\map1\path.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
