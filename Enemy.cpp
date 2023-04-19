@@ -5,7 +5,7 @@ void Enemy::update()
 	if (!completed_path)
 	{
 		
-		sf::Vector2f target = mPath->getPointAlongPath(this->mSpeed, this->mTime);
+		sf::Vector2f target = mPath.getPointAlongPath(this->mSpeed, this->mTime);
 		if(target != sf::Vector2f(-1, -1))
 		{
 			this->setPosition(target);

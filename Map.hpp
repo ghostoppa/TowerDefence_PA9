@@ -21,6 +21,8 @@ public:
 	LinearPath* getPath() { return &enemyPath; };
 
 	std::vector<sf::RectangleShape>* getHitboxes() { return &hitboxes; };
+
+	void renderHitBoxes(sf::RenderWindow& win);
 private:
 	sf::Texture* tex;
 

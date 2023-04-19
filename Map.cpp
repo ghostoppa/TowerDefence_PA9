@@ -33,7 +33,16 @@ void Map::LoadHitBoxesFromFile(std::string path)
 		sf::RectangleShape temp;
 		temp.setPosition(sf::Vector2f(x, y));
 		temp.setSize(sf::Vector2f(w, h));
+		temp.setFillColor(sf::Color(100, 100, 255, 200));
 		this->hitboxes.push_back(temp);
 	}
-	std::cout << "Loaded path!" << std::endl;
+	std::cout << "Loaded hitboxes!" << std::endl;
+}
+
+void Map::renderHitBoxes(sf::RenderWindow& win)
+{
+	for (sf::RectangleShape r : hitboxes)
+	{
+		win.draw(r);
+	}
 }

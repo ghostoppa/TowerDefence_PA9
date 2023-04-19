@@ -5,17 +5,17 @@
 class Enemy : public Entity, public sf::CircleShape
 {
 public:
-    Enemy(int health, float speed, LinearPath* path) : mHealth(health), mSpeed(speed), mPath(path)
+    Enemy(int health, float speed, LinearPath& path) : mHealth(health), mSpeed(speed), mPath(path)
     {
         this->setRadius(10.0f);
-        if (health > 40) {
+        if (health >= 20) {
             this->setFillColor(sf::Color::Red);
         }
-        else if(health > 20)
+        else if(health >= 10)
         {
             this->setFillColor(sf::Color::Yellow);
         }
-        else if (health > 0)
+        else
         {
             this->setFillColor(sf::Color::Green);
         }
@@ -35,10 +35,12 @@ public:
     bool finished_path() { return completed_path; };
     
 private:
-    LinearPath *mPath;
+    LinearPath mPath;
     int mHealth;
+
     float mTime;
     bool completed_path;
     float mSpeed;
+
 };
 
