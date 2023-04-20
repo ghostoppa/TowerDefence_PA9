@@ -7,8 +7,8 @@ SplashState::SplashState(GameDataRef data) :data(data)
 void SplashState::Init()
 {
 	try {
-		this->data->assets.loadTexture("map1", "assets/img/map1.png");
-		this->background.setTexture(this->data->assets.getTexture("map1"));
+		this->data->assets.loadTexture("bad", "assets/img/Delete.Splash.png");
+		this->background.setTexture(this->data->assets.getTexture("bad"));
 	}
 	catch (FileLoadError e)
 	{
@@ -34,6 +34,7 @@ void SplashState::Update()
 {
 	if (this->clock.getElapsedTime().asSeconds() > 3)
 	{
+		std::cout << "This would move on to the main menu" << std::endl;
 	}
 
 }
