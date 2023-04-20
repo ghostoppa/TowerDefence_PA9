@@ -3,8 +3,20 @@
 
 void Interactable::update(sf::Window& mouseWindow)
 {
+	//if mouse is outside button
+	if (!dragging && !(this->getGlobalBounds().contains((sf::Vector2f)sf::Mouse::getPosition(mouseWindow))))
+	{
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			mouseDownOutside = true;
+		}
+		else
+		{
+			mouseDownOutside = false;
+		}
+	}
 	//Check if mouse is inside button
-	if (dragging || this->getGlobalBounds().contains((sf::Vector2f)sf::Mouse::getPosition(mouseWindow)))
+	if (!mouseDownOutside && (dragging || this->getGlobalBounds().contains((sf::Vector2f)sf::Mouse::getPosition(mouseWindow))))
 	{
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{

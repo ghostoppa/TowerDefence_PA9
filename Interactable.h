@@ -11,6 +11,8 @@ public:
 		setSize(size);
 		setFillColor(sf::Color::Red);
 		updateable = true;
+		dragging = false;
+		mouseDownOutside = false;
 	}
 	
 	void update(sf::Window& mouseWindow);
@@ -22,6 +24,7 @@ private:
 	sf::Vector2i previousMousePos;
 	bool updateable;
 	bool dragging;
+	bool mouseDownOutside;
 
 };
 
