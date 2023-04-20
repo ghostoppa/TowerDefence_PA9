@@ -24,6 +24,7 @@ void Game::runLvl1(sf::RenderWindow& window)
     AssetManager assets;
     std::vector<Enemy> enemyVector;
     sf::Text* debugLivesText = nullptr;
+    sf::Text* debugMoneyText = nullptr;
    
     
     Map* testMap = nullptr;
@@ -35,6 +36,10 @@ void Game::runLvl1(sf::RenderWindow& window)
         debugLivesText = new sf::Text("Lives: ", assets.getFont("roboto"), 24);
         debugLivesText->setPosition(0, 0);
         debugLivesText->setFillColor(sf::Color::Blue);
+        debugMoneyText = new sf::Text("Money: ", assets.getFont("roboto"), 24);
+        debugMoneyText->setPosition(0, 25);
+        debugMoneyText->setFillColor(sf::Color::Blue);
+
     }
     catch (FileLoadError& e)
     {
@@ -46,7 +51,7 @@ void Game::runLvl1(sf::RenderWindow& window)
     while (!isGameOver())
     {
         //this->genEnemyForces(enemyVector, testMap, round);
-        Round cur_round(round * round, 20, 5, 20);
+        Round cur_round(round * round, 20, 7, 20);
         
         while (window.isOpen() && !cur_round.isDone(enemyVector) && !isGameOver())
         {
@@ -64,7 +69,12 @@ void Game::runLvl1(sf::RenderWindow& window)
             {
                 if (enemyVector.at(i).finished_path())
                 {
-                    this->playerLives--;
+                    playerLives -= enemyVector.at(i).getCurHealth();
+                    enemyVector.erase(enemyVector.begin() + i);
+                }
+                else if (enemyVector.at(i).isDefeated())
+                {
+                    mMoney += enemyVector.at(i).getMaxHealth();
                     enemyVector.erase(enemyVector.begin() + i);
                 }
                 else
@@ -93,6 +103,8 @@ void Game::runLvl1(sf::RenderWindow& window)
             {
                 debugLivesText->setString("Lives: " + std::to_string(playerLives));
                 window.draw(*debugLivesText);
+                debugMoneyText->setString("Money: " + std::to_string(mMoney));
+                window.draw(*debugMoneyText);
             }
 
             window.display();

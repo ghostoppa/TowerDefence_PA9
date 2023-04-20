@@ -13,13 +13,15 @@
 class Game
 {
 public:
-	Game() { playerLives = 100; };
+	Game() { playerLives = 100; mMoney = 250; };
 	~Game() {};
 	void startGame(int level, sf::RenderWindow& window);
+
 private:
 	void runLvl1(sf::RenderWindow& window);
 
 	bool isGameOver();
 
+	int mMoney;
 	int playerLives;
 };
