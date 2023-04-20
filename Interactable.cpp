@@ -1,6 +1,6 @@
 #include "Interactable.h"
 
-
+#include <iostream>
 void Interactable::update()
 {
 	mouseFollow();
@@ -17,11 +17,13 @@ bool Interactable::button()
 
 		void Interactable::mouseFollow()
 {
-	if (button()&&this->updateable)
+	//if (button()&&this->updateable)
 	{
 		sf::Vector2i mousPos(sf::Mouse::getPosition());
 		int deltaX = mousPos.x - this->previousMousePos.x,
 			deltaY = mousPos.y - this->previousMousePos.y;
-		move(sf::Vector2f(deltaX, deltaY));
-	}
+		std::cout << "Mouse Pos X :" << mousPos.x<<std::endl;
+		std::cout << "Mouse Pos Y :" << mousPos.y << std::endl;;
+		setPosition(mousPos.x, mousPos.y);
+		}
 }
