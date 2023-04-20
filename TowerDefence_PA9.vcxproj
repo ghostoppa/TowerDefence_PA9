@@ -173,6 +173,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\img\Delete.Splash.png" />
     <Image Include="assets\img\map1.png" />
     <Image Include="assets\img\map1_template.png" />
   </ItemGroup>
@@ -186,7 +187,6 @@
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="GameClassWip.hpp" />
     <ClInclude Include="InputManager.hpp" />
-    <ClInclude Include="Interactable.h" />
     <ClInclude Include="LinearPath.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="Menu.hpp" />
@@ -206,13 +206,13 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameClassWip.cpp" />
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="Interactable.cpp" />
     <ClCompile Include="LinearPath.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="playerStats.cpp" />
     <ClCompile Include="Profile.cpp" />
     <ClCompile Include="Round.cpp" />
+    <ClCompile Include="SplashState.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Tower.cpp" />
   </ItemGroup>

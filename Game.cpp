@@ -41,7 +41,6 @@ void Game::runLvl1(sf::RenderWindow& window)
         std::cout << e.what() << std::endl;
     }
     sf::Vector2f size(60, 60), position(50, 50);
-    Interactable testInteratable ( size, position);
    
     while (!isGameOver())
     {
@@ -76,9 +75,7 @@ void Game::runLvl1(sf::RenderWindow& window)
             window.clear();
             window.draw(*testMap);
             
-            window.draw(testInteratable);
-            testInteratable.update();
-
+                    
             if (debugLivesText)
             {
                 debugLivesText->setString("Lives: " + std::to_string(playerLives));

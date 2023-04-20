@@ -8,7 +8,6 @@
 #include "Map.hpp"
 #include "AssetManager.hpp"
 #include "Definitions.hpp"
-#include "Interactable.h"
 
 class Game
 {

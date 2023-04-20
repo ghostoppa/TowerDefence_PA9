@@ -5,11 +5,18 @@ bool InputManager::IsSpriteClicked(sf::Sprite& spriteRef, sf::Mouse::Button butt
     if (sf::Mouse::isButtonPressed(button))
     {
         sf::IntRect tempRect(spriteRef.getPosition().x,
-            spriteRef.getPosition().y, spriteRef.getGlobalBounds().width, spriteRef.getGlobalBounds().height());
+            spriteRef.getPosition().y,
+            spriteRef.getGlobalBounds().width,
+            spriteRef.getGlobalBounds().height);
+        if (tempRect.contains(sf::Mouse::getPosition(window)))
+        {
+            return true;
+           }
    }
+    return false;
 }
 
 sf::Vector2i InputManager::getMousePosition(sf::RenderWindow& w)
 {
-    return sf::Vector2i();
+    return sf::Mouse::getPosition(w);
 }
