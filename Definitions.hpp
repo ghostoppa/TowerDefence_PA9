@@ -10,3 +10,8 @@ constexpr auto RobotoFontFile = "assets/fonts/Roboto-Regular.ttf";
 constexpr auto Map1 = "assets/img/map1.png";
 
 const auto deleteThisTexture = "assets/img/Delete.Splash.png";
+
+const auto placeHolderPlay = "assets/img/PlayPlaceHolder.png";
+
+const auto LoadPlaceHolder = "assets/img/LoadPlaceHolder.png";
+

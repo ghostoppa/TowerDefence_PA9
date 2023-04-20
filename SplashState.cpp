@@ -34,8 +34,8 @@ void SplashState::Update()
 {
 	if (this->clock.getElapsedTime().asSeconds() > 3)
 	{
-		std::cout << "This would move on to the main menu" << std::endl;
-	}
+		this->data->machine.AddState(StateRef(new MainMenuState(data)), true);
+			}
 
 }
 

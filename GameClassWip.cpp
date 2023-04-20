@@ -1,4 +1,4 @@
-#include "GameClassWip.hpp"
+﻿#include "GameClassWip.hpp"
 #include "SplashState.hpp"
 GameWip::GameWip(int width, int hight, std::string title)
 {
@@ -11,6 +11,12 @@ GameWip::GameWip(int width, int hight, std::string title)
 
 void GameWip::Run()
 {
+	sf::Music music;
+	if (music.openFromFile("assets/Sounds/KevinMacLeodGrooveGrove.flac"))
+	{
+		music.play();
+	}
+
 		while (this->data->window.isOpen())
 	{
 			while (this->data->window.isOpen())

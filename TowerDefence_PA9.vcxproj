@@ -174,8 +174,11 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\img\Delete.Splash.png" />
+    <Image Include="assets\img\LoadPlaceHolder.png" />
     <Image Include="assets\img\map1.png" />
     <Image Include="assets\img\map1_template.png" />
+    <Image Include="assets\img\placeHolderBackGround.png" />
+    <Image Include="assets\img\PlayPlaceHolder.png" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
@@ -188,6 +191,7 @@
     <ClInclude Include="GameClassWip.hpp" />
     <ClInclude Include="InputManager.hpp" />
     <ClInclude Include="LinearPath.hpp" />
+    <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="Menu.hpp" />
     <ClInclude Include="playerStats.hpp" />
@@ -208,6 +212,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="LinearPath.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="playerStats.cpp" />
     <ClCompile Include="Profile.cpp" />
