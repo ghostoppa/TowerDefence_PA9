@@ -101,6 +101,15 @@
     <ClInclude Include="Interactable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="playerStats.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Profile.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Round.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="StateMachine.cpp">
@@ -136,17 +145,27 @@
     <ClCompile Include="Interactable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="playerStats.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Profile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Round.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\img\map1.png">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\images</Filter>
     </Image>
     <Image Include="assets\img\map1_template.png">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\images</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="assets\data\map1\hitboxes.txt" />
     <Text Include="assets\data\map1\path.txt" />
+    <Text Include="profile1.txt" />
   </ItemGroup>
 </Project>
