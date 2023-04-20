@@ -98,17 +98,7 @@
     <ClInclude Include="Game.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="Interactable.h">
-=======
-    <ClInclude Include="Round.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Profile.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="playerStats.hpp">
->>>>>>> 64005d8187bb3b05840e45284350a2315422a222
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -143,22 +133,11 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="Interactable.cpp">
-=======
-    <ClCompile Include="Round.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Profile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="playerStats.cpp">
->>>>>>> 64005d8187bb3b05840e45284350a2315422a222
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Image Include="assets\img\map1.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -169,24 +148,5 @@
   <ItemGroup>
     <Text Include="assets\data\map1\hitboxes.txt" />
     <Text Include="assets\data\map1\path.txt" />
-=======
-    <Image Include="assets\img\map1_template.png">
-      <Filter>Resource Files\images</Filter>
-    </Image>
-    <Image Include="assets\img\map1.png">
-      <Filter>Resource Files\images</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="assets\data\map1\hitboxes.txt">
-      <Filter>Resource Files\data</Filter>
-    </Text>
-    <Text Include="assets\data\map1\path.txt">
-      <Filter>Resource Files\data</Filter>
-    </Text>
-    <Text Include="profile1.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
->>>>>>> 64005d8187bb3b05840e45284350a2315422a222
   </ItemGroup>
 </Project>
