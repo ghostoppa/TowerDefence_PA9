@@ -13,8 +13,8 @@ public:
 	void Init();
 
 	void HandleInput();
-	void Update(float dt);
-	void Draw(float sf);
+	void Update();
+	void Draw();
 
 private:
 	GameDataRef data;

@@ -30,7 +30,7 @@ void SplashState::HandleInput()
 }
 
 
-void SplashState::Update(float dt)
+void SplashState::Update()
 {
 	if (this->clock.getElapsedTime().asSeconds() > 3)
 	{
@@ -38,7 +38,7 @@ void SplashState::Update(float dt)
 
 }
 
-void SplashState::Draw(float dt)
+void SplashState::Draw()
 {
 	this->data->window.clear(sf::Color::Magenta);
 
