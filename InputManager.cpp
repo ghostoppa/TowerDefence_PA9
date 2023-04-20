@@ -1,0 +1,15 @@
+#include "InputManager.hpp"
+
+bool InputManager::IsSpriteClicked(sf::Sprite& spriteRef, sf::Mouse::Button button, sf::RenderWindow& window)
+{
+    if (sf::Mouse::isButtonPressed(button))
+    {
+        sf::IntRect tempRect(spriteRef.getPosition().x,
+            spriteRef.getPosition().y, spriteRef.getGlobalBounds().width, spriteRef.getGlobalBounds().height());
+   }
+}
+
+sf::Vector2i InputManager::getMousePosition(sf::RenderWindow& w)
+{
+    return sf::Vector2i();
+}
