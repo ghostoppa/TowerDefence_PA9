@@ -25,6 +25,7 @@ void Game::runLvl1(sf::RenderWindow& window)
     std::vector<Enemy> enemyVector;
     sf::Text* debugLivesText = nullptr;
     sf::Text* debugMoneyText = nullptr;
+    sf::Text* debugRoundsText = nullptr;
    
     
     Map* testMap = nullptr;
@@ -39,7 +40,9 @@ void Game::runLvl1(sf::RenderWindow& window)
         debugMoneyText = new sf::Text("Money: ", assets.getFont("roboto"), 24);
         debugMoneyText->setPosition(0, 25);
         debugMoneyText->setFillColor(sf::Color::Blue);
-
+        debugRoundsText = new sf::Text("Money: ", assets.getFont("roboto"), 24);
+        debugRoundsText->setPosition(530, 0);
+        debugRoundsText->setFillColor(sf::Color::Blue);
     }
     catch (FileLoadError& e)
     {
@@ -63,7 +66,7 @@ void Game::runLvl1(sf::RenderWindow& window)
                     window.close();
             }
 
-            cur_round.fetchEnemy(time, enemyVector, *testMap->getPath());
+            cur_round.fetchEnemy(time, enemyVector, *testMap->getPath(), round);
 
             for (int i = 0; i < enemyVector.size(); ++i)
             {
@@ -105,6 +108,8 @@ void Game::runLvl1(sf::RenderWindow& window)
                 window.draw(*debugLivesText);
                 debugMoneyText->setString("Money: " + std::to_string(mMoney));
                 window.draw(*debugMoneyText);
+                debugRoundsText->setString("Round: " + std::to_string(round));
+                window.draw(*debugRoundsText);
             }
 
             window.display();
@@ -113,6 +118,7 @@ void Game::runLvl1(sf::RenderWindow& window)
         if (window.isOpen())
         {
             std::cout << "Round " << round << " complete" << std::endl;
+            mMoney += 50 * round;
             round++;
         }
         else

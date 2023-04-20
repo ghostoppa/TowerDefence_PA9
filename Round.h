@@ -16,7 +16,7 @@ public:
 		mRedChance(c_red), maxSpawnDelay(maxDelay)
 	{};
 
-	void fetchEnemy(int round_time, std::vector<Enemy>& enemyVector, LinearPath& path);
+	void fetchEnemy(int round_time, std::vector<Enemy>& enemyVector, LinearPath& path, int roundNum);
 
 	bool isDone(std::vector<Enemy>& enemyVector);
 

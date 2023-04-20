@@ -13,7 +13,7 @@
 class Game
 {
 public:
-	Game() { playerLives = 100; mMoney = 250; };
+	Game() { playerLives = 300; mMoney = 250; };
 	~Game() {};
 	void startGame(int level, sf::RenderWindow& window);
 
