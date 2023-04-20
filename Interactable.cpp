@@ -1,27 +1,45 @@
 #include "Interactable.h"
+#include <iostream>
 
-
-void Interactable::update()
+void Interactable::update(sf::Window& mouseWindow)
 {
-	mouseFollow();
+	//Check if mouse is inside button
+	if (dragging || this->getGlobalBounds().contains((sf::Vector2f)sf::Mouse::getPosition(mouseWindow)))
+	{
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			mouseFollow(mouseWindow);
+			dragging = true;
+		}
+		else if (dragging)
+		{
+			dragging = false;
+		}
+	}
+	
 }
 
-bool Interactable::button()
+bool Interactable::button(sf::Window& mouseWindow)
 {
 //	if (sf::Mouse::Button::Left)
 	//{
-		sf::Vector2i mousPos(sf::Mouse::getPosition());
+		sf::Vector2i mousPos(sf::Mouse::getPosition(mouseWindow));
 		this->previousMousePos = mousPos;
 		return true;
-	}
+}
 
-		void Interactable::mouseFollow()
+void Interactable::mouseFollow(sf::Window& mouseWindow)
 {
-	if (button()&&this->updateable)
+	if (button(mouseWindow)&&this->updateable)
 	{
-		sf::Vector2i mousPos(sf::Mouse::getPosition());
-		int deltaX = mousPos.x - this->previousMousePos.x,
-			deltaY = mousPos.y - this->previousMousePos.y;
-		move(sf::Vector2f(deltaX, deltaY));
+		//sf::Vector2i mousPos(sf::Mouse::getPosition());
+		//int deltaX = mousPos.x - this->previousMousePos.x,
+		//	deltaY = mousPos.y - this->previousMousePos.y;
+		//move(sf::Vector2f(deltaX, deltaY));
+
+		//Localize mouse coordinates to window
+		sf::Vector2i mousePos(sf::Mouse::getPosition(mouseWindow));
+		//Set center of object to mouse
+		setPosition((sf::Vector2f)mousePos - (getSize()) / 2.0f);
 	}
 }

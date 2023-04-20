@@ -5,23 +5,23 @@
 class Interactable : public sf::RectangleShape
 {
 public:
-	Interactable(sf::Vector2f size, sf::Vector2f positon)
+	Interactable(sf::Vector2f size, sf::Vector2f position)
 	{
-		setPosition(positon);
+		setPosition(position);
 		setSize(size);
 		setFillColor(sf::Color::Red);
 		updateable = true;
 	}
 	
-	void update();
-	bool button();
+	void update(sf::Window& mouseWindow);
+	bool button(sf::Window& mouseWindow);
 
-	void mouseFollow();
+	void mouseFollow(sf::Window& mouseWindow);
 
 private:
 	sf::Vector2i previousMousePos;
 	bool updateable;
-	
+	bool dragging;
 
 };
 

@@ -18,7 +18,6 @@ public:
 	void startGame(int level, sf::RenderWindow& window);
 private:
 	void runLvl1(sf::RenderWindow& window);
-	void genEnemyForces(std::vector<Enemy>& enemyVector, Map*& map, int& round);
 
 	bool isGameOver();
 

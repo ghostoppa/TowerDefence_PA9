@@ -8,7 +8,11 @@ typedef std::unique_ptr<State> StateRef;
 class StateMachine
 {
 public:
-	StateMachine() {}
+	StateMachine() {
+		isRemoving = false;
+		isAdding = false;
+		isReplacing = false;
+	};
 	~StateMachine() {};
 
 	void AddState(StateRef newState, bool isReplacing = true);
