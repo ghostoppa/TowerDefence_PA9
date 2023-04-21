@@ -5,11 +5,16 @@
 #include "Definitions.hpp"
 #include "State.hpp"
 #include "GameClassWip.hpp"
+#include "LinearPath.hpp"
+#include "Enemy.hpp"
+#include "Tower.hpp"
+#include "Map.hpp"
+#include "AssetManager.hpp"
 
 class   GameState : State
 {
 public:
-	GameState(GameDataRef data);
+	GameState(GameDataRef data) :isMoving(false);
 
 	void Init();
 
@@ -17,15 +22,21 @@ public:
 	void Update();
 	void Draw();
 
-private:
-	GameDataRef data;
 
-	sf::Sprite tower1;
-	sf::Sprite tower2;
-	sf::Sprite tower3;
-	sf::Sprite tower4;
-	sf::Sprite tower5;
-	sf::Sprite tower6;
+private:
+
+	GameDataRef data;
+	sf::Sprite towerArr[6];
+	void	 doIconMove();
+	void setSpriteTransparecy(int TowerNumber);
+	void runLvl1(sf::RenderWindow& window);
+	void genEnemyForces(std::vector<Enemy>& enemyVector, Map*& map, int& round);
+
+	bool isGameOver();
+
+	int mMoney;
+	int playerLives;
+	bool isMoving;
 
 };
 

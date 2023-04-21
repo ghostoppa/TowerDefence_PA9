@@ -100,13 +100,6 @@ void Game::runLvl1(sf::RenderWindow& window)
             window.clear();
             window.draw(*testMap);
             
-<<<<<<< HEAD
-          
-=======
-            window.draw(testInteractable);
-            testInteractable.update(window);
-
->>>>>>> 9b7d65e2b9e37e006fb2e0cef305f0b214024f99
             if (debugLivesText)
             {
                 debugLivesText->setString("Lives: " + std::to_string(playerLives));

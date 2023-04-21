@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "Definitions.hpp"
 #include "State.hpp"
+#include "GameState.hpp"
 #include "GameClassWip.hpp"
 
 class   MainMenuState : public State

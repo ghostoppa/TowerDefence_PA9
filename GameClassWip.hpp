@@ -11,6 +11,8 @@ typedef struct gameData
 	sf::RenderWindow window;
 	AssetManager assets;
 	InputManager inputs;
+	std::vector<Enemy> enemyVector;
+	std::vector<Tower> turretVector;
 }GameData;
 
 typedef std::shared_ptr<GameData> GameDataRef;

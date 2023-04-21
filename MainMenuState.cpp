@@ -41,7 +41,7 @@ void MainMenuState::HandleInput()
 		if (this->data->inputs.IsSpriteClicked(this->playGameButton,
 			sf::Mouse::Left, this->data->window))
 		{
-			std::cout << "This will be the game screen transition" << std::endl;
+			this->data->machine.AddState(StateRef(new GameState(data)), true);
 		}
 
 	}
