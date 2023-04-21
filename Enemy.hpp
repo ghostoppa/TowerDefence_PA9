@@ -5,7 +5,7 @@
 class Enemy : public Entity, public sf::CircleShape
 {
 public:
-    Enemy(int health, float speed, LinearPath& path) : mHealth(health), mSpeed(speed), mPath(path)
+    Enemy(int health, float speed, LinearPath& path) : mHealth(health), mMaxHealth(health), mSpeed(speed), mPath(path)
     {
         this->setRadius(10.0f);
         if (health >= 20) {
@@ -26,16 +26,22 @@ public:
         completed_path = false;
     };
 
+    int getCurHealth();
+    int getMaxHealth();
+
     ~Enemy() = default;
     void update() override;
 
     //Maybe we won't need this?
-    void render() override;
+   // void render() override;
+
+    bool isDefeated();
 
     bool finished_path() { return completed_path; };
     
 private:
     LinearPath mPath;
+    int mMaxHealth;
     int mHealth;
 
     float mTime;
