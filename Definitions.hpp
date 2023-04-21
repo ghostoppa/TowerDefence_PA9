@@ -4,6 +4,20 @@ constexpr auto SCREEN_WIDTH = 640;
 constexpr auto SCREEN_HEIGHT = 480;
 constexpr auto LEVEL1 = 1;
 
+
+//Assets
+//Textures
+constexpr auto Map1FIle = "assets/img/map1.png";
+constexpr auto PlayButtonFILE =  "assets/img/PlayPlaceHolder";
+constexpr auto LoadIcon  = "assets/img/LoadPlaceHolder";
+constexpr auto Splash = "assets/img/Delete.Splash";
+//Sounds
+
+//Fonts
+constexpr auto MythologyFont  = "assets/fonts/Mythology.ttf";
+constexpr auto  RobotoNormal = "assets/fonts/Roboto-Regular.ttf";
+constexpr auto RobotoRegular =  "assets/font/Roboto-Bold.ttf"
+
 #define GREEN_HEALTH 5
 #define GREEN_SPEED 2.0f
 #define YELLOW_HEALTH 10

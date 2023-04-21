@@ -49,8 +49,7 @@ void Game::runLvl1(sf::RenderWindow& window)
         std::cout << e.what() << std::endl;
     }
     sf::Vector2f size(60, 60), position(50, 50);
-    Interactable testInteratable ( size, position);
-   
+      
     while (!isGameOver())
     {
         //this->genEnemyForces(enemyVector, testMap, round);
@@ -89,9 +88,7 @@ void Game::runLvl1(sf::RenderWindow& window)
             window.clear();
             window.draw(*testMap);
             
-            window.draw(testInteratable);
-            testInteratable.update();
-
+          
             if (debugLivesText)
             {
                 debugLivesText->setString("Lives: " + std::to_string(playerLives));
@@ -107,8 +104,8 @@ void Game::runLvl1(sf::RenderWindow& window)
                 window.draw(e);
             }
 
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
             window.draw(testInteractable);
 
             if (debugLivesText)
@@ -121,7 +118,7 @@ void Game::runLvl1(sf::RenderWindow& window)
                 window.draw(*debugRoundsText);
             }
 
->>>>>>> ce3d67427ba791804b23e4817199122acd0a5cad
+//>>>>>>> ce3d67427ba791804b23e4817199122acd0a5cad
             window.display();
             /*--------------------------------------------------------*/
         }
