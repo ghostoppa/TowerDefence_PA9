@@ -49,7 +49,7 @@ void Game::runLvl1(sf::RenderWindow& window)
         std::cout << e.what() << std::endl;
     }
     sf::Vector2f size(60, 60), position(50, 50);
-    Interactable testInteractable ( size, position);
+    Interactable testInteratable ( size, position);
    
     while (!isGameOver())
     {
@@ -85,12 +85,19 @@ void Game::runLvl1(sf::RenderWindow& window)
                     enemyVector.at(i).update();
                 }
             }
-
-            testInteractable.update(window);
             /*-----DRAW SECTION: TRY NOT TO PUT UPDATE CODE HERE-----*/
             window.clear();
             window.draw(*testMap);
             
+            window.draw(testInteratable);
+            testInteratable.update();
+
+            if (debugLivesText)
+            {
+                debugLivesText->setString("Lives: " + std::to_string(playerLives));
+                window.draw(*debugLivesText);
+            }
+
             //Comment out to see map hitboxes
             //testMap->renderHitBoxes(window);
             
@@ -100,6 +107,8 @@ void Game::runLvl1(sf::RenderWindow& window)
                 window.draw(e);
             }
 
+<<<<<<< HEAD
+=======
             window.draw(testInteractable);
 
             if (debugLivesText)
@@ -112,6 +121,7 @@ void Game::runLvl1(sf::RenderWindow& window)
                 window.draw(*debugRoundsText);
             }
 
+>>>>>>> ce3d67427ba791804b23e4817199122acd0a5cad
             window.display();
             /*--------------------------------------------------------*/
         }
@@ -128,4 +138,14 @@ void Game::runLvl1(sf::RenderWindow& window)
         }
     }
     if(window.isOpen()) window.close();
+}
+
+void Game::genEnemyForces(std::vector<Enemy>& enemyVector, Map*& map, int& round)
+{
+    enemyVector.clear();
+
+    for (int i = 0; i < 25; ++i)
+    {
+        enemyVector.push_back(Enemy(1 + rand() % 50, 5.5f + (float)(rand()) / (float)(rand()), *map->getPath()));
+    }
 }
