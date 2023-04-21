@@ -23,8 +23,26 @@ void Enemy::update()
 	}
 }
 
-
-void Enemy::render()
+bool Enemy::isDefeated()
 {
-	
+	if (mHealth < 1)
+	{
+		return true;
+	}
+	else return false;
 }
+
+int Enemy::getCurHealth()
+{
+	return mHealth;
+}
+
+int Enemy::getMaxHealth()
+{
+	return mMaxHealth;
+}
+
+//void Enemy::render()
+//{
+//	
+//}
