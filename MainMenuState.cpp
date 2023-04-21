@@ -6,9 +6,9 @@ MainMenuState::MainMenuState(GameDataRef data) : data(data)
 void MainMenuState::Init()
 {
 	try {
-		this->data->assets.loadTexture("Background", Map1);
-		this->data->assets.loadTexture("Play", placeHolderPlay);
-		this->data->assets.loadTexture("Load", LoadPlaceHolder);
+		this->data->assets.loadTexture("Background", "assets/img/MenuBackGroundPlaceHolder.png");
+		this->data->assets.loadTexture("Play", "assets/img/PlayPlaceHolder.png");
+		this->data->assets.loadTexture("Load", "assets/img/LoadPlaceHolder.png");
 
 		this->background.setTexture(this->data->assets.getTexture("Background"));
 		this->loadGameButton.setTexture(this->data->assets.getTexture("Load"));

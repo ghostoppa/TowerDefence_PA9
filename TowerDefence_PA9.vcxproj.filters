@@ -18,6 +18,7 @@
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
+    <ClCompile Include="Interactable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
@@ -40,6 +41,7 @@
     <ClInclude Include="StateMachine.hpp" />
     <ClInclude Include="Tower.hpp" />
     <ClInclude Include="MainMenuState.h" />
+    <ClInclude Include="Interactable.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\img\Delete.Splash.png" />

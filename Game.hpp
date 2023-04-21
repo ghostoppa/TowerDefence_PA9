@@ -5,9 +5,11 @@
 
 #include "LinearPath.hpp"
 #include "Enemy.hpp"
+#include "Tower.hpp"
 #include "Map.hpp"
 #include "AssetManager.hpp"
 #include "Definitions.hpp"
+#include "Interactable.h"
 
 class Game
 {

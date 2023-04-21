@@ -23,16 +23,23 @@ void Game::runLvl1(sf::RenderWindow& window)
 
     AssetManager assets;
     std::vector<Enemy> enemyVector;
+    std::vector<Tower> turretVector;
     sf::Text* debugLivesText = nullptr;
     sf::Text* debugMoneyText = nullptr;
     sf::Text* debugRoundsText = nullptr;
    
-    
+
+    Tower* testTower = nullptr;
     Map* testMap = nullptr;
     try
     {
         assets.loadTexture("map1", "assets/img/map1.png");
         testMap = new Map(assets.getTexture("map1"), "assets/data/map1/path.txt", "assets/data/map1/hitboxes.txt");
+
+        assets.loadTexture("turret1", "assets/img/turret1.png");
+        testTower = new Tower(assets.getTexture("turret1"), 20, 1.5, 200, 2);
+        turretVector.push_back(*testTower);
+
         assets.loadFont("roboto", "assets/fonts/Roboto-Regular.ttf");
         debugLivesText = new sf::Text("Lives: ", assets.getFont("roboto"), 24);
         debugLivesText->setPosition(0, 0);
@@ -49,7 +56,7 @@ void Game::runLvl1(sf::RenderWindow& window)
         std::cout << e.what() << std::endl;
     }
     sf::Vector2f size(60, 60), position(50, 50);
-    Interactable testInteratable ( size, position);
+    Interactable testInteractable( size, position);
    
     while (!isGameOver())
     {
@@ -89,8 +96,8 @@ void Game::runLvl1(sf::RenderWindow& window)
             window.clear();
             window.draw(*testMap);
             
-            window.draw(testInteratable);
-            testInteratable.update();
+            window.draw(testInteractable);
+            testInteractable.update(window);
 
             if (debugLivesText)
             {
@@ -106,9 +113,11 @@ void Game::runLvl1(sf::RenderWindow& window)
             {
                 window.draw(e);
             }
+            for (Tower t : turretVector)
+            {
+                window.draw(t);
+            }
 
-<<<<<<< HEAD
-=======
             window.draw(testInteractable);
 
             if (debugLivesText)
@@ -121,7 +130,7 @@ void Game::runLvl1(sf::RenderWindow& window)
                 window.draw(*debugRoundsText);
             }
 
->>>>>>> ce3d67427ba791804b23e4817199122acd0a5cad
+
             window.display();
             /*--------------------------------------------------------*/
         }
