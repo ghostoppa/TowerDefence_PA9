@@ -56,12 +56,6 @@ void Game::runLvl1(sf::RenderWindow& window)
         std::cout << e.what() << std::endl;
     }
     sf::Vector2f size(60, 60), position(50, 50);
-<<<<<<< HEAD
-      
-=======
-    Interactable testInteractable( size, position);
-   
->>>>>>> 9b7d65e2b9e37e006fb2e0cef305f0b214024f99
     while (!isGameOver())
     {
         //this->genEnemyForces(enemyVector, testMap, round);
@@ -119,12 +113,6 @@ void Game::runLvl1(sf::RenderWindow& window)
                 window.draw(t);
             }
 
-<<<<<<< HEAD
-//<<<<<<< HEAD
-//=======
-=======
->>>>>>> 9b7d65e2b9e37e006fb2e0cef305f0b214024f99
-            window.draw(testInteractable);
 
             if (debugLivesText)
             {
@@ -136,11 +124,6 @@ void Game::runLvl1(sf::RenderWindow& window)
                 window.draw(*debugRoundsText);
             }
 
-<<<<<<< HEAD
-//>>>>>>> ce3d67427ba791804b23e4817199122acd0a5cad
-=======
-
->>>>>>> 9b7d65e2b9e37e006fb2e0cef305f0b214024f99
             window.display();
             /*--------------------------------------------------------*/
         }

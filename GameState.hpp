@@ -8,9 +8,14 @@
 #include "LinearPath.hpp"
 #include "Enemy.hpp"
 #include "Tower.hpp"
+#include "Round.h"
 #include "Map.hpp"
 #include "AssetManager.hpp"
 
+typedef struct GamePlayData
+{
+
+};
 class   GameState : State
 {
 public:
@@ -37,6 +42,8 @@ private:
 	int mMoney;
 	int playerLives;
 	bool isMoving;
-
+	int round;
+	int time;
+	Map* testMap;
 };
 
