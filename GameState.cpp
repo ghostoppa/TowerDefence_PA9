@@ -78,17 +78,18 @@ void GameState::HandleInput()
 
 void GameState::Draw()
 {
-	this->data->window.clear(sf::Color::Red);
+	this->data->window.clear(sf::Color::White);
 	this->data->window.draw(*testMap);
+	for (int i = 0; i < 6; i++)
+	{
+		this->data->window.draw(this->towerArr[i]);
+	}
 	if (debugLivesText)
 	{
 		debugLivesText->setString("Lives: " + std::to_string(playerLives));
 		this->data->window.draw(*debugLivesText);
 	}
-	for (int i = 0; i < 6; i++)
-	{
-		this->data->window.draw(this->towerArr[i]);
-	}
+	
 	this->data->window.display();
 }
 
