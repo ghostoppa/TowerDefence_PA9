@@ -1,72 +1,152 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="AssetManager.cpp" />
-    <ClCompile Include="Damage.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameClassWip.cpp" />
-    <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="LinearPath.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="playerStats.cpp" />
-    <ClCompile Include="Profile.cpp" />
-    <ClCompile Include="Round.cpp" />
-    <ClCompile Include="SplashState.cpp" />
-    <ClCompile Include="StateMachine.cpp" />
-    <ClCompile Include="Tower.cpp" />
-    <ClCompile Include="MainMenuState.cpp" />
-    <ClCompile Include="Interactable.cpp" />
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="DLLs">
+      <UniqueIdentifier>{e6bc325d-e54e-4056-bca9-8d1ca521d353}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\images">
+      <UniqueIdentifier>{13b9f415-daaf-4855-be31-ffee0435ac3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\data">
+      <UniqueIdentifier>{74654aed-5009-4a24-b823-62bc4a5e38bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AssetManager.hpp" />
-    <ClInclude Include="Damage.hpp" />
-    <ClInclude Include="Definitions.hpp" />
-    <ClInclude Include="Enemy.hpp" />
-    <ClInclude Include="Entity.hpp" />
-    <ClInclude Include="FileLoadErrorException.hpp" />
-    <ClInclude Include="Game.hpp" />
-    <ClInclude Include="GameClassWip.hpp" />
-    <ClInclude Include="InputManager.hpp" />
-    <ClInclude Include="LinearPath.hpp" />
-    <ClInclude Include="Map.hpp" />
-    <ClInclude Include="Menu.hpp" />
-    <ClInclude Include="playerStats.hpp" />
-    <ClInclude Include="Profile.hpp" />
-    <ClInclude Include="Round.h" />
-    <ClInclude Include="SplashState.hpp" />
-    <ClInclude Include="State.hpp" />
-    <ClInclude Include="StateMachine.hpp" />
-    <ClInclude Include="Tower.hpp" />
-    <ClInclude Include="MainMenuState.h" />
-    <ClInclude Include="Interactable.h" />
+    <CopyFileToFolders Include="openal32.dll">
+      <Filter>DLLs</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="sfml-audio-2.dll">
+      <Filter>DLLs</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="sfml-audio-d-2.dll">
+      <Filter>DLLs</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="sfml-graphics-2.dll">
+      <Filter>DLLs</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="sfml-graphics-d-2.dll">
+      <Filter>DLLs</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="sfml-network-2.dll">
+      <Filter>DLLs</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="sfml-network-d-2.dll">
+      <Filter>DLLs</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="sfml-system-2.dll">
+      <Filter>DLLs</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="sfml-system-d-2.dll">
+      <Filter>DLLs</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="sfml-window-2.dll">
+      <Filter>DLLs</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="sfml-window-d-2.dll">
+      <Filter>DLLs</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\img\Delete.Splash.png" />
-    <Image Include="assets\img\map1.png" />
-    <Image Include="assets\img\map1_template.png" />
-    <Image Include="assets\img\LoadPlaceHolder.png" />
-    <Image Include="assets\img\placeHolderBackGround.png" />
-    <Image Include="assets\img\PlayPlaceHolder.png" />
+    <ClInclude Include="Damage.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Definitions.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileLoadErrorException.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tower.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LinearPath.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Interactable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="openal32.dll" />
-    <CopyFileToFolders Include="sfml-audio-2.dll" />
-    <CopyFileToFolders Include="sfml-audio-d-2.dll" />
-    <CopyFileToFolders Include="sfml-graphics-2.dll" />
-    <CopyFileToFolders Include="sfml-graphics-d-2.dll" />
-    <CopyFileToFolders Include="sfml-network-2.dll" />
-    <CopyFileToFolders Include="sfml-network-d-2.dll" />
-    <CopyFileToFolders Include="sfml-system-2.dll" />
-    <CopyFileToFolders Include="sfml-system-d-2.dll" />
-    <CopyFileToFolders Include="sfml-window-2.dll" />
-    <CopyFileToFolders Include="sfml-window-d-2.dll" />
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tower.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Damage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearPath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Interactable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\img\map1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\img\map1_template.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="assets\data\map1\hitboxes.txt" />
     <Text Include="assets\data\map1\path.txt" />
-    <Text Include="profile1.txt" />
   </ItemGroup>
 </Project>

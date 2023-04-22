@@ -17,15 +17,15 @@ void SplashState::Init()
 }
 	
 void SplashState::HandleInput()
-	{
+{
 	sf::Event event;
 
-		while (this->data->window.pollEvent( event) )
+	while (this->data->window.pollEvent( event) )
+	{
+		if (sf::Event::Closed == event.type)
 		{
-			if (sf::Event::Closed == event.type)
-			{
-				this->data->window.close();
-			}
+			this->data->window.close();
+		}
 	}
 }
 
@@ -35,9 +35,13 @@ void SplashState::Update()
 	if (this->clock.getElapsedTime().asSeconds() > 3)
 	{
 		this->data->machine.AddState(StateRef(new MainMenuState(data)), true);
+<<<<<<< HEAD
 		this->data->machine.ProcessStateChanges();
 
 			}
+=======
+	}
+>>>>>>> 9aeb8a1d6fea59d0c9ce097ebce884d8eb1e7985
 
 }
 
