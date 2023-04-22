@@ -42,7 +42,7 @@ void MainMenuState::HandleInput()
 			sf::Mouse::Left, this->data->window))
 		{
 			this->data->machine.AddState(StateRef(new GameState(this->data)), true);
-			this->data->machine.ProcessStateChanges();
+
 		}
 
 	}

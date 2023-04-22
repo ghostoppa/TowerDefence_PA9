@@ -35,8 +35,8 @@ void SplashState::Update()
 	if (this->clock.getElapsedTime().asSeconds() > 3)
 	{
 		this->data->machine.AddState(StateRef(new MainMenuState(this->data)), true);
-		this->data->machine.ProcessStateChanges();
-
+		//this->data->machine.ProcessStateChanges();
+		
 	}
 }
 

@@ -8,7 +8,7 @@
 
 //Assets
 //Textures
-constexpr auto Map1FIle = "assets/img/map1.png";
+constexpr auto Map1File = "assets/img/map1.png";
 constexpr auto MENU_BG = "assets/img/MenuBackGroundPlaceHolder.png";
 constexpr auto PLAY_BTN = "assets/img/PlayPlaceHolder.png";
 constexpr auto LOAD_BTN = "assets/img/LoadPlaceHolder.png";

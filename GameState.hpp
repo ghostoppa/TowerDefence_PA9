@@ -27,12 +27,12 @@ public:
 private:
 
 	GameDataRef data;
-	Tower* testTower;
+	//Tower* testTower;
 	sf::Sprite towerArr[6];
 	void	 doIconMove();
 	void setSpriteTransparecy(int TowerNumber);
-	void runLvl1(sf::RenderWindow& window);
-	void genEnemyForces(std::vector<Enemy>& enemyVector, Map*& map, int& round);
+	void runLvl1(sf::RenderWindow window);
+	//void genEnemyForces(std::vector<Enemy>& enemyVector, Map*& map, int& round);
 
 	
 	bool isGameOver();

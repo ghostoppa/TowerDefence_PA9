@@ -3,7 +3,7 @@ GameState::GameState(GameDataRef ref) : data(ref)
 {
 	
 	debugLivesText = nullptr;
-	testTower = nullptr;
+	//testTower = nullptr;
 	testMap = nullptr;
 	debugLivesText = nullptr;
 	debugMoneyText = nullptr;
@@ -28,6 +28,7 @@ void GameState::Init()
 		this->data->assets.loadTexture("Tower4", TOWER_FOUR);
 		this->data->assets.loadTexture("Tower5", TOWER_FIVE);
 		this->data->assets.loadTexture("Tower6", TOWER_SIX);
+		this->data->assets.loadTexture("Map1", Map1File);
 
 		this->towerArr[0].setTexture(data->assets.getTexture("Tower1"));
 		this->towerArr[1].setTexture(data->assets.getTexture("Tower2"));
@@ -38,9 +39,9 @@ void GameState::Init()
 		
 		this->data->assets.loadFont("roboto", RobotoNormal);
 
-		this->data->turretVector.push_back(*testTower);
+		//this->data->turretVector.push_back(*testTower);
+		testMap = new Map(data->assets.getTexture("Map1"), "assets/data/map1/path.txt", "assets/data/map1/hitboxes.txt");
 
-		
 		debugLivesText = new sf::Text("Lives: ", data->assets.getFont("roboto"), 24);
 		debugLivesText->setPosition(0, 0);
 		debugLivesText->setFillColor(sf::Color::Blue);
@@ -73,13 +74,12 @@ void GameState::HandleInput()
 		this->doIconMove();
 		
 	}
-	}
+}
 
 void GameState::Draw()
 {
-data->window.clear();
-	data->window.draw(*testMap);
-
+	this->data->window.clear(sf::Color::Red);
+	this->data->window.draw(*testMap);
 	if (debugLivesText)
 	{
 		debugLivesText->setString("Lives: " + std::to_string(playerLives));
@@ -89,7 +89,7 @@ data->window.clear();
 	{
 		this->data->window.draw(this->towerArr[i]);
 	}
-	
+	this->data->window.display();
 }
 
 void GameState::doIconMove()
@@ -110,9 +110,10 @@ bool GameState::isGameOver()
 
 void GameState::Update()
 {
+	
+	//Round cur_round(round * round, 20, 7, 20);
 	if (!isGameOver()) {
-		Round cur_round(round * round, 20, 7, 20);
-		cur_round.fetchEnemy(time, this->data->enemyVector, *testMap->getPath(), round);
+		/*cur_round.fetchEnemy(time, this->data->enemyVector, *testMap->getPath(), round);
 
 		for (int i = 0; i < this->data->enemyVector.size(); ++i)
 		{
@@ -130,7 +131,7 @@ void GameState::Update()
 			{
 				data->enemyVector.at(i).update();
 			}
-		}
+		}*/
 	}
 	//this->data->machine.AddState(StateRef(new EndGameState), true);
 }

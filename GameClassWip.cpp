@@ -18,7 +18,7 @@ void GameWip::Run()
 	}
 
 		while (this->data->window.isOpen())
-	{
+		{
 			while (this->data->window.isOpen())
 			{
 				this->data->machine.ProcessStateChanges();
@@ -28,5 +28,5 @@ void GameWip::Run()
 				this->data->machine.GetActiveState()->Update();
 
 			}
-	}
+		}
 }
