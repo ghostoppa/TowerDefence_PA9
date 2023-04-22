@@ -16,7 +16,7 @@ constexpr auto Splash = "assets/img/Delete.Splash";
 //Fonts
 constexpr auto MythologyFont  = "assets/fonts/Mythology.ttf";
 constexpr auto  RobotoNormal = "assets/fonts/Roboto-Regular.ttf";
-constexpr auto RobotoRegular =  "assets/font/Roboto-Bold.ttf"
+constexpr auto RobotoRegular = "assets/font/Roboto-Bold.ttf";
 
 #define GREEN_HEALTH 5
 #define GREEN_SPEED 2.0f

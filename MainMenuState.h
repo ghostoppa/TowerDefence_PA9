@@ -6,7 +6,7 @@
 #include "State.hpp"
 #include "GameClassWip.hpp"
 
-class   MainMenuState : public State
+class MainMenuState : public State
 {
 public:
 	MainMenuState(GameDataRef data);
