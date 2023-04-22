@@ -12,14 +12,10 @@
 #include "Map.hpp"
 #include "AssetManager.hpp"
 
-typedef struct GamePlayData
-{
-
-};
 class   GameState : State
 {
 public:
-	GameState(GameDataRef data) :isMoving(false);
+	GameState(GameDataRef data);
 
 	void Init();
 
@@ -31,12 +27,14 @@ public:
 private:
 
 	GameDataRef data;
+	Tower* testTower;
 	sf::Sprite towerArr[6];
 	void	 doIconMove();
 	void setSpriteTransparecy(int TowerNumber);
 	void runLvl1(sf::RenderWindow& window);
 	void genEnemyForces(std::vector<Enemy>& enemyVector, Map*& map, int& round);
 
+	
 	bool isGameOver();
 
 	int mMoney;
@@ -44,6 +42,11 @@ private:
 	bool isMoving;
 	int round;
 	int time;
+
+	sf::Text* debugLivesText;
+	sf::Text* debugMoneyText;
+	sf::Text* debugRoundsText;
+
 	Map* testMap;
 };
 

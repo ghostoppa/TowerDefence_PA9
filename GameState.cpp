@@ -1,4 +1,10 @@
 #include "GameState.hpp"
+GameState::GameState(GameDataRef gameRef)
+{
+debugLivesText = nullptr;
+testTower = nullptr;
+testMap = nullptr;
+}
 
 void GameState::Init()
 {
@@ -21,12 +27,6 @@ void GameState::Init()
 			
 			this->data->assets.loadFont("roboto", RobotoNormal);
 
-			 sf	::Text* debugLivesText = nullptr;
-    sf::Text* debugMoneyText = nullptr;
-    sf::Text* debugRoundsText = nullptr;
-
-			Tower* testTower = nullptr;
-			Map* testMap = nullptr;
 			this->data->turretVector.push_back(*testTower);
 
 		this->data->assets.loadFont("roboto", RobotoNormal);
@@ -62,6 +62,23 @@ void GameState::HandleInput()
 	}
 	}
 
+void GameState::Draw()
+{
+data->window.clear();
+	data->window.draw(*testMap);
+
+	if (debugLivesText)
+	{
+		debugLivesText->setString("Lives: " + std::to_string(playerLives));
+		this->data->window.draw(*debugLivesText);
+	}
+	for (int i = 0; i < 6; i++)
+	{
+		this->data->window.draw(this->towerArr[i]);
+	}
+	
+}
+
 void GameState::doIconMove()
 {
 	for(int i =0; i<6; i++)
@@ -75,31 +92,29 @@ void GameState::doIconMove()
 
 void GameState::Update()
 {
-	Round cur_round(round * round, 20, 7, 20);
-	cur_round.fetchEnemy(time, this->data->enemyVector, *testMap->getPath(), round);
+	if (!isGameOver) {
+		Round cur_round(round * round, 20, 7, 20);
+		cur_round.fetchEnemy(time, this->data->enemyVector, *testMap->getPath(), round);
 
-	for (int i = 0; i < enemyVector.size(); ++i)
-	{
-		if (enemyVector.at(i).finished_path())
+		for (int i = 0; i < this->data->enemyVector.size(); ++i)
 		{
-			playerLives -= enemyVector.at(i).getCurHealth();
-			enemyVector.erase(enemyVector.begin() + i);
+			if (this->data->enemyVector.at(i).finished_path())
+			{
+				playerLives -= this->data->enemyVector.at(i).getCurHealth();
+				this->data->enemyVector.erase(this->data->enemyVector.begin() + i);
+			}
+			else if (this->data->enemyVector.at(i).isDefeated())
+			{
+				mMoney += data->enemyVector.at(i).getMaxHealth();
+				data->enemyVector.erase(data->enemyVector.begin() + i);
+			}
+			else
+			{
+				data->enemyVector.at(i).update();
+			}
 		}
-		else if (enemyVector.at(i).isDefeated())
-		{
-			mMoney += enemyVector.at(i).getMaxHealth();
-			enemyVector.erase(enemyVector.begin() + i);
-		}
-		else
-		{
-			enemyVector.at(i).update();
-		}
-		window.clear();
-		window.draw(*testMap);
-
-		if (debugLivesText)
-		{
-			debugLivesText->setString("Lives: " + std::to_string(playerLives));
-			window.draw(*debugLivesText);
-		}
+	}
+	this->data->machine.AddState(StateRef(new EndGameState), true);
 }
+
+	
