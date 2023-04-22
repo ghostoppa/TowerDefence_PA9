@@ -13,6 +13,7 @@ constexpr auto MENU_BG = "assets/img/MenuBackGroundPlaceHolder.png";
 constexpr auto PLAY_BTN = "assets/img/PlayPlaceHolder.png";
 constexpr auto LOAD_BTN = "assets/img/LoadPlaceHolder.png";
 constexpr auto SPLASH = "assets/img/Delete.Splash.png";
+constexpr auto MENUBACKGROUND = "assets/img/MenuBackGroundSprite.png";
 
 constexpr auto TOWER_ONE = "assets/img/turret1.png";
 constexpr auto TOWER_TWO = "assets/img/turret1.png";
