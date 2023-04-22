@@ -1,7 +1,7 @@
 #include "GameState.hpp"
 GameState::GameState(GameDataRef ref) : data(ref)
 {
-	
+	cur_round = nullptr;
 	debugLivesText = nullptr;
 	//testTower = nullptr;
 	testMap = nullptr;
@@ -54,6 +54,7 @@ void GameState::Init()
 
 		sf::Vector2f size(60, 60), position(50, 50);
 		
+		cur_round = new Round(round * round, 20, 7, 20);
 	}
 	catch(FileLoadError &e){
 		std::cout << e.what() << std::endl;
@@ -84,6 +85,11 @@ void GameState::Draw()
 	{
 		this->data->window.draw(this->towerArr[i]);
 	}
+	for (Enemy e : this->data->enemyVector)
+	{
+		this->data->window.draw(e);
+	}
+
 	if (debugLivesText)
 	{
 		debugLivesText->setString("Lives: " + std::to_string(playerLives));
@@ -111,16 +117,26 @@ bool GameState::isGameOver()
 
 void GameState::Update()
 {
+	if (cur_round != nullptr)
+	{
+		if (cur_round->isDone(this->data->enemyVector))
+		{
+			++round;
+			delete cur_round;
+			cur_round = new Round(round * round, 20, 7, 20);
+		}
+	}
 	
-	//Round cur_round(round * round, 20, 7, 20);
 	if (!isGameOver()) {
-		/*cur_round.fetchEnemy(time, this->data->enemyVector, *testMap->getPath(), round);
+		cur_round->fetchEnemy(time, this->data->enemyVector, *testMap->getPath(), round);
 
 		for (int i = 0; i < this->data->enemyVector.size(); ++i)
 		{
 			if (this->data->enemyVector.at(i).finished_path())
 			{
-				playerLives -= this->data->enemyVector.at(i).getCurHealth();
+				//for debug purposes
+				--playerLives;
+				//playerLives -= this->data->enemyVector.at(i).getCurHealth();
 				this->data->enemyVector.erase(this->data->enemyVector.begin() + i);
 			}
 			else if (this->data->enemyVector.at(i).isDefeated())
@@ -132,7 +148,7 @@ void GameState::Update()
 			{
 				data->enemyVector.at(i).update();
 			}
-		}*/
+		}
 	}
 	//this->data->machine.AddState(StateRef(new EndGameState), true);
 }

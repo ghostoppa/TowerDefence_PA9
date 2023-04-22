@@ -46,7 +46,9 @@ private:
 	sf::Text* debugLivesText;
 	sf::Text* debugMoneyText;
 	sf::Text* debugRoundsText;
-
+	
+	Round* cur_round;
+	
 	Map* testMap;
 };
 
