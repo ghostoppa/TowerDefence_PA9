@@ -1,49 +1,62 @@
 #include "GameState.hpp"
-GameState::GameState(GameDataRef gameRef)
+GameState::GameState(GameDataRef ref) : data(ref)
 {
-debugLivesText = nullptr;
-testTower = nullptr;
-testMap = nullptr;
+	
+	debugLivesText = nullptr;
+	testTower = nullptr;
+	testMap = nullptr;
+	debugLivesText = nullptr;
+	debugMoneyText = nullptr;
+	debugRoundsText = nullptr;
+	isMoving = false;
+	mMoney = 0;
+	playerLives = 100;
+	round = 1;
+	time = 0;
+
 }
 
 void GameState::Init()
 {
 	try
 	{
-		this -> data->assets.loadTexture("Tower1", TOWER_ONE);
-			this->data->assets.loadTexture("Tower1", TOWER_ONE);
-			this->data->assets.loadTexture("Tower2", TOWER_TWO);
-			this->data->assets.loadTexture("Tower3", TOWER_THREE);
-			this->data->assets.loadTexture("Tower4", TOWER_FOUR);
-			this->data->assets.loadTexture("Tower5", TOWER_FIVE);
-			this->data->assets.loadTexture("Tower6", TOWER_SIX);
+		//weird file loading error?
+		
+		this->data->assets.loadTexture("Tower1", TOWER_ONE);
+		this->data->assets.loadTexture("Tower2", TOWER_TWO);
+		this->data->assets.loadTexture("Tower3", TOWER_THREE);
+		this->data->assets.loadTexture("Tower4", TOWER_FOUR);
+		this->data->assets.loadTexture("Tower5", TOWER_FIVE);
+		this->data->assets.loadTexture("Tower6", TOWER_SIX);
 
-		/*	this->towerArr[0].setTexture(data->assets.getTexture("Tower1"));
-			this->towerArr[1].setTexture(data->assets.getTexture("Tower2"));
-			this->towerArr[2].setTexture(data->assets.getTexture("Tower3"));
-			this->towerArr[3].setTexture(data->assets.getTexture("Tower4"));
-			this->towerArr[4].setTexture(data->assets.getTexture("Tower5"));
-			this->towerArr[5].setTexture(data->assets.getTexture("Tower6"));*/
-			
-			this->data->assets.loadFont("roboto", RobotoNormal);
-
-			this->data->turretVector.push_back(*testTower);
-
+		this->towerArr[0].setTexture(data->assets.getTexture("Tower1"));
+		this->towerArr[1].setTexture(data->assets.getTexture("Tower2"));
+		this->towerArr[2].setTexture(data->assets.getTexture("Tower3"));
+		this->towerArr[3].setTexture(data->assets.getTexture("Tower4"));
+		this->towerArr[4].setTexture(data->assets.getTexture("Tower5"));
+		this->towerArr[5].setTexture(data->assets.getTexture("Tower6"));
+		
 		this->data->assets.loadFont("roboto", RobotoNormal);
-			debugLivesText = new sf::Text("Lives: ", data->assets.getFont("roboto"), 24);
-			debugLivesText->setPosition(0, 0);
-			debugLivesText->setFillColor(sf::Color::Blue);
-			debugMoneyText = new sf::Text("Money: ", data->assets.getFont("roboto"), 24);
-			debugMoneyText->setPosition(0, 25);
-			debugMoneyText->setFillColor(sf::Color::Blue);
-			debugRoundsText = new sf::Text("Money: ", data->assets.getFont("roboto"), 24);
-			debugRoundsText->setPosition(530, 0);
-			debugRoundsText->setFillColor(sf::Color::Blue);
 
-			sf::Vector2f size(60, 60), position(50, 50);
+		this->data->turretVector.push_back(*testTower);
+
+		
+		debugLivesText = new sf::Text("Lives: ", data->assets.getFont("roboto"), 24);
+		debugLivesText->setPosition(0, 0);
+		debugLivesText->setFillColor(sf::Color::Blue);
+		debugMoneyText = new sf::Text("Money: ", data->assets.getFont("roboto"), 24);
+		debugMoneyText->setPosition(0, 25);
+		debugMoneyText->setFillColor(sf::Color::Blue);
+		debugRoundsText = new sf::Text("Money: ", data->assets.getFont("roboto"), 24);
+		debugRoundsText->setPosition(530, 0);
+		debugRoundsText->setFillColor(sf::Color::Blue);
+
+		sf::Vector2f size(60, 60), position(50, 50);
 		
 	}
-	catch(FileLoadError &e){}
+	catch(FileLoadError &e){
+		std::cout << e.what() << std::endl;
+	}
 }
 
 void GameState::HandleInput()
@@ -84,15 +97,20 @@ void GameState::doIconMove()
 	for(int i =0; i<6; i++)
 	if (this->data->inputs.IsSpriteClicked(this->towerArr[i], sf::Mouse::Left, this->data->window))
 	{
-	this->towerArr[i].setPosition(sf::Mouse::getPosition().x,sf::Mouse::getPosition().y);
+	this->towerArr[i].setPosition((float) sf::Mouse::getPosition().x, (float) sf::Mouse::getPosition().y);
 	this->isMoving = true;
 	break;
 	}
 }
 
+bool GameState::isGameOver()
+{
+	return playerLives < 1;
+}
+
 void GameState::Update()
 {
-	if (!isGameOver) {
+	if (!isGameOver()) {
 		Round cur_round(round * round, 20, 7, 20);
 		cur_round.fetchEnemy(time, this->data->enemyVector, *testMap->getPath(), round);
 
@@ -114,7 +132,7 @@ void GameState::Update()
 			}
 		}
 	}
-	this->data->machine.AddState(StateRef(new EndGameState), true);
+	//this->data->machine.AddState(StateRef(new EndGameState), true);
 }
 
 	

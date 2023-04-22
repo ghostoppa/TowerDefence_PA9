@@ -4,6 +4,8 @@
 #include "StateMachine.hpp"
 #include "AssetManager.hpp"
 #include "InputManager.hpp"
+#include "Enemy.hpp"
+#include "Tower.hpp"
 
 typedef struct gameData
 {
@@ -20,7 +22,7 @@ typedef std::shared_ptr<GameData> GameDataRef;
 class GameWip
 {
 public:
-	GameWip(int width, int hight, std::string title);
+	GameWip(int width, int height, std::string title);
 	
 private:
 	GameDataRef data = std::make_shared<GameData>();

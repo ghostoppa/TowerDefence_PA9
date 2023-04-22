@@ -5,17 +5,17 @@
 #include "Definitions.hpp"
 #include "State.hpp"
 #include "GameClassWip.hpp"
+
 #include "LinearPath.hpp"
 #include "Enemy.hpp"
 #include "Tower.hpp"
 #include "Round.h"
 #include "Map.hpp"
-#include "AssetManager.hpp"
 
-class   GameState : State
+class   GameState : public State
 {
 public:
-	GameState(GameDataRef data);
+	GameState(GameDataRef ref);
 
 	void Init();
 

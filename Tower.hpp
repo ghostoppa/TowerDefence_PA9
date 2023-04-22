@@ -16,6 +16,7 @@ public:
         mDamage = damage;
         fireRate = secondsPerShot * 1000;
         fireRange = range;
+        mTime = 0;
         //          //
         // metadata //
         previousAngle = 0.0f;

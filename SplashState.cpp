@@ -7,7 +7,7 @@ SplashState::SplashState(GameDataRef data) :data(data)
 void SplashState::Init()
 {
 	try {
-		this->data->assets.loadTexture("bad", "assets/img/Delete.Splash.png");
+		this->data->assets.loadTexture("bad", SPLASH);
 		this->background.setTexture(this->data->assets.getTexture("bad"));
 	}
 	catch (FileLoadError e)
@@ -34,15 +34,10 @@ void SplashState::Update()
 {
 	if (this->clock.getElapsedTime().asSeconds() > 3)
 	{
-		this->data->machine.AddState(StateRef(new MainMenuState(data)), true);
-<<<<<<< HEAD
+		this->data->machine.AddState(StateRef(new MainMenuState(this->data)), true);
 		this->data->machine.ProcessStateChanges();
 
-			}
-=======
 	}
->>>>>>> 9aeb8a1d6fea59d0c9ce097ebce884d8eb1e7985
-
 }
 
 void SplashState::Draw()

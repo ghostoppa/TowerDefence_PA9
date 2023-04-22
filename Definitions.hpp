@@ -1,26 +1,30 @@
 #pragma once
+#include <iostream>
 
-constexpr auto SCREEN_WIDTH = 640;
-constexpr auto SCREEN_HEIGHT = 480;
-constexpr auto LEVEL1 = 1;
+#define SCREEN_WIDTH 640
+#define SCREEN_HEIGHT 480
+#define LEVEL1 1
 
 
 //Assets
 //Textures
 constexpr auto Map1FIle = "assets/img/map1.png";
-constexpr auto PlayButtonFILE =  "assets/img/PlayPlaceHolder";
-constexpr auto LoadIcon  = "assets/img/LoadPlaceHolder";
-constexpr auto Splash = "assets/img/Delete.Splash";
-//Sounds
+constexpr auto MENU_BG = "assets/img/MenuBackGroundPlaceHolder.png";
+constexpr auto PLAY_BTN = "assets/img/PlayPlaceHolder.png";
+constexpr auto LOAD_BTN = "assets/img/LoadPlaceHolder.png";
+constexpr auto SPLASH = "assets/img/Delete.Splash.png";
+
 constexpr auto TOWER_ONE = "assets/img/turret1.png";
 constexpr auto TOWER_TWO = "assets/img/turret1.png";
 constexpr auto TOWER_THREE = "assets/img/turret1.png";
 constexpr auto TOWER_FOUR = "assets/img/turret1.png";
 constexpr auto TOWER_FIVE = "assets/img/turret1.png";
 constexpr auto TOWER_SIX = "assets/img/turret1.png";
+
+//Sounds
 //Fonts
-constexpr auto MythologyFont  = "assets/fonts/Mythology.ttf";
-constexpr auto  RobotoNormal = "assets/fonts/Roboto-Regular.ttf";
+constexpr auto MythologyFont = "assets/fonts/Mythology.ttf";
+constexpr auto RobotoNormal = "assets/fonts/Roboto-Regular.ttf";
 constexpr auto RobotoRegular = "assets/font/Roboto-Bold.ttf";
 
 #define GREEN_HEALTH 5

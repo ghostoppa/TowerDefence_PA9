@@ -6,9 +6,9 @@ MainMenuState::MainMenuState(GameDataRef data) : data(data)
 void MainMenuState::Init()
 {
 	try {
-		this->data->assets.loadTexture("Background", "assets/img/MenuBackGroundPlaceHolder.png");
-		this->data->assets.loadTexture("Play", "assets/img/PlayPlaceHolder.png");
-		this->data->assets.loadTexture("Load", "assets/img/LoadPlaceHolder.png");
+		this->data->assets.loadTexture("Background", MENU_BG);
+		this->data->assets.loadTexture("Play", PLAY_BTN);
+		this->data->assets.loadTexture("Load", LOAD_BTN);
 
 		this->background.setTexture(this->data->assets.getTexture("Background"));
 		this->loadGameButton.setTexture(this->data->assets.getTexture("Load"));
@@ -41,7 +41,8 @@ void MainMenuState::HandleInput()
 		if (this->data->inputs.IsSpriteClicked(this->playGameButton,
 			sf::Mouse::Left, this->data->window))
 		{
-			this->data->machine.AddState(StateRef(new GameState(data)), true);
+			this->data->machine.AddState(StateRef(new GameState(this->data)), true);
+			this->data->machine.ProcessStateChanges();
 		}
 
 	}
