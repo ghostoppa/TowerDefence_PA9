@@ -15,6 +15,7 @@ typedef struct gameData
 	InputManager inputs;
 	std::vector<Enemy> enemyVector;
 	std::vector<Tower> turretVector;
+	sf::Music curSound;
 }GameData;
 
 typedef std::shared_ptr<GameData> GameDataRef;

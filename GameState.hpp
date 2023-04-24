@@ -34,7 +34,7 @@ private:
 	void runLvl1(sf::RenderWindow window);
 	//void genEnemyForces(std::vector<Enemy>& enemyVector, Map*& map, int& round);
 
-	
+	sf::Sprite menuBackGround;
 	bool isGameOver();
 
 	int mMoney;
@@ -42,6 +42,7 @@ private:
 	bool isMoving;
 	int round;
 	int time;
+	int which;
 
 	sf::Text* debugLivesText;
 	sf::Text* debugMoneyText;

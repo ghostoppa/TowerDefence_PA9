@@ -7,8 +7,13 @@ SplashState::SplashState(GameDataRef data) :data(data)
 void SplashState::Init()
 {
 	try {
-		this->data->assets.loadTexture("bad", SPLASH);
-		this->background.setTexture(this->data->assets.getTexture("bad"));
+		this->data->assets.loadTexture("logo", SPLASH);
+		this->data->assets.loadTexture("splashbackground", SPLASHBG);
+	
+		this->logo.setTexture(this->data->assets.getTexture("logo"));
+		this->background.setTexture(this->data->assets.getTexture("splashbackground"));
+		this->logo.setPosition(SCREEN_WIDTH / 3, 0);
+	
 	}
 	catch (FileLoadError e)
 	{
@@ -45,6 +50,7 @@ void SplashState::Draw()
 	this->data->window.clear(sf::Color::Magenta);
 
 	this->data->window.draw(this->background);
+	this->data->window.draw(this->logo);
 
 	this->data->window.display();
 }

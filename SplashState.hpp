@@ -19,7 +19,7 @@ public:
 
 private:
 	GameDataRef data;
-
 	sf::Clock clock;
+	sf::Sprite logo;
 	sf::Sprite background;
 };

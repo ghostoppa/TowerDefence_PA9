@@ -22,6 +22,9 @@
     <Filter Include="Resource Files\data">
       <UniqueIdentifier>{74654aed-5009-4a24-b823-62bc4a5e38bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Sounds">
+      <UniqueIdentifier>{7275d113-2fb4-4f95-a3b7-10c455fc20bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="openal32.dll">
@@ -186,22 +189,37 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\img\Delete.Splash.png">
-      <Filter>Resource Files\images</Filter>
-    </Image>
-    <Image Include="assets\img\LoadPlaceHolder.png">
-      <Filter>Resource Files\images</Filter>
-    </Image>
     <Image Include="assets\img\map1.png">
       <Filter>Resource Files\images</Filter>
     </Image>
     <Image Include="assets\img\map1_template.png">
       <Filter>Resource Files\images</Filter>
     </Image>
-    <Image Include="assets\img\placeHolderBackGround.png">
+    <Image Include="assets\img\loadbtn.png">
       <Filter>Resource Files\images</Filter>
     </Image>
-    <Image Include="assets\img\PlayPlaceHolder.png">
+    <Image Include="assets\img\turret1.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="assets\img\bg.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="assets\img\splogo.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="assets\img\startbtn.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="assets\img\testMenu.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="assets\img\SplashBackground.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="assets\img\sprayer.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="assets\img\zapper.png">
       <Filter>Resource Files\images</Filter>
     </Image>
   </ItemGroup>
@@ -209,5 +227,13 @@
     <Text Include="assets\data\map1\hitboxes.txt" />
     <Text Include="assets\data\map1\path.txt" />
     <Text Include="profile1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Sounds\KevinMacLeodGrooveGrove.flac">
+      <Filter>Resource Files\Sounds</Filter>
+    </None>
+    <None Include="assets\Sounds\SneakyAdventure.ogg">
+      <Filter>Resource Files\Sounds</Filter>
+    </None>
   </ItemGroup>
 </Project>
