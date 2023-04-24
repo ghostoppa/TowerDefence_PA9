@@ -28,7 +28,7 @@ public:
 
         setTexture(texture, true);
         this->setOrigin(20.0f, 20.0f);
-        this->setPosition(400.0f, 200.0f);
+        this->setPosition(600.0f, 200.0f);
         std::cout << "turret online" << std::endl;
     };
 

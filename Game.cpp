@@ -92,6 +92,12 @@ void Game::runLvl1(sf::RenderWindow& window)
                     enemyVector.at(i).update();
                 }
             }
+
+            for (int i = 0; i < turretVector.size(); ++i)
+            {
+                turretVector.at(i).update(enemyVector);
+            }
+
             /*-----DRAW SECTION: TRY NOT TO PUT UPDATE CODE HERE-----*/
             window.clear();
             window.draw(*testMap);

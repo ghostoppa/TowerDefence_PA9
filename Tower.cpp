@@ -131,7 +131,7 @@ void Tower::update(std::vector<Enemy>& enemyVector) {
 
     // 
     if (target != nullptr) {
-        std::cout << "locked on" << std::endl;
+        //std::cout << "locked on" << std::endl;
         distance = targetingFeed(this->getPosition(), target->getPosition(), &angleToTarget);
         if (distance > fireRange) {
             target = nullptr;

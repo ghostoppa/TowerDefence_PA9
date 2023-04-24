@@ -198,6 +198,7 @@
     <ClInclude Include="Menu.hpp" />
     <ClInclude Include="playerStats.hpp" />
     <ClInclude Include="Profile.hpp" />
+    <ClInclude Include="Projectile.h" />
     <ClInclude Include="Round.h" />
     <ClInclude Include="SplashState.hpp" />
     <ClInclude Include="State.hpp" />
@@ -220,6 +221,7 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="playerStats.cpp" />
     <ClCompile Include="Profile.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Round.cpp" />
     <ClCompile Include="SplashState.cpp" />
     <ClCompile Include="StateMachine.cpp" />

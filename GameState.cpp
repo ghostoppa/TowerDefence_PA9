@@ -42,6 +42,9 @@ void GameState::Init()
 		//this->data->turretVector.push_back(*testTower);
 		testMap = new Map(data->assets.getTexture("Map1"), "assets/data/map1/path.txt", "assets/data/map1/hitboxes.txt");
 
+		Tower* testTower = new Tower(data->assets.getTexture("Tower1"), 20, 1.5, 200, 2);
+		data->turretVector.push_back(*testTower);
+
 		debugLivesText = new sf::Text("Lives: ", data->assets.getFont("roboto"), 24);
 		debugLivesText->setPosition(0, 0);
 		debugLivesText->setFillColor(sf::Color::Blue);
@@ -88,6 +91,10 @@ void GameState::Draw()
 	for (Enemy e : this->data->enemyVector)
 	{
 		this->data->window.draw(e);
+	}
+	for (Tower t : this->data->turretVector)
+	{
+		this->data->window.draw(t);
 	}
 
 	if (debugLivesText)
@@ -148,6 +155,11 @@ void GameState::Update()
 			{
 				data->enemyVector.at(i).update();
 			}
+		}
+
+		for (int i = 0; i < data->turretVector.size(); ++i)
+		{
+			data->turretVector.at(i).update(data->enemyVector);
 		}
 	}
 	//this->data->machine.AddState(StateRef(new EndGameState), true);
