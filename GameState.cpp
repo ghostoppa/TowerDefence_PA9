@@ -127,8 +127,14 @@ void GameState::Draw()
 
 
 	for (sf::Sprite towers : towerArr){
-		this->data->window.draw(towers);
+	this->data->window.draw(towers);
 			}
+
+	for (Tower displayTowers : this->placedTowers)
+	{
+		this->data->window.draw(displayTowers);
+	}
+
 	this->data->window.display();
 	}
 
@@ -145,6 +151,50 @@ void GameState::doIconMove()
 			std::cout << " x: " << sf::Mouse::getPosition((this->data->window)).x << " y: " << sf::Mouse::getPosition((this->data->window)).y << std::endl;;
 			break;
 		}
+	
+		//THis is supposed to see if it is in a hit box
+		if (this->data->inputs.IsSpriteClicked(this->towerArr[i], sf::Mouse::Right, this->data->window))
+		{
+						
+				std::vector<sf::RectangleShape> hitboxes = *(testMap->getHitboxes());
+				for (sf::RectangleShape boxes : hitboxes)
+				{
+
+					sf::IntRect tempRect(towerArr[i].getPosition().x,
+						towerArr[i].getPosition().y,
+						towerArr[i].getGlobalBounds().width,
+						towerArr[i].getGlobalBounds().height);
+					if (boxes.getGlobalBounds().contains(tempRect.left, tempRect.top))
+					{
+						std::cout << "PUT IN HIT" << std::endl;
+						switch (i)
+						{
+						case 1:
+							this->placedTowers.push_back(Tower(this->data->assets.getTexture("Tower1"),
+								30, .9, 30, 12));
+							this->placedTowers.back().setPosition(towerArr[i].getPosition());
+							towerArr[0].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+								20 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+							break;
+						case 2:
+							this->placedTowers.push_back(Tower(this->data->assets.getTexture("Tower2"),
+								30, .9, 30, 12));
+							this->placedTowers.back().setPosition(towerArr[i].getPosition());
+							towerArr[1].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+								100 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+							break;
+						case 3:
+							this->placedTowers.push_back(Tower(this->data->assets.getTexture("Tower3"),
+							30, .9, 30, 12));
+							this->placedTowers.back().setPosition(towerArr[i].getPosition());
+							towerArr[2].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+								180 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+							break;
+
+						}
+					}
+				}
+			}
 	}
 }
 

@@ -29,6 +29,8 @@ private:
 	GameDataRef data;
 	//Tower* testTower;
 	sf::Sprite towerArr[6];
+
+	std::vector<Tower> placedTowers;
 	void	 doIconMove();
 	void setSpriteTransparecy(int TowerNumber);
 	void runLvl1(sf::RenderWindow window);
