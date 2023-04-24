@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Interactable.h"
 #include <sstream>
 #include <SFML/Graphics.hpp>
 #include "Definitions.hpp"
