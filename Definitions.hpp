@@ -17,11 +17,16 @@ constexpr auto SPLASHBG = "assets/img/SplashBackground.png";
 constexpr auto MENUBACKGROUND = "assets/img/testMenu.png";
 
 constexpr auto TOWER_ONE = "assets/img/sprayer.png";
-constexpr auto TOWER_TWO = "assets/img/turret1.png";
-constexpr auto TOWER_THREE = "assets/img/zapper.png";
-constexpr auto TOWER_FOUR = "assets/img/turret1.png";
-constexpr auto TOWER_FIVE = "assets/img/turret1.png";
-constexpr auto TOWER_SIX = "assets/img/turret1.png";
+constexpr auto TOWER_TWO = "assets/img/particleCannon.png";
+constexpr auto TOWER_THREE = "assets/img/flamethrower.png";
+constexpr auto TOWER_FOUR = "assets/img/zapper.png";
+constexpr auto TOWER_FIVE = "assets/img/particleCannon.png";
+constexpr auto TOWER_SIX = "assets/img/particleCannon.png";
+
+constexpr auto PROJECTILE_ONE = "assets/img/mist.png";
+constexpr auto PROJECTILE_TWO = "assets/img/particleBeam.png";
+constexpr auto PROJECTILE_THREE = "assets/img/firebolt.png";
+constexpr auto PROJECTILE_FOUR = "assets/img/firebolt.png";
 
 //Sounds
 constexpr auto menuSound = "assets/Sounds/SneakyAdventure.ogg";

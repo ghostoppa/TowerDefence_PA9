@@ -33,6 +33,10 @@ void GameState::Init()
 		this->data->assets.loadTexture("Tower4", TOWER_FOUR);
 		this->data->assets.loadTexture("Tower5", TOWER_FIVE);
 		this->data->assets.loadTexture("Tower6", TOWER_SIX);
+		this->data->assets.loadTexture("Projectile1", PROJECTILE_ONE);
+		this->data->assets.loadTexture("Projectile2", PROJECTILE_TWO);
+		this->data->assets.loadTexture("Projectile3", PROJECTILE_THREE);
+		this->data->assets.loadTexture("Projectile4", PROJECTILE_FOUR);
 		this->data->assets.loadTexture("Map1", Map1File);
 		this->data->assets.loadTexture("MenuBackground", MENUBACKGROUND);
 
@@ -49,7 +53,7 @@ void GameState::Init()
 		//this->data->turretVector.push_back(*testTower);
 		testMap = new Map(data->assets.getTexture("Map1"), "assets/data/map1/path.txt", "assets/data/map1/hitboxes.txt");
 
-		Tower* testTower = new Tower(data->assets.getTexture("Tower1"), sf::Vector2f(400.0f, 200.0f), 20, 1.5, 200, 2);
+		Tower* testTower = new Tower(data->assets.getTexture("Tower2"), data->assets.getTexture("Projectile2"), sf::Vector2f(400.0f, 200.0f), 1.5f, 300.0f, 4, 30, 2500);
 		data->turretVector.push_back(*testTower);
 
 		debugLivesText = new sf::Text("Lives: ", data->assets.getFont("roboto"), 24);
@@ -117,6 +121,10 @@ void GameState::Draw()
 	{
 		this->data->window.draw(t);
 	}
+	for (Projectile p : this->data->projectileVector)
+	{
+		this->data->window.draw(p);
+	}
 
 	if (debugLivesText)
 	{
@@ -170,18 +178,23 @@ void GameState::doIconMove()
 						switch (i)
 						{
 						case 0:
-							this->data->turretVector.push_back(Tower(this->data->assets.getTexture("Tower1"), towerArr[i].getPosition(), 1, 0.2f, 75, 2));
+							this->data->turretVector.push_back(Tower(this->data->assets.getTexture("Tower1"), this->data->assets.getTexture("Projectile1"), towerArr[i].getPosition(), 0.2f, 75.0f, 1, 1, 0));
 							towerArr[0].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
 								20 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
 							break;
 						case 1:
-							this->data->turretVector.push_back(Tower(this->data->assets.getTexture("Tower2"), towerArr[i].getPosition(), 1, 0.2f, 150, 2));
+							this->data->turretVector.push_back(Tower(this->data->assets.getTexture("Tower2"), this->data->assets.getTexture("Projectile2"), towerArr[i].getPosition(), 1.5f, 300.0f, 4, 30, 2500));
 							towerArr[1].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
 								100 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
 							break;
 						case 2:
-							this->data->turretVector.push_back(Tower(this->data->assets.getTexture("Tower3"), towerArr[i].getPosition(), 1, 0.2f, 150, 2));
+							this->data->turretVector.push_back(Tower(this->data->assets.getTexture("Tower3"), this->data->assets.getTexture("Projectile3"), towerArr[i].getPosition(), 0.75f, 150.0f, 1, 15, 1000));
 							towerArr[2].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+								180 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+							break;
+						case 3:
+							this->data->turretVector.push_back(Tower(this->data->assets.getTexture("Tower4"), this->data->assets.getTexture("Projectile4"), towerArr[i].getPosition(), 0.66f, 50.0f, 3, 3, 0));
+							towerArr[3].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
 								180 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
 							break;
 
@@ -234,7 +247,13 @@ void GameState::Update()
 
 		for (int i = 0; i < data->turretVector.size(); ++i)
 		{
-			data->turretVector.at(i).update(data->enemyVector);
+			data->turretVector.at(i).update(data->enemyVector, data->projectileVector);
+		}
+		for (int i = 0; i < data->projectileVector.size(); ++i)
+		{
+			if (data->projectileVector.at(i).update(data->enemyVector, data->projectileVector)) {
+				data->projectileVector.erase(data->projectileVector.begin() + i);
+			}
 		}
 	}
 	//this->data->machine.AddState(StateRef(new EndGameState), true);

@@ -15,6 +15,7 @@ typedef struct gameData
 	InputManager inputs;
 	std::vector<Enemy> enemyVector;
 	std::vector<Tower> turretVector;
+	std::vector<Projectile> projectileVector;
 	sf::Music curSound;
 }GameData;
 
