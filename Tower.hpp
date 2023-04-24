@@ -10,7 +10,7 @@
 class Tower : public Entity, public sf::Sprite
 {
 public:
-    Tower(sf::Texture& texture, int damage, float secondsPerShot, float range, int targetPriority) {
+    Tower(sf::Texture& texture, sf::Vector2f position, int damage, float secondsPerShot, float range, int targetPriority) {
         // initializer  //
             // stats    //
         mDamage = damage;
@@ -28,7 +28,7 @@ public:
 
         setTexture(texture, true);
         this->setOrigin(20.0f, 20.0f);
-        this->setPosition(600.0f, 200.0f);
+        this->setPosition(position);
         std::cout << "turret online" << std::endl;
     };
 

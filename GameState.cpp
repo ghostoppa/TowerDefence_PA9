@@ -49,7 +49,7 @@ void GameState::Init()
 		//this->data->turretVector.push_back(*testTower);
 		testMap = new Map(data->assets.getTexture("Map1"), "assets/data/map1/path.txt", "assets/data/map1/hitboxes.txt");
 
-		Tower* testTower = new Tower(data->assets.getTexture("Tower1"), 20, 1.5, 200, 2);
+		Tower* testTower = new Tower(data->assets.getTexture("Tower1"), sf::Vector2f(400.0f, 200.0f), 20, 1.5, 200, 2);
 		data->turretVector.push_back(*testTower);
 
 		debugLivesText = new sf::Text("Lives: ", data->assets.getFont("roboto"), 24);
@@ -169,23 +169,20 @@ void GameState::doIconMove()
 						std::cout << "PUT IN HIT" << std::endl;
 						switch (i)
 						{
-						case 1:
-							this->placedTowers.push_back(Tower(this->data->assets.getTexture("Tower1"),
-								30, .9, 30, 12));
+						case 0:
+							this->placedTowers.push_back(Tower(this->data->assets.getTexture("Tower1"), towerArr[i].getPosition(), 1, 0.2f, 75, 2));
 							this->placedTowers.back().setPosition(towerArr[i].getPosition());
 							towerArr[0].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
 								20 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
 							break;
-						case 2:
-							this->placedTowers.push_back(Tower(this->data->assets.getTexture("Tower2"),
-								30, .9, 30, 12));
+						case 1:
+							this->placedTowers.push_back(Tower(this->data->assets.getTexture("Tower2"), towerArr[i].getPosition(), 1, 0.2f, 150, 2));
 							this->placedTowers.back().setPosition(towerArr[i].getPosition());
 							towerArr[1].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
 								100 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
 							break;
-						case 3:
-							this->placedTowers.push_back(Tower(this->data->assets.getTexture("Tower3"),
-							30, .9, 30, 12));
+						case 2:
+							this->placedTowers.push_back(Tower(this->data->assets.getTexture("Tower3"), towerArr[i].getPosition(), 1, 0.2f, 150, 2));
 							this->placedTowers.back().setPosition(towerArr[i].getPosition());
 							towerArr[2].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
 								180 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
