@@ -173,12 +173,17 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\img\Delete.Splash.png" />
-    <Image Include="assets\img\LoadPlaceHolder.png" />
+    <Image Include="assets\img\bg.png" />
+    <Image Include="assets\img\SplashBackground.png" />
+    <Image Include="assets\img\loadbtn.png" />
     <Image Include="assets\img\map1.png" />
     <Image Include="assets\img\map1_template.png" />
-    <Image Include="assets\img\placeHolderBackGround.png" />
-    <Image Include="assets\img\PlayPlaceHolder.png" />
+    <Image Include="assets\img\splogo.png" />
+    <Image Include="assets\img\sprayer.png" />
+    <Image Include="assets\img\startbtn.png" />
+    <Image Include="assets\img\testMenu.png" />
+    <Image Include="assets\img\turret1.png" />
+    <Image Include="assets\img\zapper.png" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
@@ -231,6 +236,10 @@
     <Text Include="assets\data\map1\hitboxes.txt" />
     <Text Include="assets\data\map1\path.txt" />
     <Text Include="profile1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Sounds\KevinMacLeodGrooveGrove.flac" />
+    <None Include="assets\Sounds\SneakyAdventure.ogg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

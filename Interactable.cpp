@@ -52,6 +52,6 @@ void Interactable::mouseFollow(sf::Window& mouseWindow)
 		//Localize mouse coordinates to window
 		sf::Vector2i mousePos(sf::Mouse::getPosition(mouseWindow));
 		//Set center of object to mouse
-		setPosition((sf::Vector2f)mousePos - (getSize()) / 2.0f);
+	//	setPosition((sf::Vector2f)mousePos - (getSize()) / 2.0f);
 	}
 }

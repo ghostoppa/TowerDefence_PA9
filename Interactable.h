@@ -2,15 +2,12 @@
 #include "StateMachine.hpp"
 #include "SFML/Graphics.hpp"
 #include "SFML/Audio.hpp"
-class Interactable : public sf::RectangleShape
+class Interactable : public sf::Sprite
 {
 public:
-	Interactable(sf::Vector2f size, sf::Vector2f position)
+	Interactable()
 	{
-		setPosition(position);
-		setSize(size);
-		setFillColor(sf::Color::Red);
-		updateable = true;
+			updateable = true;
 		dragging = false;
 		mouseDownOutside = false;
 	}

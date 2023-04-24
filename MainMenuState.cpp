@@ -5,6 +5,11 @@ MainMenuState::MainMenuState(GameDataRef data) : data(data)
 
 void MainMenuState::Init()
 {
+		this->data->curSound.stop();
+	
+	this->data->curSound.openFromFile(menuSound);
+	this->data->curSound.play();
+	this->data->curSound.setLoop(true);
 	try {
 		this->data->assets.loadTexture("Background", MENU_BG);
 		this->data->assets.loadTexture("Play", PLAY_BTN);
@@ -15,8 +20,8 @@ void MainMenuState::Init()
 		this->playGameButton.setTexture(this->data->assets.getTexture("Play"));
 
 		this->playGameButton.setPosition(
-			SCREEN_WIDTH / 2 - this->playGameButton.getGlobalBounds().width / 2,
-			SCREEN_HEIGHT / 2 - this->playGameButton.getGlobalBounds().height / 2);
+			SCREEN_WIDTH / 2 - this->playGameButton.getGlobalBounds().width / 4,
+			SCREEN_HEIGHT / 2 - this->playGameButton.getGlobalBounds().height / 3);
 
 		this->loadGameButton.setPosition(
 			SCREEN_WIDTH / 2 - this->loadGameButton.getGlobalBounds().width / 2,
@@ -51,7 +56,10 @@ void MainMenuState::HandleInput()
 		
 void MainMenuState::Update()
 {
-
+	if (!(this->data->curSound.Playing==2))	{
+		this->data->curSound.openFromFile(menuSound);
+		this->data->curSound.play();
+	}
 }
 
 void MainMenuState::Draw()
