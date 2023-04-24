@@ -10,21 +10,21 @@
 class Tower : public Entity, public sf::Sprite
 {
 public:
-    Tower(sf::Texture& texture, sf::Vector2f position, int damage, float secondsPerShot, float range, int targetPriority) {
+    Tower(sf::Texture& texture, sf::Vector2f& position, int damage, float secondsPerShot, float range, int targetPriority) {
         // initializer  //
             // stats    //
-        mDamage = damage;
-        fireRate = secondsPerShot * 1000;
-        fireRange = range;
-        mTime = 0;
-        //          //
-        // metadata //
-        previousAngle = 0.0f;
-        previousDistanceToTarget = range;
-        priorityType = targetPriority;
-        target = nullptr;
-        //          //
-    //              //
+            mDamage = damage;
+            fireRate = secondsPerShot * 1000;
+            fireRange = range;
+            mTime = 0;
+            //          //
+            // metadata //
+            previousAngle = 0.0f;
+            previousDistanceToTarget = range;
+            priorityType = targetPriority;
+            target = nullptr;
+            //          //
+        //              //
 
         setTexture(texture, true);
         this->setOrigin(20.0f, 20.0f);

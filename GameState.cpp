@@ -170,20 +170,17 @@ void GameState::doIconMove()
 						switch (i)
 						{
 						case 0:
-							this->placedTowers.push_back(Tower(this->data->assets.getTexture("Tower1"), towerArr[i].getPosition(), 1, 0.2f, 75, 2));
-							this->placedTowers.back().setPosition(towerArr[i].getPosition());
+							this->data->turretVector.push_back(Tower(this->data->assets.getTexture("Tower1"), towerArr[i].getPosition(), 1, 0.2f, 75, 2));
 							towerArr[0].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
 								20 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
 							break;
 						case 1:
-							this->placedTowers.push_back(Tower(this->data->assets.getTexture("Tower2"), towerArr[i].getPosition(), 1, 0.2f, 150, 2));
-							this->placedTowers.back().setPosition(towerArr[i].getPosition());
+							this->data->turretVector.push_back(Tower(this->data->assets.getTexture("Tower2"), towerArr[i].getPosition(), 1, 0.2f, 150, 2));
 							towerArr[1].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
 								100 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
 							break;
 						case 2:
-							this->placedTowers.push_back(Tower(this->data->assets.getTexture("Tower3"), towerArr[i].getPosition(), 1, 0.2f, 150, 2));
-							this->placedTowers.back().setPosition(towerArr[i].getPosition());
+							this->data->turretVector.push_back(Tower(this->data->assets.getTexture("Tower3"), towerArr[i].getPosition(), 1, 0.2f, 150, 2));
 							towerArr[2].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
 								180 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
 							break;
