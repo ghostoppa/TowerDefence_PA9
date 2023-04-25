@@ -49,10 +49,12 @@ bool Projectile::update(std::vector<Enemy>& enemyVector, std::vector<Projectile>
     //                      //
 
     // enemy overlap checker//
-    for (int i = 0; i < enemyVector.size(); ++i) {
-        if (this->getGlobalBounds().intersects(enemyVector.at(i).getGlobalBounds())) {
-            enemyVector.at(i).subHealth(tDamage);
-            break;
+    if (pierce > 0) {
+        for (int i = 0; i < enemyVector.size(); ++i) {
+            if (this->getGlobalBounds().intersects(enemyVector.at(i).getGlobalBounds()) && aoe > 0 || pierce > 0) {
+                enemyVector.at(i).subHealth(tDamage);
+                pierce--;
+            }
         }
     }
     //                      //

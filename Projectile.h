@@ -19,7 +19,7 @@ public:
             projectileTexture = texture;
             aoe = pAOE;
             chain = pChain;
-            pierce = pPierce;
+            pierce = pPierce + 1;
             firedAngle = angle;
             //          //
         //              //
