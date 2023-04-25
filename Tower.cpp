@@ -185,10 +185,14 @@ Enemy* Tower::getTarget(std::vector<Enemy>& enemyVector, int priorityType) {
 
 
 void Tower::fireProjectile(std::vector<Projectile>& projectileVector) {
-    projectileVector.push_back(Projectile(*projectile, this->getPosition(), this->getRotation(), mDamage, projectileRange, projectileVelocity, projectileAOE, projectileChain, projectilePierce));
+    projectileVector.push_back(Projectile(*projectile, this->getPosition(), this->getRotation(), mDamage, projectileChainRange, projectileVelocity, projectileAOE, projectileChain, projectilePierce));
 }
 
 
+
+float Tower::getRange() {
+    return this->fireRange;
+}
 
 void Tower::update(std::vector<Enemy>& enemyVector, std::vector<Projectile>& projectileVector) {
     float angleToTarget = previousAngle, distance = 0.0f;
@@ -208,7 +212,7 @@ void Tower::update(std::vector<Enemy>& enemyVector, std::vector<Projectile>& pro
             target = nullptr;
         }
     }
-
+    std::cout << getRange() << std::endl;
     // angle setting    //
     this->setRotation(angleToTarget);
     previousAngle = angleToTarget;

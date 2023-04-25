@@ -53,7 +53,7 @@ void GameState::Init()
 		//this->data->turretVector.push_back(*testTower);
 		testMap = new Map(data->assets.getTexture("Map1"), "assets/data/map1/path.txt", "assets/data/map1/hitboxes.txt");
 
-		Tower* testTower = new Tower(data->assets.getTexture("Tower2"), data->assets.getTexture("Projectile2"), sf::Vector2f(400.0f, 200.0f), 1.5f, 300.0f, 4, 30, 2500);
+		Tower* testTower = new ParticleCannon(data->assets.getTexture("Tower2"), data->assets.getTexture("Projectile2"), sf::Vector2f(400.0f, 200.0f));
 		data->turretVector.push_back(*testTower);
 
 		debugLivesText = new sf::Text("Lives: ", data->assets.getFont("roboto"), 24);
@@ -178,22 +178,22 @@ void GameState::doIconMove()
 						switch (i)
 						{
 						case 0:
-							this->data->turretVector.push_back(Tower(this->data->assets.getTexture("Tower1"), this->data->assets.getTexture("Projectile1"), towerArr[i].getPosition(), 0.2f, 75.0f, 1, 1, 0));
+							this->data->turretVector.push_back(Sprayer(this->data->assets.getTexture("Tower1"), this->data->assets.getTexture("Projectile1"), towerArr[i].getPosition()));
 							towerArr[0].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
 								20 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
 							break;
 						case 1:
-							this->data->turretVector.push_back(Tower(this->data->assets.getTexture("Tower2"), this->data->assets.getTexture("Projectile2"), towerArr[i].getPosition(), 1.5f, 300.0f, 4, 30, 2500));
+							this->data->turretVector.push_back(ParticleCannon(this->data->assets.getTexture("Tower2"), this->data->assets.getTexture("Projectile2"), towerArr[i].getPosition()));
 							towerArr[1].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
 								100 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
 							break;
 						case 2:
-							this->data->turretVector.push_back(Tower(this->data->assets.getTexture("Tower3"), this->data->assets.getTexture("Projectile3"), towerArr[i].getPosition(), 0.75f, 150.0f, 1, 15, 1000));
+							this->data->turretVector.push_back(FlameThrower(this->data->assets.getTexture("Tower3"), this->data->assets.getTexture("Projectile3"), towerArr[i].getPosition()));
 							towerArr[2].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
 								180 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
 							break;
 						case 3:
-							this->data->turretVector.push_back(Tower(this->data->assets.getTexture("Tower4"), this->data->assets.getTexture("Projectile4"), towerArr[i].getPosition(), 0.66f, 50.0f, 3, 3, 0));
+							this->data->turretVector.push_back(Zapper(this->data->assets.getTexture("Tower4"), this->data->assets.getTexture("Projectile4"), towerArr[i].getPosition()));
 							towerArr[3].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
 								180 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
 							break;

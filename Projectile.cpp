@@ -40,8 +40,22 @@ float Projectile::getYComponent(float angle) {
 }
 
 bool Projectile::update(std::vector<Enemy>& enemyVector, std::vector<Projectile>& projectileVector) {
-	tTime++;
+	// frame time updater   //
+    tTime++;
+    //                      //
+
+    // bullet velocity      //
     this->setPosition(this->getPosition().x + (getXComponent(firedAngle) * fireVelocity), this->getPosition().y + (getYComponent(firedAngle) * fireVelocity));
+    //                      //
+
+    // enemy overlap checker//
+    for (int i = 0; i < enemyVector.size(); ++i) {
+        if (this->getGlobalBounds().intersects(enemyVector.at(i).getGlobalBounds())) {
+            enemyVector.at(i).subHealth(tDamage);
+            break;
+        }
+    }
+    //                      //
 
 	if (tTime >= 20) {
 		return true;

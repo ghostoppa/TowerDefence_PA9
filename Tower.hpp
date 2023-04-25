@@ -11,32 +11,27 @@
 
 class Tower : public Entity, public sf::Sprite {
 public:
-    Tower(sf::Texture& texture, sf::Texture& tProjectile, const sf::Vector2f& position, float secondsPerShot, float range, int targetPriority, int damage, float velocity) {
+    Tower() {
         // initializer  //
             // stats    //
-            fireRate = secondsPerShot * 60;
-            fireRange = range;
+            fireRate = 1 * 60;
+            fireRange = 150;
             mTime = 0;
-            projectile = &tProjectile;
-            mDamage = damage;
-            projectileRange = 50;
-            projectileVelocity = velocity;
+            projectile = nullptr;
+            mDamage = 5;
+            projectileChainRange = 50;
+            projectileVelocity = 1000;
             projectileAOE = 0;
             projectileChain = 0;
             projectilePierce = 2;
             //          //
             // metadata //
             previousAngle = 0.0f;
-            previousDistanceToTarget = range;
-            priorityType = targetPriority;
+            previousDistanceToTarget = 150;
+            priorityType = 0;
             target = nullptr;
             //          //
         //              //
-
-        setTexture(texture, true);
-        this->setOrigin(20.0f, 20.0f);
-        this->setPosition(position.x + 20, position.y + 20);
-        std::cout << "turret online" << std::endl;
     };
 
     float targetingFeed(const sf::Vector2f& pointMain, const sf::Vector2f& pointTarget);
@@ -52,15 +47,17 @@ public:
 
     void fireProjectile(std::vector<Projectile>& projectileVector);
 
+    float getRange();
+
     void update(std::vector<Enemy>& enemyVector, std::vector<Projectile>& projectileVector);
 
     void render() override;
 
-private:
+protected:
     int mDamage;
     Damage towersDamage;
     sf::Texture* projectile;
-    float projectileRange;
+    float projectileChainRange;
     float projectileVelocity;
     float projectileAOE;
     int projectileChain;

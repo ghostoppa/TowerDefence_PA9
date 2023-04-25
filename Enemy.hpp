@@ -29,6 +29,9 @@ public:
     int getCurHealth();
     int getMaxHealth();
 
+    void addHealth(int num);
+    void subHealth(int num);
+
     ~Enemy() = default;
     void update() override;
 

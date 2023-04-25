@@ -42,6 +42,14 @@ int Enemy::getMaxHealth()
 	return mMaxHealth;
 }
 
+void Enemy::addHealth(int num) {
+	mHealth += num;
+}
+
+void Enemy::subHealth(int num) {
+	mHealth -= num;
+}
+
 //void Enemy::render()
 //{
 //	
