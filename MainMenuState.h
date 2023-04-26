@@ -24,8 +24,4 @@ private:
 	sf::Sprite background;
 	sf::Sprite loadGameButton;
 	sf::Sprite playGameButton;
-	//more to be implimented
-
-
 };
-

@@ -11,6 +11,7 @@ float Tower::targetingFeed(const sf::Vector2f& pointMain, const sf::Vector2f& po
 
     return distance;
 }
+
 float Tower::targetingFeed(const sf::Vector2f& pointMain, const sf::Vector2f& pointTarget, float* angle) {
     float xComp = 0, yComp = 0, width = 0, height = 0, distance = 0;
 
@@ -25,8 +26,6 @@ float Tower::targetingFeed(const sf::Vector2f& pointMain, const sf::Vector2f& po
     return distance;
 }
 
-
-
 Enemy* Tower::targetClosest(std::vector<Enemy>& enemyVector) {
     Enemy* pEnemy = nullptr, * cEnemy = nullptr;
     float pDist = fireRange, cDist = fireRange;
@@ -39,8 +38,6 @@ Enemy* Tower::targetClosest(std::vector<Enemy>& enemyVector) {
     previousDistanceToTarget = cDist;
     return cEnemy;
 }
-
-
 
 Enemy* Tower::targetFirst(std::vector<Enemy>& enemyVector) {
     Enemy* cEnemy = nullptr;
@@ -55,8 +52,6 @@ Enemy* Tower::targetFirst(std::vector<Enemy>& enemyVector) {
     return cEnemy;
 }
 
-
-
 Enemy* Tower::targetLast(std::vector<Enemy>& enemyVector) {
     Enemy* cEnemy = nullptr;
     float cDist = fireRange;
@@ -69,8 +64,6 @@ Enemy* Tower::targetLast(std::vector<Enemy>& enemyVector) {
     }
     return cEnemy;
 }
-
-
 
 Enemy* Tower::targetLock(std::vector<Enemy>& enemyVector) {
     Enemy* pEnemy = nullptr, * cEnemy = nullptr;
@@ -98,8 +91,6 @@ Enemy* Tower::targetLock(std::vector<Enemy>& enemyVector) {
     }
     return cEnemy;
 }
-
-
 
 Enemy* Tower::targetStrong(std::vector<Enemy>& enemyVector) {
     Enemy* cEnemy = nullptr;
@@ -132,8 +123,6 @@ Enemy* Tower::targetStrong(std::vector<Enemy>& enemyVector) {
     }
     return cEnemy;
 }
-
-
 
 Enemy* Tower::getTarget(std::vector<Enemy>& enemyVector, int priorityType) {
     Enemy* pEnemy = nullptr, * cEnemy = nullptr;
@@ -182,26 +171,18 @@ Enemy* Tower::getTarget(std::vector<Enemy>& enemyVector, int priorityType) {
     return cEnemy;
 }
 
-
-
 void Tower::fireProjectile(std::vector<Projectile>& projectileVector) {
     projectileVector.push_back(Projectile(*projectile, this->getPosition(), this->getRotation(), mDamage, projectileChainRange, projectileVelocity, projectileAOE, projectileChain, projectilePierce));
 }
-
-
 
 int Tower::getKills() {
     return mKills;
 }
 
-
-
 int Tower::getPrice()
 {
     return this->mPrice;
 }
-
-
 
 float Tower::getRange() {
     return this->fireRange;
@@ -238,8 +219,4 @@ void Tower::update(std::vector<Enemy>& enemyVector, std::vector<Projectile>& pro
         mTime = 0;
     }
     //                          //
-}
-
-void Tower::render()
-{
 }

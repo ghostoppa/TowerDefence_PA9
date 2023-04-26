@@ -63,8 +63,3 @@ void Enemy::addHealth(int num) {
 void Enemy::subHealth(int num) {
 	mHealth -= num;
 }
-
-//void Enemy::render()
-//{
-//	
-//}

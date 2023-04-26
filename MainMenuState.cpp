@@ -20,12 +20,14 @@ void MainMenuState::Init()
 		this->playGameButton.setTexture(this->data->assets.getTexture("Play"));
 
 		this->playGameButton.setPosition(
-			SCREEN_WIDTH / 2 - this->playGameButton.getGlobalBounds().width / 4,
-			SCREEN_HEIGHT / 2 - this->playGameButton.getGlobalBounds().height / 3);
+			SCREEN_WIDTH / 2 - this->playGameButton.getGlobalBounds().width / 4 - 15,
+			(SCREEN_HEIGHT / 2) + 30);
+			//SCREEN_HEIGHT / 2 - this->playGameButton.getGlobalBounds().height / 3);
 
 		this->loadGameButton.setPosition(
 			SCREEN_WIDTH / 2 - this->loadGameButton.getGlobalBounds().width / 2,
-			SCREEN_HEIGHT / 2 - this->loadGameButton.getGlobalBounds().height *2);
+			(SCREEN_HEIGHT / 2) - 170);
+			//SCREEN_HEIGHT / 2 - this->loadGameButton.getGlobalBounds().height *2);
 	}
 	catch (FileLoadError &e)
 	{
@@ -47,9 +49,7 @@ void MainMenuState::HandleInput()
 			sf::Mouse::Left, this->data->window))
 		{
 			this->data->machine.AddState(StateRef(new GameState(this->data)), true);
-
 		}
-
 	}
 }
 

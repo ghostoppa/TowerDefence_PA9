@@ -31,6 +31,4 @@ public:
         this->setPosition(position.x + 20, position.y + 20);
         std::cout << "turret online" << std::endl;
     };
-
-private:
 };

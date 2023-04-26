@@ -24,9 +24,6 @@ public:
     float rotation();
     void update() override;
 
-    //Maybe we won't need this?
-   // void render() override;
-
     bool isDefeated();
 
     bool finished_path() { return completed_path; };
@@ -39,6 +36,5 @@ private:
     float mTime;
     bool completed_path;
     float mSpeed;
-
 };
 

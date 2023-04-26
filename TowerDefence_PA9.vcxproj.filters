@@ -134,10 +134,10 @@
     <ClInclude Include="Sprayer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TurretWrapper.hpp">
+    <ClInclude Include="Zapper.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Zapper.hpp">
+    <ClInclude Include="TurretWrapper.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -151,13 +151,7 @@
     <ClCompile Include="AssetManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Damage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LinearPath.cpp">
@@ -193,22 +187,7 @@
     <ClCompile Include="GameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FlameThrower.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleCannon.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Projectile.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TurretWrapper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Zapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EndState.hpp">

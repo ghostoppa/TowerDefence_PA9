@@ -1,4 +1,5 @@
 #include "GameState.hpp"
+
 GameState::GameState(GameDataRef ref) : data(ref)
 {
 	cur_round = nullptr;
@@ -176,7 +177,7 @@ void GameState::doIconMove()
 	
 		//This is supposed to see if it is in a hit box
 		if (this->data->inputs.IsSpriteClicked(this->towerArr[i], sf::Mouse::Right, this->data->window))
-		{		
+		{
 			std::vector<sf::RectangleShape> hitboxes = *(testMap->getHitboxes());
 			for (sf::RectangleShape boxes : hitboxes)
 			{
@@ -242,16 +243,14 @@ void GameState::doIconMove()
 					}
 				}
 			}
-			
 		}
-	
 	}
-	
 }
 
 bool GameState::isGameOver()
 {
-	return playerLives < 1;
+	if (playerLives < 1) return true;
+	else return false;
 }
 
 void GameState::Update()
@@ -304,5 +303,3 @@ void GameState::Update()
 		this->data->machine.AddState(StateRef(new EndState(this->data )), true);
 	}
 }
-
-	

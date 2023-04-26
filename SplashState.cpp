@@ -41,7 +41,6 @@ void SplashState::Update()
 	{
 		this->data->machine.AddState(StateRef(new MainMenuState(this->data)), true);
 		//this->data->machine.ProcessStateChanges();
-		
 	}
 }
 

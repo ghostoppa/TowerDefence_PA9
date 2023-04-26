@@ -55,7 +55,7 @@ public:
 
     void update(std::vector<Enemy>& enemyVector, std::vector<Projectile>& projectileVector);
 
-    void render() override;
+    //void render() override;
 
 protected:
     int mDamage;
