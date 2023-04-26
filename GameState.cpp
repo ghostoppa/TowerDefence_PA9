@@ -133,7 +133,7 @@ void GameState::Draw()
 	}
 		this->data->window.draw(menuBackGround);
 
-
+		this->data->window.draw(*debugMoneyText);
 	for (sf::Sprite towers : towerArr)
 	{
 		this->data->window.draw(towers);
@@ -255,6 +255,7 @@ void GameState::Update()
 				data->projectileVector.erase(data->projectileVector.begin() + i);
 			}
 		}
+		this->debugMoneyText->setString("Swats: "+ std::to_string(this->mMoney));
 	}
 	//this->data->machine.AddState(StateRef(new EndGameState), true);
 }

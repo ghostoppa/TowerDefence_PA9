@@ -218,6 +218,7 @@
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Damage.cpp" />
+    <ClCompile Include="EndState.hpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FlameThrower.cpp" />

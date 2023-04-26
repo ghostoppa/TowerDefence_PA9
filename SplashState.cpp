@@ -12,7 +12,7 @@ void SplashState::Init()
 	
 		this->logo.setTexture(this->data->assets.getTexture("logo"));
 		this->background.setTexture(this->data->assets.getTexture("splashbackground"));
-		this->logo.setPosition(SCREEN_WIDTH / 2, 0);
+		this->logo.setPosition(SCREEN_WIDTH / 5, 0);
 	
 	}
 	catch (FileLoadError e)
