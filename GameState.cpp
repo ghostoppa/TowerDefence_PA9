@@ -144,6 +144,12 @@ void GameState::Draw()
 		this->data->window.draw(*debugMoneyText);
 		debugRoundsText->setString("Rounds: " + std::to_string(round));
 		this->data->window.draw(*debugRoundsText);
+
+		this->data->window.draw(*shopText);
+		this->data->window.draw(*shopText);
+		this->data->window.draw(*shopText);
+		this->data->window.draw(*shopText);
+		this->data->window.draw(*shopText);
 	}
 
 	for (sf::Sprite towers : towerArr)
