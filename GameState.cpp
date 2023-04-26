@@ -300,6 +300,6 @@ void GameState::Update()
 		}
 	}
 	else {
-		this->data->machine.AddState(StateRef(new EndState(this->data )), true);
+		this->data->machine.AddState(StateRef(new EndState(this->data)), true);
 	}
 }

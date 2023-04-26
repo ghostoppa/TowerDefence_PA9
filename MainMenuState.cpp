@@ -48,7 +48,7 @@ void MainMenuState::HandleInput()
 		if (this->data->inputs.IsSpriteClicked(this->playGameButton,
 			sf::Mouse::Left, this->data->window))
 		{
-			this->data->machine.AddState(StateRef(new GameState(this->data)), true);
+			this->data->machine.AddState(StateRef(new GameState(this->data)), false);
 		}
 	}
 }
