@@ -39,28 +39,38 @@ float Projectile::getYComponent(float angle) {
     return yComp;
 }
 
+void Projectile::getCorners(sf::Vector2f bottomRightCorner, sf::Vector2f topLeftCorner) {
+    
+}
+
+bool Projectile::collisionDetection(sf::Vector2f bottomRightCorner, sf::Vector2f topLeftCorner) {
+    return true;
+}
+
 bool Projectile::update(std::vector<Enemy>& enemyVector, std::vector<Projectile>& projectileVector) {
-	// frame time updater   //
+	// frame time updater       //
     tTime++;
-    //                      //
+    //                          //
 
-    // bullet velocity      //
+    // bullet position update   //
     this->setPosition(this->getPosition().x + (getXComponent(firedAngle) * fireVelocity), this->getPosition().y + (getYComponent(firedAngle) * fireVelocity));
-    //                      //
-
-    // enemy overlap checker//
-    if (pierce > 0) {
+    //                          //
+    
+    // enemy overlap checker    //
+    if (pierce > 0 && chain <= 0) {
         for (int i = 0; i < enemyVector.size(); ++i) {
-            if (this->getGlobalBounds().intersects(enemyVector.at(i).getGlobalBounds()) && aoe > 0 || pierce > 0) {
+            if (this->getGlobalBounds().intersects(enemyVector.at(i).getGlobalBounds()) && (aoe > 0 || pierce > 0)) {
                 enemyVector.at(i).subHealth(tDamage);
                 pierce--;
             }
         }
     }
-    //                      //
+    //                          //
 
-	if (tTime >= 20) {
-		return true;
+    //std::cout << "top: " << this->getGlobalBounds().top << " left: " << this->getGlobalBounds().left << std::endl;
+    
+    if (tTime >= 20 || (pierce <= 0 && aoe <= 0)) {
+        return true;
 	}
 
 	return false;

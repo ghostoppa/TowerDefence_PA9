@@ -212,7 +212,7 @@ void Tower::update(std::vector<Enemy>& enemyVector, std::vector<Projectile>& pro
             target = nullptr;
         }
     }
-    std::cout << getRange() << std::endl;
+
     // angle setting    //
     this->setRotation(angleToTarget);
     previousAngle = angleToTarget;
