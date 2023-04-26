@@ -16,7 +16,7 @@ public:
             projectileAOE = 0;          // default for kinetics is 0, first HE upgrade should be 10 pixel radius
             projectileChain = 0;        // this would act as ricochet and need a specialized projectile class
             projectilePierce = 0;       // default pierce for a particle cannon is 2
-            mPrice = fThrowPrice;       // defined in Definitions.hpp
+            mPrice = FLAME_THROWER_PRICE;       // defined in Definitions.hpp
             //          //
             // metadata //
             previousAngle = 0.0f;

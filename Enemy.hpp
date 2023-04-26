@@ -2,25 +2,12 @@
 #include "Entity.hpp"
 #include "LinearPath.hpp"
 
-class Enemy : public Entity, public sf::CircleShape
+class Enemy : public Entity, public sf::Sprite
 {
 public:
-    Enemy(int health, float speed, LinearPath& path) : mHealth(health), mMaxHealth(health), mSpeed(speed), mPath(path)
+    Enemy(sf::Texture& texture, int health, float speed, LinearPath& path) : mHealth(health), mMaxHealth(health), mSpeed(speed), mPath(path)
     {
-        this->setRadius(10.0f);
-        if (health >= 20) {
-            this->setFillColor(sf::Color::Red);
-        }
-        else if(health >= 10)
-        {
-            this->setFillColor(sf::Color::Yellow);
-        }
-        else
-        {
-            this->setFillColor(sf::Color::Green);
-        }
-            
-        
+        this->setTexture(texture);
         this->setOrigin(5.0f, 5.0f);
         mTime = 0;
         completed_path = false;
@@ -33,6 +20,8 @@ public:
     void subHealth(int num);
 
     ~Enemy() = default;
+
+    float rotation();
     void update() override;
 
     //Maybe we won't need this?

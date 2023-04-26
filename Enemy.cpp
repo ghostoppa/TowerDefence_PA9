@@ -1,5 +1,18 @@
 #include "Enemy.hpp"
 #include <iostream>
+
+float Enemy::rotation() {
+	sf::Vector2f target = mPath.getPointAlongPath(this->mSpeed, this->mTime+13), main = this->getPosition();
+	float xComp = 0, yComp = 0, angle = 0;
+
+	xComp = target.x - main.x;
+	yComp = target.y - main.y;
+
+	angle = atan2(yComp, xComp) * (180.0f / 3.14159f);
+
+	return angle;
+}
+
 void Enemy::update()
 {
 	if (!completed_path)
@@ -9,6 +22,7 @@ void Enemy::update()
 		if(target != sf::Vector2f(-1, -1))
 		{
 			this->setPosition(target);
+			this->setRotation(rotation());
 		}
 		else
 		{

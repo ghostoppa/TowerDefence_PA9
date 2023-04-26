@@ -1,7 +1,7 @@
 #include "Round.h"
 #include <iostream>
 
-void Round::fetchEnemy(int round_time, std::vector<Enemy>& enemyVector, LinearPath& path, int roundNum)
+void Round::fetchEnemy(AssetManager& enemies, int round_time, std::vector<Enemy>& enemyVector, LinearPath& path, int roundNum)
 {
 	if (delayTimer == 0 && mEnemyCount > 0)
 	{
@@ -12,31 +12,31 @@ void Round::fetchEnemy(int round_time, std::vector<Enemy>& enemyVector, LinearPa
 		{
 			if (roundNum >= 10)
 			{
-				enemyVector.push_back(Enemy(RED_HEALTH, RED_SPEED, path));
+				enemyVector.push_back(Enemy(enemies.getTexture("red"), RED_HEALTH, RED_SPEED, path));
 			}
 			else if (roundNum >= 5)
 			{
-				enemyVector.push_back(Enemy(YELLOW_HEALTH, YELLOW_SPEED, path));
+				enemyVector.push_back(Enemy(enemies.getTexture("yellow"), YELLOW_HEALTH, YELLOW_SPEED, path));
 			}
 			else
 			{
-				enemyVector.push_back(Enemy(GREEN_HEALTH, GREEN_SPEED, path));
+				enemyVector.push_back(Enemy(enemies.getTexture("green"), GREEN_HEALTH, GREEN_SPEED, path));
 			}
 		}
 		else if(randomSeed < mYellowChance)
 		{
 			if (roundNum >= 5)
 			{
-				enemyVector.push_back(Enemy(YELLOW_HEALTH, YELLOW_SPEED, path));
+				enemyVector.push_back(Enemy(enemies.getTexture("yellow"), YELLOW_HEALTH, YELLOW_SPEED, path));
 			}
 			else
 			{
-				enemyVector.push_back(Enemy(GREEN_HEALTH, GREEN_SPEED, path));
+				enemyVector.push_back(Enemy(enemies.getTexture("green"), GREEN_HEALTH, GREEN_SPEED, path));
 			}
 		}
 		else
 		{
-			enemyVector.push_back(Enemy(GREEN_HEALTH, GREEN_SPEED, path));
+			enemyVector.push_back(Enemy(enemies.getTexture("green"), GREEN_HEALTH, GREEN_SPEED, path));
 		}
 		
 		--mEnemyCount;

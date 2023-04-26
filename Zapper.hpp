@@ -16,7 +16,7 @@ public:
             projectileAOE = 0;          // useless for a zapper
             projectileChain = 3;        // default for zapper is max of 3 targets to hit per shot
             projectilePierce = 0;       // useless for a zapper
-            mPrice = zapPrice;          // defined in Definitions.hpp
+            mPrice = ZAPPER_PRICE;          // defined in Definitions.hpp
             //          //
             // metadata //
             previousAngle = 0.0f;

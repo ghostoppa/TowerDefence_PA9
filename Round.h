@@ -4,6 +4,7 @@
 #include "Enemy.hpp"
 #include "LinearPath.hpp"
 #include "Definitions.hpp"
+#include "AssetManager.hpp"
 
 class Round
 {
@@ -16,7 +17,7 @@ public:
 		mRedChance(c_red), maxSpawnDelay(maxDelay)
 	{};
 
-	void fetchEnemy(int round_time, std::vector<Enemy>& enemyVector, LinearPath& path, int roundNum);
+	void fetchEnemy(AssetManager& enemies, int round_time, std::vector<Enemy>& enemyVector, LinearPath& path, int roundNum);
 
 	bool isDone(std::vector<Enemy>& enemyVector);
 

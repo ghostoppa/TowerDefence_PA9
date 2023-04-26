@@ -28,6 +28,10 @@ constexpr auto PROJECTILE_TWO = "assets/img/particleBeam.png";
 constexpr auto PROJECTILE_THREE = "assets/img/firebolt.png";
 constexpr auto PROJECTILE_FOUR = "assets/img/firebolt.png";
 
+constexpr auto ENEMY_GREEN = "assets/img/mantis.png";
+constexpr auto ENEMY_YELLOW = "assets/img/ling.png";
+constexpr auto ENEMY_RED = "assets/img/beetle.png";
+
 //Sounds
 constexpr auto menuSound = "assets/Sounds/SneakyAdventure.ogg";
 constexpr auto gameSound = "assets/Sounds/KevinMacLeodGrooveGrove.flac";
@@ -39,10 +43,10 @@ constexpr auto RobotoRegular = "assets/font/Roboto-Bold.ttf";
 
 ////Stats////
 //Towers
-constexpr auto sprayerPrice = 200;
-constexpr auto pCanPrice = 250;
-constexpr auto fThrowPrice = 150;
-constexpr auto zapPrice = 100;
+constexpr auto SPRAYER_PRICE = 200;
+constexpr auto PARTICLE_CANNON_PRICE = 250;
+constexpr auto FLAME_THROWER_PRICE = 150;
+constexpr auto ZAPPER_PRICE = 100;
 //Enemies
 #define GREEN_HEALTH 5
 #define GREEN_SPEED 2.0f

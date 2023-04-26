@@ -34,6 +34,9 @@ void GameState::Init()
 		this->data->assets.loadTexture("Projectile2", PROJECTILE_TWO);
 		this->data->assets.loadTexture("Projectile3", PROJECTILE_THREE);
 		this->data->assets.loadTexture("Projectile4", PROJECTILE_FOUR);
+		this->data->assets.loadTexture("green", ENEMY_GREEN);
+		this->data->assets.loadTexture("yellow", ENEMY_YELLOW);
+		this->data->assets.loadTexture("red", ENEMY_RED);
 		this->data->assets.loadTexture("Map1", Map1File);
 		this->data->assets.loadTexture("MenuBackground", MENUBACKGROUND);
 
@@ -41,9 +44,9 @@ void GameState::Init()
 		this->towerArr[1].setTexture(data->assets.getTexture("Tower2"));
 		this->towerArr[2].setTexture(data->assets.getTexture("Tower3"));
 		this->towerArr[3].setTexture(data->assets.getTexture("Tower4"));
-
 		//this->towerArr[4].setTexture(data->assets.getTexture("Tower5"));
 		//this->towerArr[5].setTexture(data->assets.getTexture("Tower6"));
+
 		this->menuBackGround.setTexture(data->assets.getTexture("MenuBackground"));
 
 		this->data->assets.loadFont("roboto", RobotoNormal);
@@ -73,6 +76,7 @@ void GameState::Init()
 		towerArr[1].setPosition(560, 428);
 		towerArr[2].setPosition(560, 218);
 		towerArr[3].setPosition(560, 112);
+
 			/*towerArr[0].setPosition(580*(1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
 				20 * (1.0*this->data->window.getSize().y) / SCREEN_HEIGHT);
 			towerArr[1].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
@@ -85,6 +89,8 @@ void GameState::Init()
 				354 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
 			towerArr[5].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
 				430 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+			*/
+
 		sf::Vector2f size(60, 60), position(50, 50);
 		
 		cur_round = new Round(round * round, 20, 7, 20);
@@ -185,37 +191,53 @@ void GameState::doIconMove()
 					switch (i)
 					{
 					case 0:
-						if (mMoney < 200) break;
-						mMoney -= 200;
-						this->data->turretVector.push_back(Sprayer(this->data->assets.getTexture("Tower1"), this->data->assets.getTexture("Projectile1"), towerArr[i].getPosition()));
-						towerArr[0].setPosition(560, 320);
-						//towerArr[0].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-							//20 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+						if (mMoney >= SPRAYER_PRICE) {
+							mMoney -= SPRAYER_PRICE;
+							this->data->turretVector.push_back(Sprayer(this->data->assets.getTexture("Tower1"), this->data->assets.getTexture("Projectile1"), towerArr[i].getPosition()));
+							towerArr[0].setPosition(560, 320);
+							//towerArr[0].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+								//20 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+						}
+						else {
+							std::cout << "not enough swats, swat some more" << std::endl;
+						}
 						break;
 					case 1:
-						if (mMoney < 250) break;
-						mMoney -= 250;
-						this->data->turretVector.push_back(ParticleCannon(this->data->assets.getTexture("Tower2"), this->data->assets.getTexture("Projectile2"), towerArr[i].getPosition()));
-						towerArr[1].setPosition(560, 428);
-						//towerArr[1].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-							//100 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+						if (mMoney >= PARTICLE_CANNON_PRICE) {
+							mMoney -= PARTICLE_CANNON_PRICE;
+							this->data->turretVector.push_back(ParticleCannon(this->data->assets.getTexture("Tower2"), this->data->assets.getTexture("Projectile2"), towerArr[i].getPosition()));
+							towerArr[1].setPosition(560, 428);
+							//towerArr[1].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+								//100 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+						}
+						else {
+							std::cout << "not enough swats, swat some more" << std::endl;
+						}
 						break;
 					case 2:
-						if (mMoney < 150) break;
-						mMoney -= 150;
-						this->data->turretVector.push_back(FlameThrower(this->data->assets.getTexture("Tower3"), this->data->assets.getTexture("Projectile3"), towerArr[i].getPosition()));
-						towerArr[2].setPosition(560, 218);
-						//towerArr[2].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-							//180 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+						if (mMoney >= FLAME_THROWER_PRICE) {
+							mMoney -= FLAME_THROWER_PRICE;
+							this->data->turretVector.push_back(FlameThrower(this->data->assets.getTexture("Tower3"), this->data->assets.getTexture("Projectile3"), towerArr[i].getPosition()));
+							towerArr[2].setPosition(560, 218);
+							//towerArr[2].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+								//180 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+						}
+						else {
+							std::cout << "not enough swats, swat some more" << std::endl;
+						}
 						break;
 					case 3:
-						if (mMoney < 100) break;
-						mMoney -= 100;
-						this->data->turretVector.push_back(Zapper(this->data->assets.getTexture("Tower4"), this->data->assets.getTexture("Projectile4"), towerArr[i].getPosition()));
-						towerArr[3].setPosition(560, 112);
-						//towerArr[3].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-							//180 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
-						break;
+						if (mMoney >= ZAPPER_PRICE) {
+							mMoney -= ZAPPER_PRICE;
+							this->data->turretVector.push_back(Zapper(this->data->assets.getTexture("Tower4"), this->data->assets.getTexture("Projectile4"), towerArr[i].getPosition()));
+							towerArr[3].setPosition(560, 112);
+							//towerArr[3].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+								//180 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+							break;
+						}
+						else {
+							std::cout << "not enough swats, swat some more" << std::endl;
+						}
 						this->towerArr[i].setColor(sf::Color(255, 255, 255, 255));
 					}
 				}
@@ -245,7 +267,7 @@ void GameState::Update()
 	}
 	
 	if (!isGameOver()) {
-		cur_round->fetchEnemy(time, this->data->enemyVector, *testMap->getPath(), round);
+		cur_round->fetchEnemy(this->data->assets, time, this->data->enemyVector, *testMap->getPath(), round);
 
 		for (int i = 0; i < this->data->enemyVector.size(); ++i)
 		{
