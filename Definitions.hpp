@@ -14,7 +14,7 @@ constexpr auto PLAY_BTN = "assets/img/startbtn.png";
 constexpr auto LOAD_BTN = "assets/img/loadbtn.png";
 constexpr auto SPLASH = "assets/img/splogo.png";
 constexpr auto SPLASHBG = "assets/img/SplashBackground.png";
-constexpr auto MENUBACKGROUND = "assets/img/testMenu.png";
+constexpr auto MENUBACKGROUND = "assets/img/testMenu2.png";
 
 constexpr auto TOWER_ONE = "assets/img/sprayer.png";
 constexpr auto TOWER_TWO = "assets/img/particleCannon.png";
@@ -39,9 +39,9 @@ constexpr auto RobotoRegular = "assets/font/Roboto-Bold.ttf";
 
 ////Stats////
 //Towers
-constexpr auto sprayerPrice = 250;
-constexpr auto pCanPrice = 150;
-constexpr auto fThrowPrice = 200;
+constexpr auto sprayerPrice = 200;
+constexpr auto pCanPrice = 250;
+constexpr auto fThrowPrice = 150;
 constexpr auto zapPrice = 100;
 //Enemies
 #define GREEN_HEALTH 5
