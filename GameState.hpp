@@ -47,7 +47,7 @@ private:
 	int round;
 	int time;
 	int which;
-
+	sf::Clock clock;
 	sf::Text* debugLivesText;
 	sf::Text* debugMoneyText;
 	sf::Text* debugRoundsText;

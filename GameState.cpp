@@ -175,6 +175,7 @@ void GameState::doIconMove()
 			break;
 			this->towerArr[i].setColor(sf::Color(255, 255, 255, 200));
 		}
+			
 	
 		//This is supposed to see if it is in a hit box
 		if (this->data->inputs.IsSpriteClicked(this->towerArr[i], sf::Mouse::Right, this->data->window))
@@ -263,6 +264,16 @@ void GameState::Update()
 			++round;
 			delete cur_round;
 			cur_round = new Round(round * round, 20, 7, 20);
+			float time = 0.0;
+			time = this->clock.getElapsedTime().asSeconds();
+			int castTime = time;
+			if (castTime %= 20) {
+				towerArr[0].setPosition(560, 320);
+				towerArr[1].setPosition(560, 428);
+				towerArr[2].setPosition(560, 218);
+				towerArr[3].setPosition(560, 112);
+				std::cout << "CastTime:" << castTime << std::endl;
+			}
 		}
 	}
 	
