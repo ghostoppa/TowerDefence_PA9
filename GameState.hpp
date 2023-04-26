@@ -29,7 +29,7 @@ private:
 
 	GameDataRef data;
 	//Tower* testTower;
-	sf::Sprite towerArr[6];
+	sf::Sprite towerArr[4];
 
 	std::vector<Tower> placedTowers;
 	void	 doIconMove();
@@ -50,7 +50,12 @@ private:
 	sf::Text* debugLivesText;
 	sf::Text* debugMoneyText;
 	sf::Text* debugRoundsText;
-	
+	sf::Text* shopText;
+	sf::Text* t1Title;
+	sf::Text* t2Title;
+	sf::Text* t3Title;
+	sf::Text* t4Title;
+
 	Round* cur_round;
 	
 	Map* testMap;

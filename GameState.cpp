@@ -36,8 +36,8 @@ void GameState::Init()
 		this->data->assets.loadTexture("Tower2", TOWER_TWO);
 		this->data->assets.loadTexture("Tower3", TOWER_THREE);
 		this->data->assets.loadTexture("Tower4", TOWER_FOUR);
-		this->data->assets.loadTexture("Tower5", TOWER_FIVE);
-		this->data->assets.loadTexture("Tower6", TOWER_SIX);
+		//this->data->assets.loadTexture("Tower5", TOWER_FIVE);
+		//this->data->assets.loadTexture("Tower6", TOWER_SIX);
 		this->data->assets.loadTexture("Projectile1", PROJECTILE_ONE);
 		this->data->assets.loadTexture("Projectile2", PROJECTILE_TWO);
 		this->data->assets.loadTexture("Projectile3", PROJECTILE_THREE);
@@ -49,25 +49,27 @@ void GameState::Init()
 		this->towerArr[1].setTexture(data->assets.getTexture("Tower2"));
 		this->towerArr[2].setTexture(data->assets.getTexture("Tower3"));
 		this->towerArr[3].setTexture(data->assets.getTexture("Tower4"));
-		this->towerArr[4].setTexture(data->assets.getTexture("Tower5"));
-		this->towerArr[5].setTexture(data->assets.getTexture("Tower6"));
+		//this->towerArr[4].setTexture(data->assets.getTexture("Tower5"));
+		//this->towerArr[5].setTexture(data->assets.getTexture("Tower6"));
 		this->menuBackGround.setTexture(data->assets.getTexture("MenuBackground"));
 
 		this->data->assets.loadFont("roboto", RobotoNormal);
 		this->data->assets.loadFont("myth", MythologyFont);
 
-		//this->data->turretVector.push_back(*testTower);
 		testMap = new Map(data->assets.getTexture("Map1"), "assets/data/map1/path.txt", "assets/data/map1/hitboxes.txt");
 
-		Tower* testTower = new FlameThrower(data->assets.getTexture("Tower3"), data->assets.getTexture("Projectile3"), sf::Vector2f(400.0f, 200.0f));
-		data->turretVector.push_back(*testTower);
+		//Tower* testTower = new FlameThrower(data->assets.getTexture("Tower3"), data->assets.getTexture("Projectile3"), sf::Vector2f(400.0f, 200.0f));
+		//data->turretVector.push_back(*testTower);
 
 		/////Set text boxes/////
 		debugLivesText = new sf::Text("Lives: ", data->assets.getFont("roboto"), 24);
 		debugLivesText->setPosition(0, 0);
 		debugLivesText->setFillColor(sf::Color::Blue);
+		shopText = new sf::Text("SHOP", data->assets.getFont("roboto"), 24);
+		shopText->setPosition(520, 0);
+		shopText->setFillColor(sf::Color::Green);
 		debugMoneyText = new sf::Text("Money: ", data->assets.getFont("roboto"), 24);
-		debugMoneyText->setPosition(530, 0);
+		debugMoneyText->setPosition(520, 25);
 		debugMoneyText->setFillColor(sf::Color::Green);
 		debugRoundsText = new sf::Text("Rounds: ", data->assets.getFont("roboto"), 24);
 		debugRoundsText->setPosition(0, 25);
@@ -78,17 +80,17 @@ void GameState::Init()
 		this->menuBackGround.setScale(.8, .8);
 			
 			towerArr[0].setPosition(580*(1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-				20 * (1.0*this->data->window.getSize().y) / SCREEN_HEIGHT);
+				100 * (1.0*this->data->window.getSize().y) / SCREEN_HEIGHT);
 			towerArr[1].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-				100 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+				200 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
 			towerArr[2].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-				180 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+				300 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
 			towerArr[3].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-				270*(1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
-			towerArr[4].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-				354 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
-			towerArr[5].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-				430 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+				400*(1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+			//towerArr[4].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+			//	354 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+			//towerArr[5].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+			//	430 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
 		sf::Vector2f size(60, 60), position(50, 50);
 		
 		cur_round = new Round(round * round, 20, 7, 20);
@@ -159,7 +161,7 @@ void GameState::Draw()
 
 void GameState::doIconMove()
 {
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < 4; i++) {
 		if (this->data->inputs.IsSpriteClicked(this->towerArr[i], sf::Mouse::Left, this->data->window))
 		{
 			sf::Vector2i mousePos(sf::Mouse::getPosition(this->data->window));

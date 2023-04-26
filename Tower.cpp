@@ -190,6 +190,19 @@ void Tower::fireProjectile(std::vector<Projectile>& projectileVector) {
 
 
 
+int Tower::getKills() {
+    return mKills;
+}
+
+
+
+int Tower::getPrice()
+{
+    return this->mPrice;
+}
+
+
+
 float Tower::getRange() {
     return this->fireRange;
 }
@@ -225,11 +238,6 @@ void Tower::update(std::vector<Enemy>& enemyVector, std::vector<Projectile>& pro
         mTime = 0;
     }
     //                          //
-}
-
-int Tower::getPrice()
-{
-    return this->mPrice;
 }
 
 void Tower::render()

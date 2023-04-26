@@ -6,7 +6,7 @@ public:
     Sprayer(sf::Texture& texture, sf::Texture& tProjectile, const sf::Vector2f& position) {
         // initializer  //
             // stats    //
-            fireRate = .2f * 60;        // seconds * framerate so that mTime can properly time shots
+            fireRate = .33f * 60;        // seconds * framerate so that mTime can properly time shots
             fireRange = 75.0f;          // range of turret
             mTime = 0;
             projectile = &tProjectile;  // projectile texture
@@ -17,7 +17,6 @@ public:
             projectileChain = 0;        // useless for a sprayer
             projectilePierce = 0;       // useless for a sprayer
             mPrice = sprayerPrice;      // defined in Definitions.hpp
-
             //          //
             // metadata //
             previousAngle = 0.0f;

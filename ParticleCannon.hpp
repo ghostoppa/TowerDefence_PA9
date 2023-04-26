@@ -17,7 +17,6 @@ public:
             projectileChain = 0;        // this would act as ricochet and need a specialized projectile class
             projectilePierce = 2;       // default pierce for a particle cannon is 2
             mPrice = pCanPrice;         // defined in Definitions.hpp
-
             //          //
             // metadata //
             this->previousAngle = 0.0f;

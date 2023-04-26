@@ -24,6 +24,8 @@ public:
             projectileAOE = 0;
             projectileChain = 0;
             projectilePierce = 2;
+            mPrice = 0;
+            mKills = 0;
             //          //
             // metadata //
             previousAngle = 0.0f;
@@ -47,6 +49,7 @@ public:
 
     void fireProjectile(std::vector<Projectile>& projectileVector);
 
+    int getKills();
     int getPrice();
     float getRange();
 
@@ -70,5 +73,6 @@ protected:
     float previousAngle;
     float previousDistanceToTarget;
     int mTime;
+    int mKills;
     int mPrice;
 };
