@@ -161,11 +161,13 @@ void GameState::doIconMove()
 					this->towerArr[i].getTexture()->getSize().y / 2.0f));
 			std::cout << " x: " << sf::Mouse::getPosition((this->data->window)).x << " y: " << sf::Mouse::getPosition((this->data->window)).y << std::endl;;
 			break;
+			this->towerArr[i].setColor(sf::Color(255, 255, 255, 200));
 		}
 	
 		//This is supposed to see if it is in a hit box
 		if (this->data->inputs.IsSpriteClicked(this->towerArr[i], sf::Mouse::Right, this->data->window))
 		{		
+			
 			std::vector<sf::RectangleShape> hitboxes = *(testMap->getHitboxes());
 			for (sf::RectangleShape boxes : hitboxes)
 			{
@@ -211,12 +213,15 @@ void GameState::doIconMove()
 						//towerArr[3].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
 							//180 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
 						break;
-
+						this->towerArr[i].setColor(sf::Color(255, 255, 255, 255));
 					}
 				}
 			}
+			
 		}
+	
 	}
+	
 }
 
 bool GameState::isGameOver()
@@ -270,7 +275,9 @@ void GameState::Update()
 			}
 		}
 	}
-	//this->data->machine.AddState(StateRef(new EndGameState), true);
+	else {
+		this->data->machine.AddState(StateRef(new EndState(this->data )), true);
+	}
 }
 
 	
