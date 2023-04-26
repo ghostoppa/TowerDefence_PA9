@@ -33,9 +33,14 @@ void EndState::Update()
 {
 	if (this->clock.getElapsedTime().asSeconds() > 30)
 	{
+<<<<<<< HEAD
+		this->data->machine.RemoveState();
+		
+=======
 		this->data->machine.AddState(StateRef(new MainMenuState(this->data)), true);
 		this->data->machine.ProcessStateChanges();
 
+>>>>>>> 079478d41374fcf3ae8d8110c9530b48e6f8a9db
 	}
 }
 

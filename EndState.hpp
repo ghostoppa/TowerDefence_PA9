@@ -4,7 +4,6 @@
 #include "Definitions.hpp"
 #include "State.hpp"
 #include "GameClassWip.hpp"
-#include "MainMenuState.h"
 
 class GameState;
 
