@@ -26,7 +26,7 @@ public:
         
         markDestroy = false;
         setTexture(texture, true);
-        this->setOrigin(2, texture.getSize().y / 2);
+        this->setOrigin(2, (float)texture.getSize().y / 2);
         this->setRotation(firedAngle);
         this->setPosition(position.x + (getXComponent(angle) * 15), position.y + (getYComponent(angle) * 15));
         //

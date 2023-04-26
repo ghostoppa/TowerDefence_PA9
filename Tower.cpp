@@ -192,7 +192,7 @@ void Tower::update(std::vector<Enemy>& enemyVector, std::vector<Projectile>& pro
     float angleToTarget = previousAngle, distance = 0.0f;
 
     if (target != nullptr && target->getCurHealth() <= 0) {
-        target == nullptr;
+        target = nullptr;
     }
     // acquire/maintain target  //
     target = getTarget(enemyVector, priorityType);

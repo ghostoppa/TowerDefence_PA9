@@ -2,17 +2,20 @@
 #include <sstream>
 #include <SFML/Graphics.hpp>
 #include <string>
+
 #include "Definitions.hpp"
 #include "State.hpp"
 #include "GameClassWip.hpp"
 #include "EndState.hpp"
+
 #include "LinearPath.hpp"
 #include "Enemy.hpp"
 #include "TurretWrapper.hpp"
 #include "Round.h"
 #include "Map.hpp"
 
-class   GameState : public State
+
+class GameState : public State
 {
 public:
 	GameState(GameDataRef ref);

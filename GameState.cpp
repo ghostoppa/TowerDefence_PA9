@@ -14,6 +14,7 @@ GameState::GameState(GameDataRef ref) : data(ref)
 	playerLives = 100;
 	round = 1;
 	time = 0;
+	which = 0;
 }
 
 void GameState::Init()
@@ -71,7 +72,7 @@ void GameState::Init()
 
 		this->menuBackGround.setPosition(512, 0);
 		this->menuBackGround.setColor(sf::Color(255, 255, 255, 200));
-		this->menuBackGround.setScale(.8, .8);
+		this->menuBackGround.setScale(.8f, .8f);
 			
 		towerArr[0].setPosition(560, 320);
 		towerArr[1].setPosition(560, 428);
