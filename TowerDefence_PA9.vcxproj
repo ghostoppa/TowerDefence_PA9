@@ -237,6 +237,7 @@
     <Text Include="assets\data\map1\hitboxes.txt" />
     <Text Include="assets\data\map1\path.txt" />
     <Text Include="profile1.txt" />
+    <Text Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\Sounds\KevinMacLeodGrooveGrove.flac" />
