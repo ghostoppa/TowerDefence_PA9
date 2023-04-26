@@ -1,12 +1,11 @@
 #pragma once
-#include "Interactable.h"
 #include <sstream>
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "Definitions.hpp"
 #include "State.hpp"
 #include "GameClassWip.hpp"
-
+#include "EndState.hpp"
 #include "LinearPath.hpp"
 #include "Enemy.hpp"
 #include "TurretWrapper.hpp"
