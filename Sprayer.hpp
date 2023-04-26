@@ -16,6 +16,8 @@ public:
             projectileAOE = 75.0f;      // default for sprayer is it's range
             projectileChain = 0;        // useless for a sprayer
             projectilePierce = 0;       // useless for a sprayer
+            mPrice = sprayerPrice;      // defined in Definitions.hpp
+
             //          //
             // metadata //
             previousAngle = 0.0f;

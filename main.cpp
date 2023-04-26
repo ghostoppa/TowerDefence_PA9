@@ -25,7 +25,7 @@
 #include "GameClassWip.hpp"
 int main()
 {
-    GameWip game(SCREEN_WIDTH, SCREEN_HEIGHT, "TEST NAME");
+    GameWip game(SCREEN_WIDTH, SCREEN_HEIGHT, "Swarm Patrol");
     //Game newGame;
    // newGame.startGame(LEVEL1, window);
     

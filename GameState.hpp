@@ -2,6 +2,7 @@
 #include "Interactable.h"
 #include <sstream>
 #include <SFML/Graphics.hpp>
+#include <string>
 #include "Definitions.hpp"
 #include "State.hpp"
 #include "GameClassWip.hpp"
