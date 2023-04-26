@@ -2,14 +2,19 @@
 GameState::GameState(GameDataRef ref) : data(ref)
 {
 	cur_round = nullptr;
-	debugLivesText = nullptr;
 	//testTower = nullptr;
 	testMap = nullptr;
 	debugLivesText = nullptr;
 	debugMoneyText = nullptr;
 	debugRoundsText = nullptr;
+	shopText = nullptr;
+	t1Title = nullptr;
+	t2Title = nullptr;
+	t3Title = nullptr;
+	t4Title = nullptr;
+
 	isMoving = false;
-	mMoney = 0;
+	mMoney = 150;
 	playerLives = 100;
 	round = 1;
 	time = 0;
@@ -49,6 +54,7 @@ void GameState::Init()
 		this->menuBackGround.setTexture(data->assets.getTexture("MenuBackground"));
 
 		this->data->assets.loadFont("roboto", RobotoNormal);
+		this->data->assets.loadFont("myth", MythologyFont);
 
 		//this->data->turretVector.push_back(*testTower);
 		testMap = new Map(data->assets.getTexture("Map1"), "assets/data/map1/path.txt", "assets/data/map1/hitboxes.txt");
@@ -56,14 +62,15 @@ void GameState::Init()
 		Tower* testTower = new FlameThrower(data->assets.getTexture("Tower3"), data->assets.getTexture("Projectile3"), sf::Vector2f(400.0f, 200.0f));
 		data->turretVector.push_back(*testTower);
 
+		/////Set text boxes/////
 		debugLivesText = new sf::Text("Lives: ", data->assets.getFont("roboto"), 24);
 		debugLivesText->setPosition(0, 0);
 		debugLivesText->setFillColor(sf::Color::Blue);
 		debugMoneyText = new sf::Text("Money: ", data->assets.getFont("roboto"), 24);
-		debugMoneyText->setPosition(0, 25);
-		debugMoneyText->setFillColor(sf::Color::Blue);
-		debugRoundsText = new sf::Text("Money: ", data->assets.getFont("roboto"), 24);
-		debugRoundsText->setPosition(530, 0);
+		debugMoneyText->setPosition(530, 0);
+		debugMoneyText->setFillColor(sf::Color::Green);
+		debugRoundsText = new sf::Text("Rounds: ", data->assets.getFont("roboto"), 24);
+		debugRoundsText->setPosition(0, 25);
 		debugRoundsText->setFillColor(sf::Color::Blue);
 
 		this->menuBackGround.setPosition(520, -20);
@@ -103,7 +110,6 @@ void GameState::HandleInput()
 		}
 		//Logic to be added to place on right click;
 		this->doIconMove();
-		
 	}
 }
 
@@ -126,14 +132,18 @@ void GameState::Draw()
 		this->data->window.draw(p);
 	}
 
-	if (debugLivesText)
+	this->data->window.draw(menuBackGround);
+
+	if (debugLivesText && debugMoneyText && debugRoundsText)
 	{
 		debugLivesText->setString("Lives: " + std::to_string(playerLives));
 		this->data->window.draw(*debugLivesText);
-	}
-		this->data->window.draw(menuBackGround);
-
+		debugMoneyText->setString("Swats: " + std::to_string(mMoney));
 		this->data->window.draw(*debugMoneyText);
+		debugRoundsText->setString("Rounds: " + std::to_string(round));
+		this->data->window.draw(*debugRoundsText);
+	}
+
 	for (sf::Sprite towers : towerArr)
 	{
 		this->data->window.draw(towers);
@@ -255,7 +265,6 @@ void GameState::Update()
 				data->projectileVector.erase(data->projectileVector.begin() + i);
 			}
 		}
-		this->debugMoneyText->setString("Swats: "+ std::to_string(this->mMoney));
 	}
 	//this->data->machine.AddState(StateRef(new EndGameState), true);
 }
