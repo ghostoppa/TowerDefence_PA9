@@ -36,6 +36,14 @@ constexpr auto MythologyFont = "assets/fonts/Mythology.ttf";
 constexpr auto RobotoNormal = "assets/fonts/Roboto-Regular.ttf";
 constexpr auto RobotoRegular = "assets/font/Roboto-Bold.ttf";
 
+
+////Stats////
+//Towers
+constexpr auto sprayerPrice = 250;
+constexpr auto pCanPrice = 150;
+constexpr auto fThrowPrice = 200;
+constexpr auto zapPrice = 100;
+//Enemies
 #define GREEN_HEALTH 5
 #define GREEN_SPEED 2.0f
 #define YELLOW_HEALTH 10

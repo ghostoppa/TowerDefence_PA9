@@ -227,7 +227,10 @@ void Tower::update(std::vector<Enemy>& enemyVector, std::vector<Projectile>& pro
     //                          //
 }
 
-
+int Tower::getPrice()
+{
+    return this->mPrice;
+}
 
 void Tower::render()
 {

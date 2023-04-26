@@ -47,6 +47,7 @@ public:
 
     void fireProjectile(std::vector<Projectile>& projectileVector);
 
+    int getPrice();
     float getRange();
 
     void update(std::vector<Enemy>& enemyVector, std::vector<Projectile>& projectileVector);
@@ -69,4 +70,5 @@ protected:
     float previousAngle;
     float previousDistanceToTarget;
     int mTime;
+    int mPrice;
 };

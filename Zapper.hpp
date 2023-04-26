@@ -16,6 +16,8 @@ public:
             projectileAOE = 0;          // useless for a zapper
             projectileChain = 3;        // default for zapper is max of 3 targets to hit per shot
             projectilePierce = 0;       // useless for a zapper
+            mPrice = zapPrice;          // defined in Definitions.hpp
+           
             //          //
             // metadata //
             previousAngle = 0.0f;
@@ -23,7 +25,7 @@ public:
             priorityType = 1;           // default for particle cannons is strong targeting
             target = nullptr;
             //          //
-        //              //
+            //          //
 
         setTexture(texture, true);
         this->setOrigin(20.0f, 20.0f);
