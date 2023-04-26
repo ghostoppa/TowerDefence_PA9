@@ -6,10 +6,18 @@
 #include "GameClassWip.hpp"
 #include "MainMenuState.h"
 
-class    EndState: public State
+class GameState;
+
+class EndState : public State
 {
 public:
-	EndState(GameDataRef ref);
+	EndState(GameDataRef ref) : data(ref)
+	{
+		EndText = nullptr;
+		debugRoundsText = nullptr;
+		mMoney = 0;
+		round = 0;
+	};
 
 
 	void Init();

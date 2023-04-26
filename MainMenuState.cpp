@@ -1,4 +1,5 @@
 #include "MainMenuState.h"
+#include "GameState.hpp"
 #include <iostream>
 MainMenuState::MainMenuState(GameDataRef data) : data(data)
 {}

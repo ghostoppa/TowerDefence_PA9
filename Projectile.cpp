@@ -1,7 +1,7 @@
 #include "Projectile.h"
 
 float Projectile::getXComponent(float angle) {
-    float xComp = 0, radian = 3.14159 / 180;
+    float xComp = 0, radian = 3.14159f / 180.0f;
     if (angle <= 90) {
         xComp = (cos(angle * radian));
     }
@@ -20,7 +20,7 @@ float Projectile::getXComponent(float angle) {
     return xComp;
 }
 float Projectile::getYComponent(float angle) {
-    float yComp = 0, radian = 3.14159 / 180;
+    float yComp = 0, radian = 3.14159f / 180.0f;
     if (angle <= 90) {
         yComp = (sin(angle * radian));
     }
