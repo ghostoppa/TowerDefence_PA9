@@ -20,8 +20,8 @@ void GameWip::Run()
 				this->data->machine.ProcessStateChanges();
 				this->data->machine.GetActiveState()->HandleInput();
 				
-				this->data->machine.GetActiveState()->Draw();
 				this->data->machine.GetActiveState()->Update();
+				this->data->machine.GetActiveState()->Draw();
 
 			}
 		}

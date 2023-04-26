@@ -53,7 +53,7 @@ void GameState::Init()
 		//this->data->turretVector.push_back(*testTower);
 		testMap = new Map(data->assets.getTexture("Map1"), "assets/data/map1/path.txt", "assets/data/map1/hitboxes.txt");
 
-		Tower* testTower = new ParticleCannon(data->assets.getTexture("Tower2"), data->assets.getTexture("Projectile2"), sf::Vector2f(400.0f, 200.0f));
+		Tower* testTower = new FlameThrower(data->assets.getTexture("Tower3"), data->assets.getTexture("Projectile3"), sf::Vector2f(400.0f, 200.0f));
 		data->turretVector.push_back(*testTower);
 
 		debugLivesText = new sf::Text("Lives: ", data->assets.getFont("roboto"), 24);
@@ -135,8 +135,8 @@ void GameState::Draw()
 
 
 	for (sf::Sprite towers : towerArr){
-	this->data->window.draw(towers);
-			}
+		this->data->window.draw(towers);
+	}
 
 	for (Tower displayTowers : this->placedTowers)
 	{
