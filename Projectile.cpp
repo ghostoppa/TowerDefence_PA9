@@ -60,7 +60,6 @@ bool Projectile::update(std::vector<Enemy>& enemyVector, std::vector<Projectile>
     if (pierce > 0 && chain <= 0) {
         for (int i = 0; i < enemyVector.size(); ++i) {
             if (this->getGlobalBounds().intersects(enemyVector.at(i).getGlobalBounds()) && (aoe > 0 || pierce > 0)) {
-                std::cout << this->getGlobalBounds().left << std::endl;
                 enemyVector.at(i).subHealth(tDamage);
                 pierce--;
             }
