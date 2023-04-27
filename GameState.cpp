@@ -264,6 +264,7 @@ void GameState::Update()
 			++round;
 			delete cur_round;
 			cur_round = new Round(round * round, 20, 7, 20);
+			//this keep the level clea
 			float time = 0.0;
 			time = this->clock.getElapsedTime().asSeconds();
 			int castTime = time;

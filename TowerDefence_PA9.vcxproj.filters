@@ -25,6 +25,9 @@
     <Filter Include="Resource Files\Sounds">
       <UniqueIdentifier>{7275d113-2fb4-4f95-a3b7-10c455fc20bc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TestAssets">
+      <UniqueIdentifier>{3a724201-c3a2-4cdd-bfba-2cda463864e8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="openal32.dll">
@@ -140,6 +143,9 @@
     <ClInclude Include="TurretWrapper.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Test.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="StateMachine.cpp">
@@ -196,6 +202,9 @@
     <ClCompile Include="EndState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\img\map1.png">
@@ -231,6 +240,9 @@
     <Image Include="assets\img\zapper.png">
       <Filter>Resource Files\images</Filter>
     </Image>
+    <Image Include="assets\img\TEXTURETEXT.png">
+      <Filter>TestAssets</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="assets\data\map1\hitboxes.txt" />
@@ -247,5 +259,13 @@
     <None Include="assets\Sounds\SneakyAdventure.ogg">
       <Filter>Resource Files\Sounds</Filter>
     </None>
+    <None Include="assets\Sounds\TESTSOUND.ogg">
+      <Filter>TestAssets</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\Open 24 Display St.ttf">
+      <Filter>TestAssets</Filter>
+    </Font>
   </ItemGroup>
 </Project>
