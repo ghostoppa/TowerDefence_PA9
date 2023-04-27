@@ -15,4 +15,8 @@ Lilith Sutton (Lab Section 6)
 
 Zachary Johnston (Lab Section 1)
 
+<<<<<<< HEAD
 Lilly Ollerman (Lab Section 7)
+=======
+Lilly Ollerman (Lab Section 7)
+>>>>>>> d2b00e7bd8b995a0387b43a35bbb024563876b61

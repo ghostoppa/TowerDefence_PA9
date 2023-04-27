@@ -6,6 +6,7 @@
 Test::Test()
 {
 	int choice = 0;
+<<<<<<< HEAD
 	std::cout << "Please Make a selection of which test to preform" << std::endl;
 	std::cout << "Option 1: splash state test" << std::endl;
 	std::cout << "Option 2: menu state button test" << std::endl;
@@ -22,6 +23,13 @@ Test::Test()
 	{
 	case 1:
 		splashStateTransTest();
+=======
+	std::cout << "Please Make a selection of which test to perform or enter 6 to start game: " << std::endl;
+	std::cin >> choice;
+	switch (choice)
+	{
+	case 1: AssetManagerTest();
+>>>>>>> d2b00e7bd8b995a0387b43a35bbb024563876b61
 		break;
 	case 2:
 		menuStateTransTest();
@@ -35,7 +43,8 @@ Test::Test()
 	case 5:
 		InputManagerTest();
 		break;
-
+	case 6: std::cout << "Continuing to game..." << std::endl;
+		break;
 	}
 }
 
@@ -158,7 +167,16 @@ void Test::AssetManagerTest()
 			newWindow.draw(textSprite);
 		newWindow.draw(text);
 		newWindow.display();
+<<<<<<< HEAD
 	fd.play();
+=======
+		newAssetManager.getSound("testSound").play();
+
+		while (newClock.getElapsedTime().asSeconds() < 10) {
+
+		}
+		newWindow.close();
+>>>>>>> d2b00e7bd8b995a0387b43a35bbb024563876b61
 
 		while (newClock.getElapsedTime().asSeconds() <= 10);
 	
