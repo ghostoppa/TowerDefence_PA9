@@ -3,11 +3,11 @@
 Test::Test()
 {
 	int choice = 0;
-	std::cout << "Please Make a selection of which test to preform" << std::endl;
+	std::cout << "Please Make a selection of which test to perform or enter 6 to start game: " << std::endl;
 	std::cin >> choice;
 	switch (choice)
 	{
-	case 1:
+	case 1: AssetManagerTest();
 		break;
 	case 2:
 		break;
@@ -17,7 +17,8 @@ Test::Test()
 		break;
 	case 5:
 		break;
-
+	case 6: std::cout << "Continuing to game..." << std::endl;
+		break;
 	}
 }
 
@@ -49,7 +50,7 @@ void Test::AssetManagerTest()
 		newWindow.display();
 		newAssetManager.getSound("testSound").play();
 
-		while (newClock.getElapsedTime().asSeconds() <50) {
+		while (newClock.getElapsedTime().asSeconds() < 10) {
 
 		}
 		newWindow.close();
