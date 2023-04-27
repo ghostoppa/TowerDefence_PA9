@@ -5,6 +5,7 @@
 #include "Damage.hpp"
 #include "Enemy.hpp"
 #include "Entity.hpp"
+
 class Projectile : public Entity, public sf::Sprite {
 public:
     Projectile(sf::Texture& texture, const sf::Vector2f& position, float angle, int damage, float range, float velocity, float pAOE, int pChain, int pPierce) {

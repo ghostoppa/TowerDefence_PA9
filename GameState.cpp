@@ -8,6 +8,7 @@ GameState::GameState(GameDataRef ref) : data(ref)
 	debugLivesText = nullptr;
 	debugMoneyText = nullptr;
 	debugRoundsText = nullptr;
+	debugTurretKillsText = nullptr;
 
 	isMoving = false;
 	mMoney = 150;
@@ -20,8 +21,8 @@ GameState::GameState(GameDataRef ref) : data(ref)
 void GameState::Init()
 {
 
-			this->data->curSound.stop();
-		this->data->curSound.openFromFile(gameSound);
+	this->data->curSound.stop();
+	this->data->curSound.openFromFile(gameSound);
 	this->data->curSound.play();
 	this->data->curSound.setLoop(true);
 	try
@@ -41,6 +42,7 @@ void GameState::Init()
 		this->data->assets.loadTexture("red", ENEMY_RED);
 		this->data->assets.loadTexture("Map1", Map1File);
 		this->data->assets.loadTexture("MenuBackground", MENUBACKGROUND);
+		this->data->assets.loadTexture("button1", BUTTON_FANCY);
 
 		this->towerArr[0].setTexture(data->assets.getTexture("Tower1"));
 		this->towerArr[1].setTexture(data->assets.getTexture("Tower2"));
@@ -50,6 +52,7 @@ void GameState::Init()
 		//this->towerArr[5].setTexture(data->assets.getTexture("Tower6"));
 
 		this->menuBackGround.setTexture(data->assets.getTexture("MenuBackground"));
+		this->statBlock.setTexture(data->assets.getTexture("button1"));
 
 		this->data->assets.loadFont("roboto", RobotoNormal);
 		this->data->assets.loadFont("myth", MythologyFont);
@@ -69,35 +72,41 @@ void GameState::Init()
 		debugRoundsText = new sf::Text("Rounds: ", data->assets.getFont("roboto"), 24);
 		debugRoundsText->setPosition(0, 25);
 		debugRoundsText->setFillColor(sf::Color::Blue);
+		debugTurretKillsText = new sf::Text("Kills: ", data->assets.getFont("myth"), 24);
+		debugTurretKillsText->setPosition(7, 400);
+		debugTurretKillsText->setFillColor(sf::Color::Black);
 
 		this->menuBackGround.setPosition(512, 0);
 		this->menuBackGround.setColor(sf::Color(255, 255, 255, 200));
 		this->menuBackGround.setScale(.8f, .8f);
-			
+
+		this->statBlock.setPosition(5, 400);
+		this->statBlock.setColor(sf::Color(255, 255, 255, 250));
+
 		towerArr[0].setPosition(560, 320);
 		towerArr[1].setPosition(560, 428);
 		towerArr[2].setPosition(560, 218);
 		towerArr[3].setPosition(560, 112);
 
-			/*towerArr[0].setPosition(580*(1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-				20 * (1.0*this->data->window.getSize().y) / SCREEN_HEIGHT);
-			towerArr[1].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-				200 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
-			towerArr[2].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-				300 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
-			towerArr[3].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-				270*(1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
-			towerArr[4].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-				354 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
-			towerArr[5].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-				430 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
-			*/
+		/*towerArr[0].setPosition(580*(1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+			20 * (1.0*this->data->window.getSize().y) / SCREEN_HEIGHT);
+		towerArr[1].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+			200 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+		towerArr[2].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+			300 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+		towerArr[3].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+			270*(1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+		towerArr[4].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+			354 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+		towerArr[5].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+			430 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+		*/
 
 		sf::Vector2f size(60, 60), position(50, 50);
-		
+
 		cur_round = new Round(round * round, 20, 7, 20);
 	}
-	catch(FileLoadError &e){
+	catch (FileLoadError& e) {
 		std::cout << e.what() << std::endl;
 	}
 }
@@ -137,6 +146,7 @@ void GameState::Draw()
 	}
 
 	this->data->window.draw(menuBackGround);
+	this->data->window.draw(statBlock);
 
 	if (debugLivesText && debugMoneyText && debugRoundsText)
 	{
@@ -146,6 +156,7 @@ void GameState::Draw()
 		this->data->window.draw(*debugMoneyText);
 		debugRoundsText->setString("Rounds: " + std::to_string(round));
 		this->data->window.draw(*debugRoundsText);
+		this->data->window.draw(*debugTurretKillsText);
 	}
 
 	for (sf::Sprite towers : towerArr)
@@ -175,8 +186,8 @@ void GameState::doIconMove()
 			break;
 			this->towerArr[i].setColor(sf::Color(255, 255, 255, 200));
 		}
-			
-	
+
+
 		//This is supposed to see if it is in a hit box
 		if (this->data->inputs.IsSpriteClicked(this->towerArr[i], sf::Mouse::Right, this->data->window))
 		{
@@ -247,6 +258,12 @@ void GameState::doIconMove()
 			}
 		}
 	}
+	for (int i = 0; i < this->data->turretVector.size(); i++) {
+		if (this->data->inputs.IsSpriteClicked(this->data->turretVector.at(i), sf::Mouse::Left, this->data->window)) {
+			std::cout << "check" << i << std::endl;
+			debugTurretKillsText->setString("Kills: " + std::to_string(this->data->turretVector.at(i).getKills()));
+		}
+	}
 }
 
 bool GameState::isGameOver()
@@ -277,7 +294,7 @@ void GameState::Update()
 			}
 		}
 	}
-	
+
 	if (!isGameOver()) {
 		cur_round->fetchEnemy(this->data->assets, time, this->data->enemyVector, *testMap->getPath(), round);
 

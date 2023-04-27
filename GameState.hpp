@@ -39,6 +39,7 @@ private:
 	//void genEnemyForces(std::vector<Enemy>& enemyVector, Map*& map, int& round);
 
 	sf::Sprite menuBackGround;
+	sf::Sprite statBlock;
 	bool isGameOver();
 
 	int mMoney;
@@ -51,8 +52,9 @@ private:
 	sf::Text* debugLivesText;
 	sf::Text* debugMoneyText;
 	sf::Text* debugRoundsText;
+	sf::Text* debugTurretKillsText;
 
 	Round* cur_round;
-	
+
 	Map* testMap;
 };
