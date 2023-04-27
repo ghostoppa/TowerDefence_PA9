@@ -1,8 +1,6 @@
 #pragma once
 #include <sstream>
 #include <SFML/Graphics.hpp>
-#include "Definitions.hpp"
-#include "State.hpp"
 #include "GameClassWip.hpp"
 
 class GameState;

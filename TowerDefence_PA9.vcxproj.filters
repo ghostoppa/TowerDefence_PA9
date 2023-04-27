@@ -240,8 +240,8 @@
     <Image Include="assets\img\zapper.png">
       <Filter>Resource Files\images</Filter>
     </Image>
-    <Image Include="assets\img\TEXTURETEXT.png">
-      <Filter>TestAssets</Filter>
+    <Image Include="assets\img\TEXTURE_TEST.png">
+      <Filter>Resource Files\images</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
@@ -260,7 +260,7 @@
       <Filter>Resource Files\Sounds</Filter>
     </None>
     <None Include="assets\Sounds\TESTSOUND.ogg">
-      <Filter>TestAssets</Filter>
+      <Filter>Resource Files\Sounds</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

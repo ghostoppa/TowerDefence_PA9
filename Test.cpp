@@ -24,36 +24,35 @@ Test::Test()
 
 void Test::AssetManagerTest()
 {
+	int option = 0;
 	sf::Clock newClock;
 	AssetManager newAssetManager;
 	sf::RenderWindow newWindow;
 	newWindow.create(sf::VideoMode(1920, 1080), "AssetTest",
 		sf::Style::Close | sf::Style::Titlebar);
-	newWindow.setFramerateLimit(60);
-
+	newWindow.setFramerateLimit(12);
 	try {
 		newAssetManager.loadFont("testFont", "assets/fonts/Open 24 Display St.ttf");
-		newAssetManager.loadSound("testSound", menuSound);
-		newAssetManager.loadTexture("testTexture", MENUBACKGROUND);
-		sf::Text text("SUCCESS FONT TEST", newAssetManager.getFont("testFont"), 40);
-		text.setPosition(900, 540);
+		newAssetManager.loadSound("testSound", TESTSOUND);
+		newAssetManager.loadTexture("testTexture",TESTTEXTURE );
+		sf::Text text("SUCCESS FONT TEST", newAssetManager.getFont("testFont"), 100);
+		text.setFillColor(sf::Color::Red);
+		text.setPosition(700, 540);
 
 		sf::Sprite textSprite(newAssetManager.getTexture("testTexture"));
 		
-			
-
-		newAssetManager.getSound("testSound");
-
+		
+		sf::SoundBuffer f;
+		f.loadFromFile(TESTSOUND);
+		sf::Sound fd;
+		fd.setBuffer(f);
 			newWindow.draw(textSprite);
 		newWindow.draw(text);
 		newWindow.display();
-		newAssetManager.getSound("testSound").play();
+	fd.play();
 
-		while (newClock.getElapsedTime().asSeconds() <50) {
-
-		}
-		newWindow.close();
-
+		while (newClock.getElapsedTime().asSeconds() <= 10);
+	
 	}
 	catch (FileLoadError& e)
 	{

@@ -182,7 +182,7 @@
     <Image Include="assets\img\sprayer.png" />
     <Image Include="assets\img\startbtn.png" />
     <Image Include="assets\img\testMenu.png" />
-    <Image Include="assets\img\TEXTURETEXT.png" />
+    <Image Include="assets\img\TEXTURE_TEST.png" />
     <Image Include="assets\img\turret1.png" />
     <Image Include="assets\img\zapper.png" />
   </ItemGroup>

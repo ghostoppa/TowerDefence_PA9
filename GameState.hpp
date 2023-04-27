@@ -3,11 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-#include "Definitions.hpp"
-#include "State.hpp"
+
 #include "GameClassWip.hpp"
 #include "EndState.hpp"
-
 #include "LinearPath.hpp"
 #include "Enemy.hpp"
 #include "TurretWrapper.hpp"
@@ -34,8 +32,6 @@ private:
 
 	std::vector<Tower> placedTowers;
 	void	 doIconMove();
-	void setSpriteTransparecy(int TowerNumber);
-	void runLvl1(sf::RenderWindow window);
 	//void genEnemyForces(std::vector<Enemy>& enemyVector, Map*& map, int& round);
 
 	sf::Sprite menuBackGround;

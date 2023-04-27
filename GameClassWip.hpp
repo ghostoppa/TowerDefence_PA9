@@ -6,6 +6,7 @@
 #include "InputManager.hpp"
 #include "Enemy.hpp"
 #include "Tower.hpp"
+
 typedef struct gameData
 {
 	StateMachine machine;

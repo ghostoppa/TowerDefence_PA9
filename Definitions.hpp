@@ -15,6 +15,7 @@ constexpr auto LOAD_BTN = "assets/img/loadbtn.png";
 constexpr auto SPLASH = "assets/img/splogo.png";
 constexpr auto SPLASHBG = "assets/img/SplashBackground.png";
 constexpr auto MENUBACKGROUND = "assets/img/testMenu2.png";
+constexpr auto TESTTEXTURE = "assets/img/TEXTURE_TEST.png";
 
 constexpr auto TOWER_ONE = "assets/img/sprayer.png";
 constexpr auto TOWER_TWO = "assets/img/particleCannon.png";
@@ -35,6 +36,7 @@ constexpr auto ENEMY_RED = "assets/img/beetle.png";
 //Sounds
 constexpr auto menuSound = "assets/Sounds/SneakyAdventure.ogg";
 constexpr auto gameSound = "assets/Sounds/KevinMacLeodGrooveGrove.flac";
+constexpr auto TESTSOUND = "assets/Sounds/TESTSOUND.ogg";
 //Fonts
 constexpr auto MythologyFont = "assets/fonts/Mythology.ttf";
 constexpr auto RobotoNormal = "assets/fonts/Roboto-Regular.ttf";
