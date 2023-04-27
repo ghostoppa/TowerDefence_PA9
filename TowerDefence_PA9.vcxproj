@@ -180,6 +180,7 @@
     <Image Include="assets\img\map1_template.png" />
     <Image Include="assets\img\splogo.png" />
     <Image Include="assets\img\sprayer.png" />
+    <Image Include="assets\img\spriteTest.png" />
     <Image Include="assets\img\startbtn.png" />
     <Image Include="assets\img\testMenu.png" />
     <Image Include="assets\img\TEXTURE_TEST.png" />
@@ -197,6 +198,7 @@
     <ClInclude Include="GameClassWip.hpp" />
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="InputManager.hpp" />
+    <ClInclude Include="InputTest.hpp" />
     <ClInclude Include="LinearPath.hpp" />
     <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="Map.hpp" />
@@ -223,6 +225,7 @@
     <ClCompile Include="GameClassWip.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="InputTest.cpp" />
     <ClCompile Include="LinearPath.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuState.cpp" />

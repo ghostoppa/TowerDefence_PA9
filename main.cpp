@@ -5,9 +5,16 @@
 #include "Test.hpp"
 int main()
 {
-
-   // GameWip game(SCREEN_WIDTH, SCREEN_HEIGHT, "Swarm Patrol");
-    Test newTest;
-    newTest.AssetManagerTest();
-    return 0;
+    int choice = 0;
+   
+    std::cout << "Please Select to 1, play game or 2, do tests" << std::endl;
+    std::cin >> choice;
+    if (choice == 1) {
+        GameWip game(SCREEN_WIDTH, SCREEN_HEIGHT, "Swarm Patrol");
+    }
+    else
+    {
+        Test newTest;
+    }
+       return 0;
 }

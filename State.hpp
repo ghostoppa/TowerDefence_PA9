@@ -1,5 +1,5 @@
 #pragma once
-
+#
 
 class State
 {
@@ -11,7 +11,7 @@ public:
 	virtual void Update() = 0;
 
 	virtual void Draw() = 0;
-
+	virtual const	int getState() = 0;
 	virtual void Pause() {}
 	virtual void Resume() {}
 

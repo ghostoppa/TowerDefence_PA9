@@ -3,7 +3,6 @@
 #include <SFML/Graphics.hpp>
 #include "GameClassWip.hpp"
 
-class GameState;
 
 class EndState : public State
 {
@@ -22,7 +21,10 @@ public:
 	void HandleInput();
 	void Update();
 	void Draw();
-
+	const int getState()
+	{
+		return 4;
+	}
 
 private:
 

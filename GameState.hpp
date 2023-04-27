@@ -24,7 +24,10 @@ public:
 	void Update();
 	void Draw();
 
-
+	const const int getState()
+	{
+		return 3;
+	}
 private:
 	GameDataRef data;
 	//Tower* testTower;

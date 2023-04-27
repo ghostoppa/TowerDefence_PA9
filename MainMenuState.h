@@ -20,6 +20,12 @@ public:
 	void Update();
 	void Draw();
 
+
+	const int getState()
+	{
+		return 2;
+	}
+
 private:
 	GameDataRef data;
 

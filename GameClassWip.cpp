@@ -25,4 +25,5 @@ void GameWip::Run()
 
 			}
 		}
+		this->data->machine.RemoveState();
 }
