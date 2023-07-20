@@ -2,10 +2,8 @@
 
 #include <iostream>
 #include "GameClassWip.hpp"
-#include "Test.hpp"
 int main()
 {
-    Test newTest;
     GameWip game(SCREEN_WIDTH, SCREEN_HEIGHT, "Swarm Patrol");
 
     //newTest.AssetManagerTest();

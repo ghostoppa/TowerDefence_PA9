@@ -3,11 +3,11 @@
 
 class Sprayer : public Tower {
 public:
-    Sprayer(sf::Texture& texture, sf::Texture& tProjectile, const sf::Vector2f& position) {
+    Sprayer(sf::Texture& texture, sf::Texture& tProjectile, const sf::Vector2f& position, bool shop) {
         // initializer  //
             // stats    //
             fireRate = .33f * 60;        // seconds * framerate so that mTime can properly time shots
-            fireRange = 75.0f;          // range of turret
+            fireRange = SPRAYER_RANGE;          // range of turret
             mTime = 0;
             projectile = &tProjectile;  // projectile texture
             mDamage = 1;
@@ -23,6 +23,8 @@ public:
             previousDistanceToTarget = 75.0f;
             priorityType = 1;           // default for sprayers is closest targeting
             target = nullptr;
+            rangeCircle = new sf::CircleShape(fireRange, 32);
+            rangeCircle->setFillColor(sf::Color(100, 100, 100, 0));
             //          //
         //              //
 

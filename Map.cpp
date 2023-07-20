@@ -23,16 +23,18 @@ void Map::LoadHitBoxesFromFile(std::string path)
 	std::cout << "Loading map hitbox data..." << std::endl;
 	std::ifstream infile;
 	infile.open(path);
-	float x, y, w, h;
+	float x, y, w, h, r;
 	while (infile)
 	{
 		infile >> x;
 		infile >> y;
 		infile >> w;
 		infile >> h;
+		infile >> r;
 		sf::RectangleShape temp;
 		temp.setPosition(sf::Vector2f(x, y));
 		temp.setSize(sf::Vector2f(w, h));
+		temp.setRotation(r);
 		temp.setFillColor(sf::Color(100, 100, 255, 200));
 		this->hitboxes.push_back(temp);
 	}

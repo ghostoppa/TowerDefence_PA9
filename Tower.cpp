@@ -99,7 +99,7 @@ Enemy* Tower::targetStrong(std::vector<Enemy>& enemyVector) {
     if (target != nullptr) {
         highestHealth = target->getMaxHealth();
     }
-    
+
     if (target == nullptr) {
         for (int i = 0; i < enemyVector.size(); ++i) {
             if (fireRange > targetingFeed(this->getPosition(), enemyVector.at(i).getPosition()) && highestHealth < enemyVector.at(i).getMaxHealth()) {
@@ -172,15 +172,23 @@ Enemy* Tower::getTarget(std::vector<Enemy>& enemyVector, int priorityType) {
 }
 
 void Tower::fireProjectile(std::vector<Projectile>& projectileVector) {
-    projectileVector.push_back(Projectile(*projectile, this->getPosition(), this->getRotation(), mDamage, projectileChainRange, projectileVelocity, projectileAOE, projectileChain, projectilePierce));
+    projectileVector.push_back(Projectile(this, *projectile, this->getPosition(), this->getRotation(), mDamage, projectileChainRange, projectileVelocity, projectileAOE, projectileChain, projectilePierce));
+}
+
+void Tower::setPos(const sf::Vector2f& position) {
+    this->setPosition(position);
+    return;
 }
 
 int Tower::getKills() {
     return mKills;
 }
+void Tower::addKill() {
+    mKills++;
+    return;
+}
 
-int Tower::getPrice()
-{
+int Tower::getPrice() {
     return this->mPrice;
 }
 
@@ -188,8 +196,31 @@ float Tower::getRange() {
     return this->fireRange;
 }
 
+sf::CircleShape* Tower::getRangeCircle() {
+    return rangeCircle;
+}
+
+void Tower::showRadius(int valid) {
+    if (1 == valid) {
+        rangeCircle->setFillColor(sf::Color(100, 100, 100, 100));
+    }
+    else {
+        rangeCircle->setFillColor(sf::Color(100, 100, 100, 0));
+    }
+    return;
+}
+void Tower::showRadius(float range) {
+    rangeCircle->setFillColor(sf::Color(100, 0, 0, 100));
+    rangeCircle->setRadius(range);
+    return;
+}
+
 void Tower::update(std::vector<Enemy>& enemyVector, std::vector<Projectile>& projectileVector) {
     float angleToTarget = previousAngle, distance = 0.0f;
+    
+    if (isShop == true) {
+        return;
+    }
 
     if (target != nullptr && target->getCurHealth() <= 0) {
         target = nullptr;

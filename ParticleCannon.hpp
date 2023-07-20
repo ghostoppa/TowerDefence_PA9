@@ -3,11 +3,11 @@
 
 class ParticleCannon : public Tower {
 public:
-    ParticleCannon(sf::Texture& texture, sf::Texture& tProjectile, const sf::Vector2f& position) {
+    ParticleCannon(sf::Texture& texture, sf::Texture& tProjectile, const sf::Vector2f& position, bool shop) {
         // initializer  //
             // stats    //
             fireRate = 1.5f * 60;       // seconds * framerate so that mTime can properly time shots
-            fireRange = 300.0f;         // range of turret
+            fireRange = PARTICLE_CANNON_RANGE;         // range of turret
             mTime = 0;
             projectile = &tProjectile;  // projectile texture
             mDamage = 20;
@@ -23,6 +23,9 @@ public:
             previousDistanceToTarget = 300;
             priorityType = 4;           // default for particle cannons is strong targeting
             target = nullptr;
+            isShop = shop;
+            rangeCircle = new sf::CircleShape(fireRange, 32);
+            rangeCircle->setFillColor(sf::Color(100, 100, 100, 0));
             //          //
         //              //
 

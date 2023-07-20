@@ -1,4 +1,4 @@
-#include "Projectile.h"
+#include "Tower.hpp";
 
 float Projectile::getXComponent(float angle) {
     float xComp = 0, radian = 3.14159f / 180.0f;
@@ -40,7 +40,7 @@ float Projectile::getYComponent(float angle) {
 }
 
 void Projectile::getCorners(sf::Vector2f bottomRightCorner, sf::Vector2f topLeftCorner) {
-    
+
 }
 
 bool Projectile::collisionDetection(sf::Vector2f bottomRightCorner, sf::Vector2f topLeftCorner) {
@@ -48,14 +48,14 @@ bool Projectile::collisionDetection(sf::Vector2f bottomRightCorner, sf::Vector2f
 }
 
 bool Projectile::update(std::vector<Enemy>& enemyVector, std::vector<Projectile>& projectileVector) {
-	// frame time updater       //
+    // frame time updater       //
     tTime++;
     //                          //
 
     // bullet position update   //
     this->setPosition(this->getPosition().x + (getXComponent(firedAngle) * fireVelocity), this->getPosition().y + (getYComponent(firedAngle) * fireVelocity));
     //                          //
-    
+
     // enemy overlap checker    //
     if (pierce > 0 && chain <= 0) {
         for (int i = 0; i < enemyVector.size(); ++i) {
@@ -63,17 +63,20 @@ bool Projectile::update(std::vector<Enemy>& enemyVector, std::vector<Projectile>
                 enemyVector.at(i).subHealth(tDamage);
                 pierce--;
             }
+            if (enemyVector.at(i).isDefeated()) {
+                parent->addKill();
+            }
         }
     }
     //                          //
 
     //std::cout << "top: " << this->getGlobalBounds().top << " left: " << this->getGlobalBounds().left << std::endl;
-    
+
     if (tTime >= 20 || (pierce <= 0 && aoe <= 0)) {
         return true;
-	}
+    }
 
-	return false;
+    return false;
 }
 
 

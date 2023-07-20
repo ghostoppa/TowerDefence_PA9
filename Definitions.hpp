@@ -48,6 +48,10 @@ constexpr auto SPRAYER_PRICE = 200;
 constexpr auto PARTICLE_CANNON_PRICE = 250;
 constexpr auto FLAME_THROWER_PRICE = 150;
 constexpr auto ZAPPER_PRICE = 100;
+constexpr auto SPRAYER_RANGE = 75.0f;
+constexpr auto PARTICLE_CANNON_RANGE = 300.0f;
+constexpr auto FLAME_THROWER_RANGE = 150.0f;
+constexpr auto ZAPPER_RANGE = 50.0f;
 //Enemies
 #define GREEN_HEALTH 5
 #define GREEN_SPEED 2.0f

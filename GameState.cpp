@@ -1,4 +1,5 @@
 #include "GameState.hpp"
+#include <windows.h>
 
 GameState::GameState(GameDataRef ref) : data(ref)
 {
@@ -11,6 +12,7 @@ GameState::GameState(GameDataRef ref) : data(ref)
 	debugTurretKillsText = nullptr;
 
 	isMoving = false;
+	movingTower = -1;
 	mMoney = 150;
 	playerLives = 100;
 	round = 1;
@@ -87,6 +89,9 @@ void GameState::Init()
 		towerArr[1].setPosition(560, 428);
 		towerArr[2].setPosition(560, 218);
 		towerArr[3].setPosition(560, 112);
+		
+		rangeCircle.setPosition(560, 112);
+		rangeCircle.setFillColor(sf::Color(100, 100, 100, 0));
 
 		/*towerArr[0].setPosition(580*(1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
 			20 * (1.0*this->data->window.getSize().y) / SCREEN_HEIGHT);
@@ -121,8 +126,38 @@ void GameState::HandleInput()
 		{
 			this->data->window.close();
 		}
+
 		//Logic to be added to place on right click;
 		this->doIconMove();
+
+		if (sf::Event::MouseButtonPressed == event.type) {
+			bool isClick = false;
+			if (activeDetails != nullptr) {
+				if (this->data->inputs.IsSpriteClicked(trashIcon, sf::Mouse::Left, this->data->window)) {
+					for (int i = 0; i < this->data->turretVector.size(); i++) {
+						if (&this->data->turretVector.at(i) == activeDetails) {
+							mMoney += activeDetails->getPrice() * .5;
+							this->data->turretVector.erase(this->data->turretVector.begin() + i);
+						}
+					}
+				}
+			}
+			for (int i = 0; i < this->data->turretVector.size(); i++) {
+				if (this->data->inputs.IsSpriteClicked(this->data->turretVector.at(i), sf::Mouse::Left, this->data->window)) {
+					activeDetails = &this->data->turretVector.at(i);
+					activeDetails->showRadius(1);
+					this->trashIcon.setColor(sf::Color(255, 255, 255, 255));
+					isClick = true;
+				}
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && isClick == false) {
+					if (activeDetails != nullptr) {
+						activeDetails->showRadius(2);
+						activeDetails = nullptr;
+						this->trashIcon.setColor(sf::Color(255, 255, 255, 0));
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -145,8 +180,14 @@ void GameState::Draw()
 		this->data->window.draw(p);
 	}
 
+	std::vector<sf::RectangleShape> hitboxes = *(testMap->getHitboxes());
+	for (sf::RectangleShape boxes : hitboxes) {
+		this->data->window.draw(boxes);
+	}
+
 	this->data->window.draw(menuBackGround);
 	this->data->window.draw(statBlock);
+	this->data->window.draw(trashIcon);
 
 	if (debugLivesText && debugMoneyText && debugRoundsText)
 	{
@@ -156,6 +197,14 @@ void GameState::Draw()
 		this->data->window.draw(*debugMoneyText);
 		debugRoundsText->setString("Rounds: " + std::to_string(round));
 		this->data->window.draw(*debugRoundsText);
+		if (activeDetails != nullptr) {
+			debugTurretKillsText->setString("Kills: " + std::to_string(activeDetails->getKills()));
+			activeDetails->showRadius(1);
+		}
+		else {
+			debugTurretKillsText->setString(" ");
+		}
+
 		this->data->window.draw(*debugTurretKillsText);
 	}
 
@@ -163,10 +212,13 @@ void GameState::Draw()
 	{
 		this->data->window.draw(towers);
 	}
+	this->data->window.draw(rangeCircle);
+	this->data->window.draw(hitRect);
 
 	for (Tower displayTowers : this->placedTowers)
 	{
 		this->data->window.draw(displayTowers);
+		this->data->window.draw(*displayTowers.getRangeCircle());
 	}
 
 	this->data->window.display();
@@ -174,96 +226,147 @@ void GameState::Draw()
 
 void GameState::doIconMove()
 {
-	for (int i = 0; i < 4; i++) {
-		if (this->data->inputs.IsSpriteClicked(this->towerArr[i], sf::Mouse::Left, this->data->window))
-		{
-			sf::Vector2i mousePos(sf::Mouse::getPosition(this->data->window));
-			this->isMoving = true;
-			this->towerArr[i].setPosition((float)(mousePos.x -
-				this->towerArr[i].getTexture()->getSize().x / 2.0f), (float)(mousePos.y -
-					this->towerArr[i].getTexture()->getSize().y / 2.0f));
-			std::cout << " x: " << sf::Mouse::getPosition((this->data->window)).x << " y: " << sf::Mouse::getPosition((this->data->window)).y << std::endl;;
-			break;
-			this->towerArr[i].setColor(sf::Color(255, 255, 255, 200));
-		}
+	if (isMoving == false) {
 
+		for (int i = 0; i < 4; i++) {
 
-		//This is supposed to see if it is in a hit box
-		if (this->data->inputs.IsSpriteClicked(this->towerArr[i], sf::Mouse::Right, this->data->window))
-		{
-			std::vector<sf::RectangleShape> hitboxes = *(testMap->getHitboxes());
-			for (sf::RectangleShape boxes : hitboxes)
-			{
-
-				sf::IntRect tempRect(towerArr[i].getPosition().x,
-					towerArr[i].getPosition().y,
-					towerArr[i].getGlobalBounds().width,
-					towerArr[i].getGlobalBounds().height);
-				if (boxes.getGlobalBounds().contains(tempRect.left, tempRect.top))
-				{
-					std::cout << "PUT IN HIT" << std::endl;
-					switch (i)
-					{
-					case 0:
-						if (mMoney >= SPRAYER_PRICE) {
-							mMoney -= SPRAYER_PRICE;
-							this->data->turretVector.push_back(Sprayer(this->data->assets.getTexture("Tower1"), this->data->assets.getTexture("Projectile1"), towerArr[i].getPosition()));
-							towerArr[0].setPosition(560, 320);
-							//towerArr[0].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-								//20 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
-						}
-						else {
-							std::cout << "not enough swats, swat some more" << std::endl;
-						}
-						break;
-					case 1:
-						if (mMoney >= PARTICLE_CANNON_PRICE) {
-							mMoney -= PARTICLE_CANNON_PRICE;
-							this->data->turretVector.push_back(ParticleCannon(this->data->assets.getTexture("Tower2"), this->data->assets.getTexture("Projectile2"), towerArr[i].getPosition()));
-							towerArr[1].setPosition(560, 428);
-							//towerArr[1].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-								//100 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
-						}
-						else {
-							std::cout << "not enough swats, swat some more" << std::endl;
-						}
-						break;
-					case 2:
-						if (mMoney >= FLAME_THROWER_PRICE) {
-							mMoney -= FLAME_THROWER_PRICE;
-							this->data->turretVector.push_back(FlameThrower(this->data->assets.getTexture("Tower3"), this->data->assets.getTexture("Projectile3"), towerArr[i].getPosition()));
-							towerArr[2].setPosition(560, 218);
-							//towerArr[2].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-								//180 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
-						}
-						else {
-							std::cout << "not enough swats, swat some more" << std::endl;
-						}
-						break;
-					case 3:
-						if (mMoney >= ZAPPER_PRICE) {
-							mMoney -= ZAPPER_PRICE;
-							this->data->turretVector.push_back(Zapper(this->data->assets.getTexture("Tower4"), this->data->assets.getTexture("Projectile4"), towerArr[i].getPosition()));
-							towerArr[3].setPosition(560, 112);
-							//towerArr[3].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
-								//180 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
-							break;
-						}
-						else {
-							std::cout << "not enough swats, swat some more" << std::endl;
-						}
-						this->towerArr[i].setColor(sf::Color(255, 255, 255, 255));
-					}
-				}
+			if (this->data->inputs.IsSpriteClicked(this->towerArr[i], sf::Mouse::Left, this->data->window)) {
+				isMoving = true;
+				movingTower = i;
+				break;
 			}
 		}
 	}
-	for (int i = 0; i < this->data->turretVector.size(); i++) {
-		if (this->data->inputs.IsSpriteClicked(this->data->turretVector.at(i), sf::Mouse::Left, this->data->window)) {
-			std::cout << "check" << i << std::endl;
-			debugTurretKillsText->setString("Kills: " + std::to_string(this->data->turretVector.at(i).getKills()));
+
+	static bool intersect = false;
+
+	if (movingTower >= 0 && isMoving == true && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+		sf::Vector2i mousePos(sf::Mouse::getPosition(this->data->window));
+		switch (movingTower) {
+			case 0:
+				rangeCircle.setRadius(SPRAYER_RANGE);
+				break;
+			case 1:
+				rangeCircle.setRadius(PARTICLE_CANNON_RANGE);
+				break;
+			case 2:
+				rangeCircle.setRadius(FLAME_THROWER_RANGE);
+				break;
+			case 3:
+				rangeCircle.setRadius(ZAPPER_RANGE);
+				break;
+		}
+
+		this->towerArr[movingTower].setPosition(
+			(float)(mousePos.x - this->towerArr[movingTower].getTexture()->getSize().x / 2.0f),
+			(float)(mousePos.y - this->towerArr[movingTower].getTexture()->getSize().y / 2.0f));
+		rangeCircle.setPosition(
+			(float)(mousePos.x - rangeCircle.getLocalBounds().width / 2.0f),
+			(float)(mousePos.y - rangeCircle.getLocalBounds().height / 2.0f));
+
+		//std::cout << " x: " << sf::Mouse::getPosition((this->data->window)).x << " y: " << sf::Mouse::getPosition((this->data->window)).y << std::endl;;
+		std::vector<sf::RectangleShape> hitboxes = *(testMap->getHitboxes());
+
+
+		int i = 0;
+		for (sf::RectangleShape boxes : hitboxes) {
+			sf::CircleShape tempCirc;
+			tempCirc.setRadius(towerArr[movingTower].getGlobalBounds().width / 2);
+			tempCirc.setPosition(sf::Vector2f(towerArr[movingTower].getPosition().x, towerArr[movingTower].getPosition().y));
+
+			intersect = checkCollide(&boxes, &tempCirc);
+
+			if (intersect) {
+				rangeCircle.setFillColor(sf::Color(100, 0, 0, 100));
+				break;
+			}
+			i++;
+			if (i > 7) {
+				break;
+			}
+		}
+
+		if (intersect == false) {
+			rangeCircle.setFillColor(sf::Color(100, 100, 100, 100));
+		}
+		this->towerArr[movingTower].setColor(sf::Color(255, 255, 255, 125));
+	}
+	else {
+		isMoving = false;
+	}
+
+	//This is supposed to see if it is in a hit box
+	if (this->data->inputs.IsSpriteClicked(this->towerArr[movingTower], sf::Mouse::Right, this->data->window))
+	{
+		if (!intersect)
+		{
+			switch (movingTower)
+			{
+			case 0:
+				if (mMoney >= SPRAYER_PRICE) {
+					mMoney -= SPRAYER_PRICE;
+					this->data->turretVector.push_back(Sprayer(this->data->assets.getTexture("Tower1"), this->data->assets.getTexture("Projectile1"), towerArr[movingTower].getPosition(), false));
+					towerArr[0].setPosition(560, 320);
+					rangeCircle.setFillColor(sf::Color(100, 100, 100, 0));
+					//towerArr[0].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+						//20 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+				}
+				else {
+					std::cout << "not enough swats, swat some more" << std::endl;
+				}
+				break;
+			case 1:
+				if (mMoney >= PARTICLE_CANNON_PRICE) {
+					mMoney -= PARTICLE_CANNON_PRICE;
+					this->data->turretVector.push_back(ParticleCannon(this->data->assets.getTexture("Tower2"), this->data->assets.getTexture("Projectile2"), towerArr[movingTower].getPosition(), false));
+					towerArr[1].setPosition(560, 428);
+					rangeCircle.setFillColor(sf::Color(100, 100, 100, 0));
+					//towerArr[1].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+						//100 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+				}
+				else {
+					std::cout << "not enough swats, swat some more" << std::endl;
+				}
+				break;
+			case 2:
+				if (mMoney >= FLAME_THROWER_PRICE) {
+					mMoney -= FLAME_THROWER_PRICE;
+					this->data->turretVector.push_back(FlameThrower(this->data->assets.getTexture("Tower3"), this->data->assets.getTexture("Projectile3"), towerArr[movingTower].getPosition(), false));
+					towerArr[2].setPosition(560, 218);
+					rangeCircle.setFillColor(sf::Color(100, 100, 100, 0));
+					//towerArr[2].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+						//180 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+				}
+				else {
+					std::cout << "not enough swats, swat some more" << std::endl;
+				}
+				break;
+			case 3:
+				if (mMoney >= ZAPPER_PRICE) {
+					mMoney -= ZAPPER_PRICE;
+					this->data->turretVector.push_back(Zapper(this->data->assets.getTexture("Tower4"), this->data->assets.getTexture("Projectile4"), towerArr[movingTower].getPosition(), false));
+					towerArr[3].setPosition(560, 112);
+					rangeCircle.setFillColor(sf::Color(100, 100, 100, 0));
+					//towerArr[3].setPosition(580 * (1.0 * this->data->window.getSize().x / SCREEN_WIDTH),
+						//180 * (1.0 * this->data->window.getSize().y) / SCREEN_HEIGHT);
+					break;
+				}
+				else {
+					std::cout << "not enough swats, swat some more" << std::endl;
+				}
+			}
+			this->towerArr[movingTower].setColor(sf::Color(255, 255, 255, 255));
+		}
+		else {
+			std::cout << "INVALID TERRAIN" << std::endl;
 		}
 	}
+	//for (int i = 0; i < this->data->turretVector.size(); i++) {
+	//	if (this->data->inputs.IsSpriteClicked(this->data->turretVector.at(i), sf::Mouse::Left, this->data->window)) {
+	//		std::cout << "check" << i << std::endl;
+	//		debugTurretKillsText->setString("Kills: " + std::to_string(this->data->turretVector.at(i).getKills()));
+	//	}
+	//}
 }
 
 bool GameState::isGameOver()

@@ -29,22 +29,28 @@ public:
 
 private:
 	GameDataRef data;
-	//Tower* testTower;
+
 	sf::Sprite towerArr[4];
+	sf::CircleShape rangeCircle;
+	sf::RectangleShape hitRect;
+	Tower* activeDetails;
 
 	std::vector<Tower> placedTowers;
-	void	 doIconMove();
+	void doIconMove();
 	void setSpriteTransparecy(int TowerNumber);
 	void runLvl1(sf::RenderWindow window);
 	//void genEnemyForces(std::vector<Enemy>& enemyVector, Map*& map, int& round);
 
 	sf::Sprite menuBackGround;
 	sf::Sprite statBlock;
+	sf::Sprite trashIcon;
+
 	bool isGameOver();
 
 	int mMoney;
 	int playerLives;
 	bool isMoving;
+	int movingTower;
 	int round;
 	int time;
 	int which;
